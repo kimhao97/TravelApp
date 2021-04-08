@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C0152C2261E9C4300A27195 /* LibraryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0152C0261E9C4300A27195 /* LibraryCollectionViewCell.swift */; };
+		6C0152C3261E9C4300A27195 /* LibraryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C0152C1261E9C4300A27195 /* LibraryCollectionViewCell.xib */; };
+		6C0152C8261E9CE800A27195 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0152C7261E9CE800A27195 /* UIView+Extension.swift */; };
+		6C0152D8261EAA5C00A27195 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0152D6261EAA5C00A27195 /* ImageViewController.swift */; };
+		6C0152D9261EAA5C00A27195 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C0152D7261EAA5C00A27195 /* ImageViewController.xib */; };
+		6C0152E3261EB67400A27195 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0152E1261EB67400A27195 /* ImageTableViewCell.swift */; };
+		6C0152E4261EB67400A27195 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C0152E2261EB67400A27195 /* ImageTableViewCell.xib */; };
+		6C0152EC261EBE3F00A27195 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0152EB261EBE3F00A27195 /* UIImageView+Extension.swift */; };
 		6C943D33261C0E500052FD38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C943D32261C0E500052FD38 /* AppDelegate.swift */; };
 		6C943D35261C0E500052FD38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C943D34261C0E500052FD38 /* SceneDelegate.swift */; };
 		6C943D3C261C0E540052FD38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C943D3B261C0E540052FD38 /* Assets.xcassets */; };
@@ -47,6 +55,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C0152C0261E9C4300A27195 /* LibraryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewCell.swift; sourceTree = "<group>"; };
+		6C0152C1261E9C4300A27195 /* LibraryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryCollectionViewCell.xib; sourceTree = "<group>"; };
+		6C0152C7261E9CE800A27195 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		6C0152D6261EAA5C00A27195 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		6C0152D7261EAA5C00A27195 /* ImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		6C0152E1261EB67400A27195 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		6C0152E2261EB67400A27195 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		6C0152EB261EBE3F00A27195 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		6C943D2F261C0E500052FD38 /* HomeWork_UIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeWork_UIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C943D32261C0E500052FD38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C943D34261C0E500052FD38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +116,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C0152BF261E9B7A00A27195 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6C0152C0261E9C4300A27195 /* LibraryCollectionViewCell.swift */,
+				6C0152C1261E9C4300A27195 /* LibraryCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6C0152D5261EAA1900A27195 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				6C0152E0261EB65300A27195 /* Cell */,
+				6C0152D6261EAA5C00A27195 /* ImageViewController.swift */,
+				6C0152D7261EAA5C00A27195 /* ImageViewController.xib */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		6C0152E0261EB65300A27195 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6C0152E1261EB67400A27195 /* ImageTableViewCell.swift */,
+				6C0152E2261EB67400A27195 /* ImageTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		6C943D26261C0E500052FD38 = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +210,7 @@
 				6C943D72261C0FB70052FD38 /* Base */,
 				6C943DAF261C45880052FD38 /* Detail */,
 				6C943D6F261C0F690052FD38 /* Home */,
+				6C0152D5261EAA1900A27195 /* Image */,
 				6C943DA1261C38F10052FD38 /* Intruction */,
 				6C943D70261C0F760052FD38 /* Library */,
 				6C943D71261C0F820052FD38 /* Profile */,
@@ -201,6 +246,7 @@
 		6C943D70261C0F760052FD38 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				6C0152BF261E9B7A00A27195 /* Cell */,
 				6C943D7F261C10640052FD38 /* LibraryViewController.swift */,
 				6C943D80261C10640052FD38 /* LibraryViewController.xib */,
 			);
@@ -248,6 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				6C943DBB261C477D0052FD38 /* UIViewController+Extension.swift */,
+				6C0152C7261E9CE800A27195 /* UIView+Extension.swift */,
+				6C0152EB261EBE3F00A27195 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,8 +404,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C943D3F261C0E540052FD38 /* LaunchScreen.storyboard in Resources */,
+				6C0152D9261EAA5C00A27195 /* ImageViewController.xib in Resources */,
 				6C943D3C261C0E540052FD38 /* Assets.xcassets in Resources */,
+				6C0152C3261E9C4300A27195 /* LibraryCollectionViewCell.xib in Resources */,
 				6C943DB3261C459C0052FD38 /* DetailViewController.xib in Resources */,
+				6C0152E4261EB67400A27195 /* ImageTableViewCell.xib in Resources */,
 				6C943D82261C10640052FD38 /* LibraryViewController.xib in Resources */,
 				6C943D89261C10AA0052FD38 /* ProfileViewController.xib in Resources */,
 				6C943D7B261C10400052FD38 /* HomeViewController.xib in Resources */,
@@ -387,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C943D9C261C38E50052FD38 /* IntructionViewController.swift in Sources */,
+				6C0152C8261E9CE800A27195 /* UIView+Extension.swift in Sources */,
 				6C943DBC261C477D0052FD38 /* UIViewController+Extension.swift in Sources */,
 				6C943D88261C10AA0052FD38 /* ProfileViewController.swift in Sources */,
 				6C943D33261C0E500052FD38 /* AppDelegate.swift in Sources */,
@@ -395,7 +447,11 @@
 				6C943D8E261C10D80052FD38 /* TabBarViewController.swift in Sources */,
 				6C943D74261C0FCD0052FD38 /* BaseViewController.swift in Sources */,
 				6C943DB2261C459C0052FD38 /* DetailViewController.swift in Sources */,
+				6C0152EC261EBE3F00A27195 /* UIImageView+Extension.swift in Sources */,
+				6C0152D8261EAA5C00A27195 /* ImageViewController.swift in Sources */,
 				6C943D93261C11E40052FD38 /* TabBarItem.swift in Sources */,
+				6C0152E3261EB67400A27195 /* ImageTableViewCell.swift in Sources */,
+				6C0152C2261E9C4300A27195 /* LibraryCollectionViewCell.swift in Sources */,
 				6C943D7A261C10400052FD38 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

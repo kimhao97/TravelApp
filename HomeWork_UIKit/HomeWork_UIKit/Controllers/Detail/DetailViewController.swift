@@ -17,12 +17,25 @@ class DetailViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
-        title = "Detail"
     }
     
     override func setupData() {
         super.setupData()
         
+    }
+    
+    init(title: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.navigationItem.title = title
+    }
+    
+//    required init(title: String) {
+//        super.init(nibName: nil, bundle: nil)
+//        self.navigationItem.title = title
+//    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     deinit {

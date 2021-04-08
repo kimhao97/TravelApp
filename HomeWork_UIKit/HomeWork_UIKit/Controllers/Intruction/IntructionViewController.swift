@@ -36,7 +36,7 @@ final class IntructionViewController: BaseViewController {
     // MARK: - Action
     
     @IBAction func detailPress(sender: Any) {
-        let vc = DetailViewController()
+        let vc = DetailViewController(title: "Detail")
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
