@@ -7,8 +7,12 @@
 
 import UIKit
 
-final class ProfileViewController: BaseViewController {
-
+final class ProfileViewController: BaseViewController, UINavigationControllerDelegate {
+    
+    @IBOutlet private weak var userImage: UIImageView!
+    
+    private let imagePicker = UIImagePickerController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,11 +21,32 @@ final class ProfileViewController: BaseViewController {
     override func setupData() {
         super.setupData()
         
+        imagePicker.delegate = self
     }
     
     override func setupUI() {
         super.setupUI()
         
-        self.navigationItem.title = "Profile"
+        self.navigationController?.isNavigationBarHidden = true
+        
+        userImage.makeRoundCorners(byRadius: 60)
     }
+    
+    @IBAction func changePhoto(sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+                
+        present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,                             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            userImage.image = pickedImage
+        }
+
+        dismiss(animated: true, completion: nil)
+    }
+
 }

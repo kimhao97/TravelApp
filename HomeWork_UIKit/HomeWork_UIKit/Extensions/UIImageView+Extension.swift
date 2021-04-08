@@ -11,6 +11,11 @@ import Foundation
 let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView {
+   func makeRoundCorners(byRadius rad: CGFloat) {
+      layer.cornerRadius = rad
+      clipsToBounds = true
+   }
+    
     func downloaded(from url: URL, completion: @escaping (Bool) -> Void) {
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString ) {
             self.image = cachedImage

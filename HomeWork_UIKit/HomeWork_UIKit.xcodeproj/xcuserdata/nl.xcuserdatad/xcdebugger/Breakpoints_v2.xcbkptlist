@@ -30,8 +30,8 @@
             filePath = "HomeWork_UIKit/Extensions/UIImageView+Extension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "downloaded(from:completion:)"
             landmarkType = "7">
             <Locations>
@@ -78,10 +78,10 @@
             filePath = "HomeWork_UIKit/Extensions/UIImageView+Extension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "UIImageView"
-            landmarkType = "21">
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "downloaded(from:completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
