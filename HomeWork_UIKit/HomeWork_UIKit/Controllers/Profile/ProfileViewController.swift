@@ -12,6 +12,7 @@ final class ProfileViewController: BaseViewController, UINavigationControllerDel
     @IBOutlet private weak var userImage: UIImageView!
     
     private let imagePicker = UIImagePickerController()
+    private let userManager = UserManager(userService: APIService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,14 @@ final class ProfileViewController: BaseViewController, UINavigationControllerDel
         super.setupData()
         
         imagePicker.delegate = self
+        
+        userManager.loadImage() { [ weak self] image in
+            if let image = image {
+                DispatchQueue.main.async {
+                    self?.userImage.image = image
+                }
+            }
+        }
     }
     
     override func setupUI() {
@@ -33,7 +42,7 @@ final class ProfileViewController: BaseViewController, UINavigationControllerDel
     }
     
     @IBAction func changePhoto(sender: Any) {
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
                 
         present(imagePicker, animated: true, completion: nil)
@@ -42,9 +51,13 @@ final class ProfileViewController: BaseViewController, UINavigationControllerDel
 
 extension ProfileViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,                             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            userImage.image = pickedImage
+        if let editedImage = info[.editedImage] as? UIImage {
+            userImage.image = editedImage
         }
+        
+//        if let pickedImage = info[.originalImage] as? UIImage {
+//            userImage.image = pickedImage
+//        }
 
         dismiss(animated: true, completion: nil)
     }
