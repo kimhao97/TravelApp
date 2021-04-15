@@ -1,0 +1,30 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'HomeWork_UIKit' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'NeoNetworking', :git => 'https://bitbucket.org/nldanang/neonetworking.git'
+  pod 'RxSwift', '5.0.0'
+  pod 'RxCocoa', '5.0.0'
+  pod 'SwiftEventBus', :tag => '5.0.1', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
+  pod 'Swinject', '2.6.0'              # Library support dependency injection
+  pod 'SwinjectStoryboard', '2.2.0'    # Library support dependency injection
+  
+  # Library for network service
+  pod 'SwifterSwift', '5.2.0'
+  pod 'Kingfisher', '5.13.4'
+  pod 'SwiftLint'
+  pod 'netfox'
+  # Pods for HomeWork_UIKit
+
+  target 'HomeWork_UIKitTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'HomeWork_UIKitUITests' do
+    # Pods for testing
+  end
+
+end
