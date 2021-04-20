@@ -106,3 +106,9 @@ iOSInjectionProject/
 
 HomeWork_UIKit/Podfile.lock
 HomeWork_UIKit/Pods/
+HomeWork_UIKit/HomeWork_UIKit/Interface/Scene/Profile/
+HomeWork_UIKit/HomeWork_UIKit/Interface/Scene/Library/
+HomeWork_UIKit/HomeWork_UIKit/Interface/Scene/Image/
+HomeWork_UIKit/HomeWork_UIKit/Interface/Scene/Authentication/
+HomeWork_UIKit/HomeWork_UIKit/Mics/Extensions/
+

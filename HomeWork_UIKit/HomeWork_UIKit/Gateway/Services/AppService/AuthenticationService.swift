@@ -3,36 +3,43 @@ import NeoNetworking
 protocol ProfilesServiceable {
     func login(phone: String,
                password: String,
-               completionHandler: @escaping (_ user: AuthenticateLoginOutput?, _ error: AppError?) -> Void)
+               completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
+                                            _ error: AppError?) -> Void)
+    func signUp(profile: Profile)
 }
 
 class ProfilesServiceImplement: ProfilesServiceable {
-    var networkProvider: NeoNetworkProviable? {
-        return ServiceFacade.getService(NeoNetworkProviable.self)
+    
+    var persistentDataProvider: PersistentDataSaveable? {
+        return ServiceFacade.getService(PersistentDataSaveable.self)
     }
-    /// Check user e-mail has is linked to an actual account
-    ///
-    /// - Parameters:
-    ///   - phone: username
-    ///   - completionHandler: completion handler closure
+    
     func login(phone: String,
-               password: String,
-               completionHandler: @escaping (_ user: AuthenticateLoginOutput?, _ error: AppError?) -> Void) {
-        guard let apiService = networkProvider else { return }
-        let request = AuthenticateLoginAPI(with: AuthenticateLoginInput(username: phone,
-                                                                        deviceToken: "123",
-                                                                        password: password),
-                                           and: AuthenticateLoginOutput())
-        apiService.load(api: request, onComplete: { (request) in
-            guard let output = request.getOutput() else {
-                    completionHandler(nil, nil)
-                    return
-                }
+              password: String,
+              completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
+                                           _ error: AppError?) -> Void) {
+        guard let persistentDataService = persistentDataProvider else { return }
+       
+        let output = AuthenticateLoginOutput()
+        let phoneSaved = persistentDataService.getItem(fromKey: Notification.Name.userName.rawValue) as? String
+        let passwordSaved = persistentDataService.getItem(fromKey: Notification.Name.password.rawValue) as? String
+        
+        if phoneSaved == phone && passwordSaved == password {
+            output.result = .init(message: nil)
             completionHandler(output, nil)
-        }, onRequestError: { request in
-            completionHandler(nil, request.output.error)
-        }, onServerError: { (error) in
-            completionHandler(nil, error?.transformToAppError())
-        })
+        } else {
+            output.error = .init(data: nil, message: "The email address and phone number that you've entered doesn't match any account.", success: false)
+            completionHandler(nil, output.error)
+        }
+    }
+    
+    func signUp(profile: Profile) {
+        guard let persistentDataService = persistentDataProvider else { return }
+        
+        persistentDataService.set(item: profile.name, toKey: Notification.Name.userName.rawValue)
+        persistentDataService.set(item: profile.email, toKey: Notification.Name.email.rawValue)
+        persistentDataService.set(item: profile.phone, toKey: Notification.Name.phone.rawValue)
+        persistentDataService.set(item: profile.address, toKey: Notification.Name.address.rawValue)
+        persistentDataService.set(item: profile.password, toKey: Notification.Name.password.rawValue)
     }
 }

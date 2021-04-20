@@ -1,10 +1,3 @@
-//
-//  Error+Extension.swift
-//  HomeWork_UIKit
-//
-//  Created by Kim Hao on 4/13/21.
-//
-
 import Foundation
 
 extension Error {

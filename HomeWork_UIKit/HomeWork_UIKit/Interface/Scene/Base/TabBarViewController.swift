@@ -82,7 +82,7 @@ extension TabBarController {
         var viewController: UIViewController {
             switch self {
             case .home:
-                return HomeViewController()
+                return CocktailViewController()
             case .library:
                 return LibraryViewController()
             case .profile:
