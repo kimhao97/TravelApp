@@ -86,7 +86,7 @@ extension TabBarController {
             case .library:
                 return LibraryViewController()
             case .profile:
-                return ProfileViewController()
+                return DirectionViewController()
             }
         }
     }

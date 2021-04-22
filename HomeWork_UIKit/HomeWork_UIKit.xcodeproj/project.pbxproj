@@ -17,6 +17,10 @@
 		6C0152E3261EB67400A27195 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0152E1261EB67400A27195 /* ImageTableViewCell.swift */; };
 		6C0152E4261EB67400A27195 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C0152E2261EB67400A27195 /* ImageTableViewCell.xib */; };
 		6C0152EC261EBE3F00A27195 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0152EB261EBE3F00A27195 /* UIImageView+Extension.swift */; };
+		6C03BD40263114D000C0750E /* DirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C03BD3E263114D000C0750E /* DirectionViewController.swift */; };
+		6C03BD41263114D000C0750E /* DirectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C03BD3F263114D000C0750E /* DirectionViewController.xib */; };
+		6C084064262E8FF00029F770 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C084063262E8FF00029F770 /* CustomAlert.swift */; };
+		6C084069262E903A0029F770 /* CustomAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C084068262E903A0029F770 /* CustomAlert.xib */; };
 		6C0FB02826293E1200333D95 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FB02726293E1200333D95 /* Notification+Extension.swift */; };
 		6C0FB03626294E0100333D95 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FB02C26294E0000333D95 /* UIView+FontSize.swift */; };
 		6C0FB03726294E0100333D95 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FB02D26294E0000333D95 /* CGFloat+Extension.swift */; };
@@ -141,6 +145,10 @@
 		6C0152E1261EB67400A27195 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		6C0152E2261EB67400A27195 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
 		6C0152EB261EBE3F00A27195 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		6C03BD3E263114D000C0750E /* DirectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionViewController.swift; sourceTree = "<group>"; };
+		6C03BD3F263114D000C0750E /* DirectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DirectionViewController.xib; sourceTree = "<group>"; };
+		6C084063262E8FF00029F770 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		6C084068262E903A0029F770 /* CustomAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlert.xib; sourceTree = "<group>"; };
 		6C0FB02726293E1200333D95 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		6C0FB02C26294E0000333D95 /* UIView+FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FontSize.swift"; sourceTree = "<group>"; };
 		6C0FB02D26294E0000333D95 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
@@ -303,6 +311,33 @@
 				6C0152E2261EB67400A27195 /* ImageTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		6C03BD3D2631143A00C0750E /* Direction */ = {
+			isa = PBXGroup;
+			children = (
+				6C03BD3E263114D000C0750E /* DirectionViewController.swift */,
+				6C03BD3F263114D000C0750E /* DirectionViewController.xib */,
+			);
+			path = Direction;
+			sourceTree = "<group>";
+		};
+		6C084061262E8F9A0029F770 /* AuthenticationView */ = {
+			isa = PBXGroup;
+			children = (
+				6C29CBDB2626DFD70061BED5 /* CustomAuthenticaion.swift */,
+				6C29CBE02626DFE80061BED5 /* CustomAuthenticaion.xib */,
+			);
+			path = AuthenticationView;
+			sourceTree = "<group>";
+		};
+		6C084062262E8FB70029F770 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				6C084063262E8FF00029F770 /* CustomAlert.swift */,
+				6C084068262E903A0029F770 /* CustomAlert.xib */,
+			);
+			path = AlertView;
 			sourceTree = "<group>";
 		};
 		6C17BBAC2629315200CAD5CE /* ViewModels */ = {
@@ -535,8 +570,8 @@
 		6C9E21092626DDAB00A8A2A1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				6C29CBDB2626DFD70061BED5 /* CustomAuthenticaion.swift */,
-				6C29CBE02626DFE80061BED5 /* CustomAuthenticaion.xib */,
+				6C084062262E8FB70029F770 /* AlertView */,
+				6C084061262E8F9A0029F770 /* AuthenticationView */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -637,6 +672,7 @@
 		6CD8812C26257BE800AD6FDD /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6C03BD3D2631143A00C0750E /* Direction */,
 				6CA829DF262D1EA900A5B68F /* Recipe */,
 				6C9E21092626DDAB00A8A2A1 /* CustomView */,
 				6C2EF75F26269D7200126B74 /* Authentication */,
@@ -992,7 +1028,9 @@
 				6C0152E4261EB67400A27195 /* ImageTableViewCell.xib in Resources */,
 				6C943D82261C10640052FD38 /* LibraryViewController.xib in Resources */,
 				6C943D89261C10AA0052FD38 /* ProfileViewController.xib in Resources */,
+				6C03BD41263114D000C0750E /* DirectionViewController.xib in Resources */,
 				6C2EF76326269D9900126B74 /* LoginViewController.xib in Resources */,
+				6C084069262E903A0029F770 /* CustomAlert.xib in Resources */,
 				6C943D7B261C10400052FD38 /* HomeViewController.xib in Resources */,
 				6C943D9D261C38E50052FD38 /* IntructionViewController.xib in Resources */,
 				6CD8817926257E6300AD6FDD /* language.json in Resources */,
@@ -1186,6 +1224,7 @@
 				6CD8817326257E6300AD6FDD /* LocalizationItem.swift in Sources */,
 				6C943D93261C11E40052FD38 /* TabBarItem.swift in Sources */,
 				6C2EF76C26269DA800126B74 /* SignUpViewController.swift in Sources */,
+				6C03BD40263114D000C0750E /* DirectionViewController.swift in Sources */,
 				6CD8818226257E6300AD6FDD /* ApplicationConfigurable.swift in Sources */,
 				6C0FB03926294E0100333D95 /* RxCocoa+Extension.swift in Sources */,
 				6CD8816F26257E6300AD6FDD /* ApiConfig.swift in Sources */,
@@ -1214,6 +1253,7 @@
 				6CD8817C26257E6300AD6FDD /* Themeable.swift in Sources */,
 				6CD8817226257E6300AD6FDD /* LanguageKeepable.swift in Sources */,
 				6CD8817D26257E6300AD6FDD /* Notificationable.swift in Sources */,
+				6C084064262E8FF00029F770 /* CustomAlert.swift in Sources */,
 				6C67D49226244E2A006FF4A8 /* UserManager.swift in Sources */,
 				6CA82A0B262D5FAD00A5B68F /* Cocktail.swift in Sources */,
 				6CD8817626257E6300AD6FDD /* LocalizeExtend+Button.swift in Sources */,

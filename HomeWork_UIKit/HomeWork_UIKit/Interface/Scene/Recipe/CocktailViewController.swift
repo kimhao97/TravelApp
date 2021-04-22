@@ -11,6 +11,7 @@ class CocktailViewController: BaseViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
+    private let alert = CustomAlert(frame: UIScreen.main.bounds)
     private let refreshControl = UIRefreshControl()
     private let refreshTrigger = BehaviorRelay<Void>(value: ())
     let viewModel: CocktailViewModel
@@ -38,6 +39,8 @@ class CocktailViewController: BaseViewController {
             $0.dataSource = self
             $0.register(cellType: CocktailTableViewCell.self)
         }
+        
+        alert.delegate = self
         
         bindViewModel()
     }
@@ -88,6 +91,13 @@ extension CocktailViewController: UITableViewDelegate, UITableViewDataSource {
             }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = viewModel.cocktails.value[indexPath.row]
+        if let name = item.name, let urlString = item.thumbnail {
+            alert.show(title: name, imageUrl: urlString, animated: true, on: self)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return RecipeContraints.heightForRowTableView
     }
@@ -112,5 +122,15 @@ extension CocktailViewController {
                 view.refreshControl.endRefreshing()
             }
         }
+    }
+}
+
+extension CocktailViewController: AlertDelegate {
+    func selectButtonTapped() {
+        alert.dismiss(animated: true)
+    }
+    
+    func deselectButtonTapped() {
+        alert.dismiss(animated: true)
     }
 }
