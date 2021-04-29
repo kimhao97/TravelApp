@@ -18,6 +18,9 @@ target 'HomeWork_UIKit' do
   pod 'Kingfisher', '5.13.4'
   pod 'SwiftLint'
   pod 'netfox'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
   # Pods for HomeWork_UIKit
 
   target 'HomeWork_UIKitTests' do

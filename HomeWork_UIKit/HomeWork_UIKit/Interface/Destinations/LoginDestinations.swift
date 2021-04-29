@@ -1,10 +1,3 @@
-//
-//  LoginDestinations.swift
-//  HomeWork_UIKit
-//
-//  Created by Kim Hao on 4/14/21.
-//
-
 import UIKit
 
 // MARK: - Destination
@@ -12,7 +5,7 @@ import UIKit
 class LoginDestination: Destinating {
     var view: UIViewController {
         return LoginViewController()
-    ()}
+    }
 }
 
 class LoginCompleteDestination: Destinating {

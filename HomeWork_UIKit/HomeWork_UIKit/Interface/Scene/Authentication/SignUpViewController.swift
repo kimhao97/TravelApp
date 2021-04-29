@@ -52,7 +52,7 @@ final class SignUpViewController: BaseViewController {
                                              phoneTextField.textField.value(),
                                              addressTextField.textField.value(),
                                              passwordField.textField.value()) {
-            Profile(name: $0, email: $1, phone: $2, address: $3, password: $4)
+            Profile(id: UUID().uuidString, name: $0, email: $1, phone: $2, address: $3, password: $4)
         }
         let submit = signUpButton.driver()
         let input = SignUpViewModel.Input(signUpInfor: userInput, signUpTrigger: submit)

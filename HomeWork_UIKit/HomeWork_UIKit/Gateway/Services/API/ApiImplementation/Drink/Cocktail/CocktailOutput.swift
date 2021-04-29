@@ -17,8 +17,8 @@ struct ResultCocktail: Decodable {
     }
 }
 
-struct AppError: Codable, Error {
-  var data: Data?
-  var message: String = ""
-  var success: Bool = false
-}
+//struct AppError: Codable, Error {
+//  var data: Data?
+//  var message: String = ""
+//  var success: Bool = false
+//}

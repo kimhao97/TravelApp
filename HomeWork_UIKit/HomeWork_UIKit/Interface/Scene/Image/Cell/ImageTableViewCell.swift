@@ -38,13 +38,14 @@ final class ImageTableViewCell: UITableViewCell {
     func binding(title: String) {
         titleLabel.text = title
 
-        if let url = URL(string: "https://wallpapercave.com/wp/wp2670841.jpg") {
-            cellImage.downloaded(from: url) { [weak self] done in
-                if done {
-                    self?.activityIndicator.stopAnimating()
-                    self?.activityIndicator.hidesWhenStopped = true
-                }
-            }
-        }
+//        if let url = URL(string: "https://wallpapercave.com/wp/wp2670841.jpg") {
+////            cellImage.imageFromURL(path: )
+//            cellImage.downloaded(from: url) { [weak self] done in
+//                if done {
+//                    self?.activityIndicator.stopAnimating()
+//                    self?.activityIndicator.hidesWhenStopped = true
+//                }
+//            }
+//        }
     }
 }

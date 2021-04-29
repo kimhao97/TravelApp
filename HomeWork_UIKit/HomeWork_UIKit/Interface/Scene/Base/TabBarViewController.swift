@@ -54,14 +54,17 @@ extension TabBarController {
 extension TabBarController {
     enum TabBarType: Int, CaseIterable {
         case home
-        case library
+        case photo
+        case direction
         case profile
         
         var title: String {
             switch self {
             case .home:
                 return ""
-            case .library:
+            case .photo:
+                return ""
+            case .direction:
                 return ""
             case .profile:
                 return ""
@@ -72,7 +75,9 @@ extension TabBarController {
             switch self {
             case .home:
                 return UIImage(named: "ic-home")
-            case .library:
+            case .photo:
+                return UIImage(named: "ic-photo")
+            case .direction:
                 return UIImage(named: "ic-library")
             case .profile:
                 return UIImage(named: "ic-profile")
@@ -82,8 +87,10 @@ extension TabBarController {
         var viewController: UIViewController {
             switch self {
             case .home:
-                return CocktailViewController()
-            case .library:
+                return ExploreViewController()
+            case .photo:
+                return PhotoViewController()
+            case .direction:
                 return LibraryViewController()
             case .profile:
                 return DirectionViewController()
