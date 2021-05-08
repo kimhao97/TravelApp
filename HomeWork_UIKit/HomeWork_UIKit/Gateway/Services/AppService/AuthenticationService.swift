@@ -7,7 +7,8 @@ protocol ProfilesServiceable {
                password: String,
                completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
                                             _ error: AppError?) -> Void)
-    func signUp(profile: Profile)
+    func signUp(profile: Profile, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
+                                                                _ error: AppError?) -> Void)
 }
 
 class ProfilesServiceImplement: ProfilesServiceable {
@@ -46,23 +47,29 @@ class ProfilesServiceImplement: ProfilesServiceable {
 //        }
     }
     
-    func signUp(profile: Profile) {
+    func signUp(profile: Profile, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
+                                                                _ error: AppError?) -> Void) {
+        let output = AuthenticateLoginOutput()
         
         FirebaseAuth.Auth.auth().createUser(withEmail: profile.email, password: profile.password) {
             result, error in
             if let error = error {
-                print("Sign Up message: \(error.localizedDescription)")
+                output.error = .init(data: nil, message: error.localizedDescription, success: false)
+                completionHandler(nil, output.error)
+            } else {
+                UserEndPoint.postUser.post(data: profile, createNewKey: true) { result in
+                    switch result {
+                    case .failure(let error):
+                        output.error = .init(data: nil, message: error.localizedDescription, success: false)
+                        completionHandler(nil, output.error)
+                    case .success(_):
+                        output.result = .init(message: nil)
+                        completionHandler(output, nil)
+                    }
+                }
             }
         }
         
-        UserEndPoint.postUser.post(data: profile, createNewKey: true) { result in
-            switch result {
-            case .failure(let error):
-                print("Save FirebaseDatabase is failed: \(error.localizedDescription)")
-            case .success(_):
-                break
-            }
-        }
 //        guard let persistentDataService = persistentDataProvider else { return }
 //
 //        persistentDataService.set(item: profile.name, toKey: Notification.Name.userName.rawValue)

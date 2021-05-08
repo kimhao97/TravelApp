@@ -41,6 +41,13 @@
                                         <constraint firstAttribute="height" constant="225" id="9bq-dd-bkY"/>
                                     </constraints>
                                 </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0B-xk-hY9">
+                                    <rect key="frame" x="20" y="60" width="31.5" height="22"/>
+                                    <state key="normal" image="ic-back"/>
+                                    <connections>
+                                        <action selector="backWithSender:" destination="-1" eventType="touchUpInside" id="NK1-He-neu"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCq-6t-K1s">
                                     <rect key="frame" x="20" y="180" width="78.5" height="35"/>
                                     <constraints>
@@ -249,7 +256,9 @@
                                 <constraint firstAttribute="trailing" secondItem="7ye-kS-nSQ" secondAttribute="trailing" constant="20" id="gqv-aJ-QRq"/>
                                 <constraint firstItem="XCq-6t-K1s" firstAttribute="bottom" secondItem="eUN-yd-nhv" secondAttribute="bottom" constant="-10" id="lRf-cT-F9Y"/>
                                 <constraint firstItem="XCq-6t-K1s" firstAttribute="leading" secondItem="fV8-Sy-7Ws" secondAttribute="leading" constant="20" id="mug-A8-aTB"/>
+                                <constraint firstItem="o0B-xk-hY9" firstAttribute="leading" secondItem="fV8-Sy-7Ws" secondAttribute="leading" constant="20" id="nLs-0g-XhC"/>
                                 <constraint firstItem="EuO-ac-8Xk" firstAttribute="leading" secondItem="fV8-Sy-7Ws" secondAttribute="leading" constant="20" id="pqz-H5-WHk"/>
+                                <constraint firstItem="o0B-xk-hY9" firstAttribute="top" secondItem="fV8-Sy-7Ws" secondAttribute="top" constant="60" id="ptu-Zx-SEq"/>
                                 <constraint firstItem="SoE-RK-EeD" firstAttribute="leading" secondItem="fV8-Sy-7Ws" secondAttribute="leading" constant="20" id="tCr-f6-QNY"/>
                                 <constraint firstItem="eUN-yd-nhv" firstAttribute="leading" secondItem="fV8-Sy-7Ws" secondAttribute="leading" id="tf5-W4-DLb"/>
                                 <constraint firstItem="GUQ-6y-5K6" firstAttribute="top" secondItem="LSZ-4m-WHi" secondAttribute="bottom" constant="8" id="yaG-JK-DoJ"/>
@@ -277,9 +286,10 @@
         </view>
     </objects>
     <resources>
+        <image name="ic-back" width="31.5" height="13.5"/>
         <image name="ic-like" width="35" height="35"/>
         <image name="ic-liked" width="35" height="35"/>
-        <image name="img-avatar" width="668" height="1002"/>
+        <image name="img-avatar" width="30" height="30"/>
         <image name="img-danang" width="640" height="930"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

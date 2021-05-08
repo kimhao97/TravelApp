@@ -4,17 +4,14 @@ import RxSwift
 
 protocol PhotoUseCaseable: class {
     func loadAPI(with PhotoID: String, queryType: QueryType) -> Observable<Result<[Photo]?, AppError>>
-//    func loadLiked(with PhotoID: String, queryType: QueryType) -> Observable<Result<[Favorite]?, AppError>>
+    func postLike(with photo: Photo, completion: @escaping (Result<[Photo]?, AppError>) -> Void)
 }
 
 class PhotoUsecaseImplement: PhotoUseCaseable {
     let photoService: PhotoServiceable
-    let favoriteService: FavoriteServiceable
     
-    init(PhotoService: PhotoServiceable = PhotoServiceImplement(),
-         favoriteService: FavoriteServiceable = FavoriteServiceImplement()) {
+    init(PhotoService: PhotoServiceable = PhotoServiceImplement()) {
         self.photoService = PhotoService
-        self.favoriteService = favoriteService
     }
     
     func loadAPI(with photoID: String, queryType: QueryType) -> Observable<Result<[Photo]?, AppError>> {
@@ -29,5 +26,15 @@ class PhotoUsecaseImplement: PhotoUseCaseable {
             }
             return Disposables.create()
         })
+    }
+    
+    func postLike(with photo: Photo, completion: @escaping (Result<[Photo]?, AppError>) -> Void) {
+        photoService.postLike(with: photo) { data, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(data?.result))
+            }
+        }
     }
 }

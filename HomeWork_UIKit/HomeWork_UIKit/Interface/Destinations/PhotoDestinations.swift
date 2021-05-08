@@ -1,7 +1,15 @@
 import UIKit
 
-//final class PhotoDestination: Destinating {
-//    var view: UIViewController {
-//        return PhotoViewController()
-//    }
-//}
+final class CommentDestination: Destinating {
+    
+    let comments: [Comment]
+    let photoID: String
+    init(photoID: String, comments: [Comment]) {
+        self.comments = comments
+        self.photoID = photoID
+    }
+    
+    var view: UIViewController {
+        return CommentViewController(photoID: photoID, comments: comments)
+    }
+}

@@ -1,24 +1,24 @@
 import Foundation
 import NeoNetworking
 
-protocol PhotoServiceable {
-    func loadAPI(with PhotoID: String, queryType: QueryType, completionHandler: @escaping (_ Photo: PhotoOutput?, _ error: AppError?) -> Void)
+protocol CommentServiceable {
+    func loadAPI(with query: String, queryType: QueryType, completionHandler: @escaping (_ comment: CommentOutput?, _ error: AppError?) -> Void)
     
-    func postLike(with photo: Photo, completionHandler: @escaping (_ photo: PhotoOutput?, _ error: AppError?) -> Void)
+    func postComment(with comment: Comment, completionHandler: @escaping (_ comment: CommentOutput?, _ error: AppError?) -> Void)
 }
 
-class PhotoServiceImplement: PhotoServiceable {
+class CommentServiceImplement: CommentServiceable {
     
     var networkProvider: NeoNetworkProviable? {
         return ServiceFacade.getService(NeoNetworkProviable.self)
     }
     
-    func loadAPI(with query: String, queryType: QueryType, completionHandler: @escaping (PhotoOutput?, AppError?) -> Void) {
+    func loadAPI(with query: String, queryType: QueryType, completionHandler: @escaping (CommentOutput?, AppError?) -> Void) {
         guard let apiService = networkProvider else { return }
         
-        let input = PhotoInput()
+        let input = CommentInput()
         input.pathToApi += queryType.path + query
-        let request = PhotoAPI(with: input, and: PhotoOutput())
+        let request = CommentAPI(with: input, and: CommentOutput())
         apiService.load(api: request, onComplete: { (request) in
             guard let output = request.getOutput() else {
                     completionHandler(nil, nil)
@@ -32,15 +32,13 @@ class PhotoServiceImplement: PhotoServiceable {
         })
     }
     
-    func postLike(with photo: Photo, completionHandler: @escaping (_ comment: PhotoOutput?, _ error: AppError?) -> Void) {
+    func postComment(with commment: Comment, completionHandler: @escaping (_ comment: CommentOutput?, _ error: AppError?) -> Void) {
         guard let apiService = networkProvider else { return }
         
-        let input = PhotoInput(photo: photo)
-        input.requestType = .put
+        let input = CommentInput(comment: commment)
+        input.requestType = .post
         
-        input.pathToApi += "/\(photo.id ?? "0")"
-        
-        let request = PhotoAPI(with: input, and: PhotoOutput())
+        let request = CommentAPI(with: input, and: CommentOutput())
         apiService.load(api: request, onComplete: { (request) in
             guard let output = request.getOutput() else {
                     completionHandler(nil, nil)

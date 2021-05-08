@@ -11,11 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="HomeWork_UIKit" customModuleProvider="target">
             <connections>
-                <outlet property="addressTextField" destination="Aks-ZK-Xpz" id="1ao-11-FeS"/>
                 <outlet property="confirmPasswordField" destination="STF-bC-2CK" id="rtD-p0-xSd"/>
                 <outlet property="mailTextField" destination="0BR-rJ-vqu" id="3gZ-93-y8k"/>
                 <outlet property="passwordField" destination="TLK-C4-AcR" id="kjJ-av-F5S"/>
-                <outlet property="phoneTextField" destination="YL5-vz-MAt" id="bmw-Dn-6H9"/>
                 <outlet property="signUpButton" destination="Jgz-UK-S1G" id="Wdd-u0-iMm"/>
                 <outlet property="userTextField" destination="Pmg-QL-Edz" id="FSo-Vs-Jat"/>
                 <outlet property="view" destination="xdd-Ic-oDX" id="Wsv-8Q-oRE"/>
@@ -37,7 +35,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="y3U-4b-Iah">
-                    <rect key="frame" x="32" y="129" width="350" height="650"/>
+                    <rect key="frame" x="32" y="129" width="350" height="460"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmg-QL-Edz" customClass="CustomAuthenticaion" customModule="HomeWork_UIKit" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="350" height="80"/>
@@ -63,32 +61,8 @@
                                 <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Email"/>
                             </userDefinedRuntimeAttributes>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YL5-vz-MAt" customClass="CustomAuthenticaion" customModule="HomeWork_UIKit" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="190" width="350" height="80"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="80" id="mf3-qj-w4d"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isPassword" value="NO"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Mobile No"/>
-                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic-phone"/>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aks-ZK-Xpz" customClass="CustomAuthenticaion" customModule="HomeWork_UIKit" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="285" width="350" height="80"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="80" id="ylE-HP-kaz"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="isPassword" value="NO"/>
-                                <userDefinedRuntimeAttribute type="string" keyPath="placeHolder" value="Address"/>
-                                <userDefinedRuntimeAttribute type="image" keyPath="image" value="ic-address"/>
-                            </userDefinedRuntimeAttributes>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLK-C4-AcR" customClass="CustomAuthenticaion" customModule="HomeWork_UIKit" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="380" width="350" height="80"/>
+                            <rect key="frame" x="0.0" y="190" width="350" height="80"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="S3J-BN-TWg"/>
@@ -100,7 +74,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STF-bC-2CK" customClass="CustomAuthenticaion" customModule="HomeWork_UIKit" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="475" width="350" height="80"/>
+                            <rect key="frame" x="0.0" y="285" width="350" height="80"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="Fpx-FN-088"/>
@@ -112,7 +86,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jgz-UK-S1G">
-                            <rect key="frame" x="0.0" y="570" width="350" height="80"/>
+                            <rect key="frame" x="0.0" y="380" width="350" height="80"/>
                             <color key="backgroundColor" name="appOrange"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="fbX-E3-Xna"/>
@@ -173,10 +147,8 @@
         </view>
     </objects>
     <resources>
-        <image name="ic-address" width="50" height="50"/>
         <image name="ic-mail" width="50" height="50"/>
         <image name="ic-password" width="50" height="50"/>
-        <image name="ic-phone" width="50" height="50"/>
         <image name="ic-user" width="50" height="50"/>
         <namedColor name="appOrange">
             <color red="0.9882352941176471" green="0.37647058823529411" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

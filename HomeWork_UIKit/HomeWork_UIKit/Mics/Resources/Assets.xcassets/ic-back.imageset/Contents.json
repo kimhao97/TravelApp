@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-male-user-30.png",
+      "filename" : "back.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-male-user-60@2x.png",
+      "filename" : "back@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-male-user-90@3x.png",
+      "filename" : "back@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

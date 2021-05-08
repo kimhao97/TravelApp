@@ -14,8 +14,6 @@ final class SignUpViewController: BaseViewController {
 
     @IBOutlet private weak var userTextField: CustomAuthenticaion!
     @IBOutlet private weak var mailTextField: CustomAuthenticaion!
-    @IBOutlet private weak var phoneTextField: CustomAuthenticaion!
-    @IBOutlet private weak var addressTextField: CustomAuthenticaion!
     @IBOutlet private weak var passwordField: CustomAuthenticaion!
     @IBOutlet private weak var confirmPasswordField: CustomAuthenticaion!
     @IBOutlet private weak var signUpButton: UIButton!
@@ -49,10 +47,9 @@ final class SignUpViewController: BaseViewController {
     private func bindingData() {
         let userInput = Driver.combineLatest(userTextField.textField.value(),
                                              mailTextField.textField.value(),
-                                             phoneTextField.textField.value(),
-                                             addressTextField.textField.value(),
-                                             passwordField.textField.value()) {
-            Profile(id: UUID().uuidString, name: $0, email: $1, phone: $2, address: $3, password: $4)
+                                             passwordField.textField.value(),
+                                             confirmPasswordField.textField.value()) {
+            Profile(id: UUID().uuidString, name: $0, email: $1, password: $2, isValidPassword: $2 == $3 ? true : false)
         }
         let submit = signUpButton.driver()
         let input = SignUpViewModel.Input(signUpInfor: userInput, signUpTrigger: submit)
@@ -62,9 +59,13 @@ final class SignUpViewController: BaseViewController {
             .drive(onNext: { [weak self] success in
                 if success {
                     self?.navigate(to: LoginDestination(), present: false)
-                } else {
-                    self?.showAlert(title: "Unable to sign-up", message: "Try again", buttonTitles: ["OK"])
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        output.error
+            .drive(onNext: { [weak self] error in
+                self?.showAlert(title: "Unable to sign-up", message: error.message, buttonTitles: ["OK"])
             })
             .disposed(by: disposeBag)
     }

@@ -6,6 +6,7 @@ class AuthenticateLoginOutput {
     var systemError: Error?
 }
 // MARK: - ResultLogin
+
 struct ResultLogin {
     let message: String?
 }

@@ -57,6 +57,8 @@ class CityDetailViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
+        hideNavigationBar(animated: false)
+        
         let item = viewModel.city
         nameLabel.text = item.name
         descriptionLabel.text = item.description
@@ -92,6 +94,10 @@ class CityDetailViewController: BaseViewController {
         } else {
             
         }
+    }
+    
+    @IBAction func back(sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
 }
 

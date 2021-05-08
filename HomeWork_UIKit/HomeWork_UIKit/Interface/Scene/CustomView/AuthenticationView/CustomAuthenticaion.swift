@@ -81,21 +81,21 @@ class CustomAuthenticaion: UIView {
         showPasswordButton.setTitle("Show", for: .normal)
         showPasswordButton.setTitle("Hide", for: .selected)
 
-        textField.rx
-            .controlEvent(.editingDidEnd)
-            .withLatestFrom(textField.rx.text.orEmpty)
-            .asDriver(onErrorJustReturn: "")
-            .map { _ in true }
-            .asDriver()
-            .drive(showNotificationBinder)
-            .disposed(by: disposeBag)
-
-        textField.rx
-            .controlEvent(.editingChanged)
-            .map { false }
-            .asDriver(onErrorJustReturn: false)
-            .drive(showNotificationBinder)
-            .disposed(by: disposeBag)
+//        textField.rx
+//            .controlEvent(.editingDidEnd)
+//            .withLatestFrom(textField.rx.text.orEmpty)
+//            .asDriver(onErrorJustReturn: "")
+//            .map { _ in true }
+//            .asDriver()
+//            .drive(showNotificationBinder)
+//            .disposed(by: disposeBag)
+//
+//        textField.rx
+//            .controlEvent(.editingChanged)
+//            .map { false }
+//            .asDriver(onErrorJustReturn: false)
+//            .drive(showNotificationBinder)
+//            .disposed(by: disposeBag)
     }
 
     private func viewFromNibForClass() -> UIView {

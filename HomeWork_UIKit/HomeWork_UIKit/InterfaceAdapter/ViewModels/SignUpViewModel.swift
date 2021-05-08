@@ -2,14 +2,14 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-typealias SignUpInfor = (Profile)
+typealias SignUpInfor = Profile
 
 final class SignUpViewModel: BaseViewModel, ViewModelTransformable {
     
     let authenUsecase: AuthenUseCaseable = AuthenUsecaseImplement()
     
     func transform(input: Input) -> Output {
-        return Output(isRegisted: signUp(input: input).asDriverOnErrorJustComplete())
+        return Output(isRegisted: signUp(input: input).asDriverOnErrorJustComplete(), error: apiError.asDriverOnErrorJustComplete())
     }
     
     private func signUp(input: Input) -> PublishSubject<Bool> {
@@ -17,12 +17,21 @@ final class SignUpViewModel: BaseViewModel, ViewModelTransformable {
         
         input.signUpTrigger
             .withLatestFrom(input.signUpInfor)
-            .drive(onNext: { [weak self] infor in
-                if infor.name.isEmpty || infor.email.isEmpty || infor.phone.isEmpty || infor.password.isEmpty {
-                    publishSubject.onNext(false)
+            .flatMap { [unowned self] infor -> Driver<Result<Profile?, AppError>> in
+                if infor.isValidPassword {
+                    return self.authenUsecase.signUp(profile: infor).asDriverOnErrorJustComplete()
                 } else {
-                    self?.authenUsecase.signUp(profile: infor)
+                    return Driver.just(Result.failure(.init(data: nil, message: "Password confirmation doesn't match Password", success: false)))
+                }
+            }
+            .drive(onNext: { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .success:
                     publishSubject.onNext(true)
+                case .failure(let error):
+                    self.apiError.onNext(error)
+                    publishSubject.onNext(false)
                 }
             })
             .disposed(by: disposeBag)
@@ -32,17 +41,12 @@ final class SignUpViewModel: BaseViewModel, ViewModelTransformable {
 
 extension SignUpViewModel {
     struct Input {
-//        let userName: Driver<String>
-//        let email: Driver<String>
-//        let phone: Driver<String>
-//        let address: Driver<String>
-//        let password: Driver<String>
-//        let confirmPassword: Driver<String>
         let signUpInfor: Driver<SignUpInfor>
         let signUpTrigger: Driver<Void>
     }
     
     struct Output {
         let isRegisted: Driver<Bool>
+        let error: Driver<AppError>
     }
 }
