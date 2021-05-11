@@ -57,7 +57,6 @@ final class HomeViewController: BaseViewController {
 
     private func getPageViewController(index: Int) -> IntructionViewController? {
         let vc = IntructionViewController()
-
         vc.pageIndex = index
         return vc
     }

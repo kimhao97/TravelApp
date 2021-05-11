@@ -26,7 +26,7 @@ final class IntructionViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
-        hideNavigationBar(animated: false)
+//        hideNavigationBar(animated: false)
     }
     
     deinit {

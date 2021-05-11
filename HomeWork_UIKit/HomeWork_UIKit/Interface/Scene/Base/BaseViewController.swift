@@ -23,7 +23,6 @@ class BaseViewController: UIViewController, Navigateable {
     func setupUI() {
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        showNavigationBar(animated: true)
         navigationController?.navigationBar.tintColor = .black
     }
     

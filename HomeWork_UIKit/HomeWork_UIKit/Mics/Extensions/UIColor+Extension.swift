@@ -9,6 +9,7 @@ import UIKit
 
 enum AssetsColor {
     case gray
+    case grayText
     case orange
 }
 
@@ -18,6 +19,8 @@ extension UIColor {
         switch name {
         case .gray:
             return UIColor(named: "appGray")
+        case .grayText:
+            return UIColor(named: "appGrayText")
         case .orange:
             return UIColor(named: "appOrange")
        

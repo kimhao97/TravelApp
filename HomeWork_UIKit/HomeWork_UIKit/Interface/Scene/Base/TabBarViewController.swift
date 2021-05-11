@@ -91,9 +91,9 @@ extension TabBarController {
             case .photo:
                 return PhotoViewController()
             case .direction:
-                return LibraryViewController()
-            case .profile:
                 return DirectionViewController()
+            case .profile:
+                return ProfileViewController()
             }
         }
     }

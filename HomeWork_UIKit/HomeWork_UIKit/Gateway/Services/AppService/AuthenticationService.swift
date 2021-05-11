@@ -3,12 +3,14 @@ import NeoNetworking
 import Firebase
 
 protocol ProfilesServiceable {
-    func login(phone: String,
+    func login(email: String,
                password: String,
                completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
                                             _ error: AppError?) -> Void)
-    func signUp(profile: Profile, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
+    func signUp(profile: Profile, password: String, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
                                                                 _ error: AppError?) -> Void)
+    func saveProfile(profile: Profile)
+    func loadProfile(completionHandler: @escaping (Result<Profile?, AppError>) -> Void )
 }
 
 class ProfilesServiceImplement: ProfilesServiceable {
@@ -17,15 +19,12 @@ class ProfilesServiceImplement: ProfilesServiceable {
         return ServiceFacade.getService(PersistentDataSaveable.self)
     }
     
-    func login(phone: String,
-              password: String,
-              completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
+    func login(email: String, password: String, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
                                            _ error: AppError?) -> Void) {
-        guard let persistentDataService = persistentDataProvider else { return }
        
         let output = AuthenticateLoginOutput()
         
-        FirebaseAuth.Auth.auth().signIn(withEmail: phone, password: password) { result, error in
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 output.error = .init(data: nil, message: error.localizedDescription, success: false)
                 completionHandler(nil, output.error)
@@ -35,47 +34,58 @@ class ProfilesServiceImplement: ProfilesServiceable {
                 completionHandler(output, nil)
             }
         }
-//        let phoneSaved = persistentDataService.getItem(fromKey: Notification.Name.userName.rawValue) as? String
-//        let passwordSaved = persistentDataService.getItem(fromKey: Notification.Name.password.rawValue) as? String
-//
-//        if phoneSaved == phone && passwordSaved == password {
-//            output.result = .init(message: nil)
-//            completionHandler(output, nil)
-//        } else {
-//            output.error = .init(data: nil, message: "The email address and phone number that you've entered doesn't match any account.", success: false)
-//            completionHandler(nil, output.error)
-//        }
     }
     
-    func signUp(profile: Profile, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
+    func signUp(profile: Profile, password: String, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
                                                                 _ error: AppError?) -> Void) {
         let output = AuthenticateLoginOutput()
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: profile.email, password: profile.password) {
+        FirebaseAuth.Auth.auth().createUser(withEmail: profile.email, password: password) { [weak self]
             result, error in
             if let error = error {
                 output.error = .init(data: nil, message: error.localizedDescription, success: false)
                 completionHandler(nil, output.error)
             } else {
-                UserEndPoint.postUser.post(data: profile, createNewKey: true) { result in
-                    switch result {
-                    case .failure(let error):
-                        output.error = .init(data: nil, message: error.localizedDescription, success: false)
-                        completionHandler(nil, output.error)
-                    case .success(_):
-                        output.result = .init(message: nil)
-                        completionHandler(output, nil)
-                    }
-                }
+//                UserEndPoint.postUser.post(data: profile, createNewKey: true) { result in
+//                    switch result {
+//                    case .failure(let error):
+//                        output.error = .init(data: nil, message: error.localizedDescription, success: false)
+//                        completionHandler(nil, output.error)
+//                    case .success(_):
+//                        output.result = .init(message: nil)
+//                        completionHandler(output, nil)
+//                    }
+//                }
+                self?.saveProfile(profile: profile)
+                output.result = .init(message: nil)
+                completionHandler(output, nil)
             }
         }
+    }
+    
+    func saveProfile(profile: Profile) {
+        guard let persistentDataService = persistentDataProvider else { return }
+        persistentDataService.set(item: profile.id, toKey: Notification.Name.id.rawValue)
+        persistentDataService.set(item: profile.name, toKey: Notification.Name.name.rawValue)
+        persistentDataService.set(item: profile.userName, toKey: Notification.Name.userName.rawValue)
+        persistentDataService.set(item: profile.email, toKey: Notification.Name.email.rawValue)
+        persistentDataService.set(item: profile.address, toKey: Notification.Name.address.rawValue)
+        persistentDataService.set(item: profile.website, toKey: Notification.Name.website.rawValue)
+    }
+    
+    func loadProfile(completionHandler: @escaping (Result<Profile?, AppError>) -> Void ) {
+        guard let persistentDataService = persistentDataProvider else {
+            completionHandler(.failure(.init(data: nil, message: "Failed to load data", success: false)))
+            return
+        }
+        let id = persistentDataService.getItem(fromKey: Notification.Name.id.rawValue) as! String
+        let name = persistentDataService.getItem(fromKey: Notification.Name.name.rawValue) as! String
+        let userName = persistentDataService.getItem(fromKey: Notification.Name.userName.rawValue) as! String
+        let email = persistentDataService.getItem(fromKey: Notification.Name.email.rawValue) as! String
+        let website = persistentDataService.getItem(fromKey: Notification.Name.website.rawValue) as! String
+        let address = persistentDataService.getItem(fromKey: Notification.Name.address.rawValue) as! String
         
-//        guard let persistentDataService = persistentDataProvider else { return }
-//
-//        persistentDataService.set(item: profile.name, toKey: Notification.Name.userName.rawValue)
-//        persistentDataService.set(item: profile.email, toKey: Notification.Name.email.rawValue)
-//        persistentDataService.set(item: profile.phone, toKey: Notification.Name.phone.rawValue)
-//        persistentDataService.set(item: profile.address, toKey: Notification.Name.address.rawValue)
-//        persistentDataService.set(item: profile.password, toKey: Notification.Name.password.rawValue)
+        let profile = Profile(id: id, name: name, userName: userName, email: email, website: website, address: address)
+        completionHandler( .success(profile))
     }
 }
