@@ -38,6 +38,10 @@ final class PhotoDetailViewController: BaseViewController {
             $0.delegate = self
             $0.dataSource = self
             $0.register(nib: PhotoDetailCollectionViewCell.nib, forCellWithClass: PhotoDetailCollectionViewCell.self)
+            
+            if let layout = $0.collectionViewLayout as? CustomCollectionViewLayout {
+              layout.delegate = self
+            }
         }
     }
     
@@ -73,4 +77,14 @@ extension PhotoDetailViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return PhotoDetailConstraints.sizeForCellCollectionView
     }
+}
+
+extension PhotoDetailViewController: CustomCollectionViewLayoutDelegate {
+  func collectionView( _ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+    if let heightString = viewModel.photos[indexPath.row].height, let height = Float(heightString) {
+        return CGFloat(height/2)
+    } else {
+        return PhotoDetailConstraints.sizeForCellCollectionView.height
+    }
+  }
 }

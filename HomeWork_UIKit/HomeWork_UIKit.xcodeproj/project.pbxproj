@@ -139,10 +139,13 @@
 		6CA82A1B262D659300A5B68F /* CocktailInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA82A1A262D659300A5B68F /* CocktailInput.swift */; };
 		6CA82A20262D65A300A5B68F /* CocktailOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA82A1F262D65A300A5B68F /* CocktailOutput.swift */; };
 		6CA82A25262D65D200A5B68F /* CocktailAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA82A24262D65D200A5B68F /* CocktailAPI.swift */; };
+		6CAD2B48264A793B0032B38F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAD2B46264A793B0032B38F /* SearchViewController.swift */; };
+		6CAD2B49264A793B0032B38F /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CAD2B47264A793B0032B38F /* SearchViewController.xib */; };
 		6CB3F2932648CD4C004A886D /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB3F2922648CD4C004A886D /* AlbumViewModel.swift */; };
 		6CBC9F3326427EC600F2DCEC /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBC9F3126427EC600F2DCEC /* CommentTableViewCell.swift */; };
 		6CBC9F3426427EC600F2DCEC /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CBC9F3226427EC600F2DCEC /* CommentTableViewCell.xib */; };
 		6CBC9F3C2642876C00F2DCEC /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBC9F3B2642876C00F2DCEC /* CommentViewModel.swift */; };
+		6CBE1D9C264B767C00700435 /* CustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBE1D9B264B767C00700435 /* CustomCollectionViewLayout.swift */; };
 		6CD1CC51263655F9002A324B /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD1CC4F263655F9002A324B /* ExploreViewController.swift */; };
 		6CD1CC52263655F9002A324B /* ExploreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD1CC50263655F9002A324B /* ExploreViewController.xib */; };
 		6CD1CC592636581F002A324B /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD1CC572636581F002A324B /* ExploreCollectionViewCell.swift */; };
@@ -359,10 +362,13 @@
 		6CA82A1A262D659300A5B68F /* CocktailInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailInput.swift; sourceTree = "<group>"; };
 		6CA82A1F262D65A300A5B68F /* CocktailOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailOutput.swift; sourceTree = "<group>"; };
 		6CA82A24262D65D200A5B68F /* CocktailAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailAPI.swift; sourceTree = "<group>"; };
+		6CAD2B46264A793B0032B38F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6CAD2B47264A793B0032B38F /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		6CB3F2922648CD4C004A886D /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		6CBC9F3126427EC600F2DCEC /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		6CBC9F3226427EC600F2DCEC /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		6CBC9F3B2642876C00F2DCEC /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		6CBE1D9B264B767C00700435 /* CustomCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		6CD1CC4F263655F9002A324B /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		6CD1CC50263655F9002A324B /* ExploreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExploreViewController.xib; sourceTree = "<group>"; };
 		6CD1CC572636581F002A324B /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -995,6 +1001,15 @@
 			path = Cocktail;
 			sourceTree = "<group>";
 		};
+		6CAD2B45264A790C0032B38F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6CAD2B46264A793B0032B38F /* SearchViewController.swift */,
+				6CAD2B47264A793B0032B38F /* SearchViewController.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		6CBC9F3026427EA100F2DCEC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1002,6 +1017,14 @@
 				6CBC9F3226427EC600F2DCEC /* CommentTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		6CBE1D9A264B767C00700435 /* CustomLayout */ = {
+			isa = PBXGroup;
+			children = (
+				6CBE1D9B264B767C00700435 /* CustomCollectionViewLayout.swift */,
+			);
+			path = CustomLayout;
 			sourceTree = "<group>";
 		};
 		6CD1CC4E263655CE002A324B /* Explore */ = {
@@ -1156,6 +1179,7 @@
 		6CD8812C26257BE800AD6FDD /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6CAD2B45264A790C0032B38F /* Search */,
 				6CD46617264910950041F100 /* EditProfile */,
 				6C78C3F82648C56F00E7E509 /* Album */,
 				6C6FED3C2647C2060065A48C /* PhotoDetail */,
@@ -1166,6 +1190,7 @@
 				6CD1CC4E263655CE002A324B /* Explore */,
 				6C03BD3D2631143A00C0750E /* Direction */,
 				6CA829DF262D1EA900A5B68F /* Recipe */,
+				6CBE1D9A264B767C00700435 /* CustomLayout */,
 				6C9E21092626DDAB00A8A2A1 /* CustomView */,
 				6C2EF75F26269D7200126B74 /* Authentication */,
 				6C943D72261C0FB70052FD38 /* Base */,
@@ -1540,6 +1565,7 @@
 				6CD1CCA22636BD49002A324B /* CityDetailCollectionViewCell.xib in Resources */,
 				6C37ACA126390D0800851162 /* PhotoCollectionViewCell.xib in Resources */,
 				6CA829E3262D1F0300A5B68F /* CocktailViewController.xib in Resources */,
+				6CAD2B49264A793B0032B38F /* SearchViewController.xib in Resources */,
 				6C7706A626381254002FC48F /* PlaceViewController.xib in Resources */,
 				6C0152E4261EB67400A27195 /* ImageTableViewCell.xib in Resources */,
 				6C943D82261C10640052FD38 /* LibraryViewController.xib in Resources */,
@@ -1780,6 +1806,7 @@
 				6C943D93261C11E40052FD38 /* TabBarItem.swift in Sources */,
 				6C37ACA62639131D00851162 /* PhotoService.swift in Sources */,
 				6C2EF76C26269DA800126B74 /* SignUpViewController.swift in Sources */,
+				6CAD2B48264A793B0032B38F /* SearchViewController.swift in Sources */,
 				6C58EC2C26479A3C00886F51 /* CustomSegmentedControl.swift in Sources */,
 				6CD1CC7C2636A05B002A324B /* ExploreAPI.swift in Sources */,
 				6C03BD40263114D000C0750E /* DirectionViewController.swift in Sources */,
@@ -1854,6 +1881,7 @@
 				6C77067C2637EB17002FC48F /* FavoriteOutput.swift in Sources */,
 				6C0FB03B26294E0100333D95 /* NSLayoutConstraint+Extension.swift in Sources */,
 				6CD8816926257E6300AD6FDD /* Destinating.swift in Sources */,
+				6CBE1D9C264B767C00700435 /* CustomCollectionViewLayout.swift in Sources */,
 				6C943D7A261C10400052FD38 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

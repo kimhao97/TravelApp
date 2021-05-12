@@ -38,6 +38,7 @@ final class ExploreViewController: BaseViewController {
         super.viewWillAppear(animated)
         hideNavigationBar(animated: false)
     }
+    
     override func setupData() {
         super.setupData()
         
