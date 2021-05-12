@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wDV-mN-Qob">
-                        <rect key="frame" x="20" y="10" width="285" height="428"/>
+                        <rect key="frame" x="20" y="10" width="285" height="381"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hod-dQ-xZG">
                                 <rect key="frame" x="0.0" y="0.0" width="285" height="36"/>
@@ -32,7 +32,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="13"/>
+                                                <real key="value" value="18"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
@@ -45,7 +45,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fty-3h-jaO">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fty-3h-jaO">
                                                 <rect key="frame" x="0.0" y="18" width="239" height="18"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                 <nil key="textColor"/>
@@ -83,6 +83,10 @@
                                             <constraint firstAttribute="height" constant="22" id="SfC-Vk-dtC"/>
                                         </constraints>
                                         <state key="normal" image="ic-heart"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="imageForNormal" value="ic-heart"/>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="imageForSelected" value="ic-heart-red"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="likeActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aVa-n3-7Sf"/>
                                         </connections>
@@ -95,7 +99,7 @@
                                         </constraints>
                                         <state key="normal" image="ic-comment"/>
                                         <connections>
-                                            <action selector="commentActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="LKp-3S-t7L"/>
+                                            <action selector="seeCommentsActionWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VPx-fr-7gK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1r-XH-xta">
@@ -140,33 +144,17 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7SC-5W-L4P">
-                                <rect key="frame" x="0.0" y="322" width="285" height="77"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kkt-bn-evK">
-                                        <rect key="frame" x="0.0" y="0.0" width="285" height="16"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="aeA-if-04t"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adconsectetaur cillium adconsectetaur cillium ad" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NME-HG-MPQ">
-                                        <rect key="frame" x="0.0" y="16" width="285" height="61"/>
-                                        <color key="backgroundColor" name="appOrange"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="61" id="Ftt-d5-9v0"/>
-                                        </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                </subviews>
-                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adconsectetaur cillium adconsectetaur cillium ad" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NME-HG-MPQ">
+                                <rect key="frame" x="0.0" y="322" width="285" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ftt-d5-9v0"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBw-XM-jOY">
-                                <rect key="frame" x="0.0" y="409" width="285" height="19"/>
-                                <color key="backgroundColor" name="AccentColor"/>
+                                <rect key="frame" x="0.0" y="362" width="285" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="zPp-7t-e74"/>
                                 </constraints>
@@ -185,16 +173,16 @@
                     <constraint firstAttribute="trailing" secondItem="wDV-mN-Qob" secondAttribute="trailing" constant="20" id="Dll-no-2cc"/>
                     <constraint firstItem="wDV-mN-Qob" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="PS9-FS-AaI"/>
                     <constraint firstItem="wDV-mN-Qob" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="kSC-u2-D7u"/>
-                    <constraint firstAttribute="bottom" secondItem="wDV-mN-Qob" secondAttribute="bottom" constant="20" id="z3L-qv-DeA"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="contentCommentLabel" destination="NME-HG-MPQ" id="1De-5d-rPO"/>
-                <outlet property="heartButton" destination="CZl-43-RRG" id="niV-Px-9jS"/>
-                <outlet property="nameCommentLabel" destination="Kkt-bn-evK" id="3zB-fw-0Wh"/>
-                <outlet property="photo" destination="Lfs-nn-dwQ" id="eMg-Ys-jFh"/>
+                <outlet property="commentLabel" destination="NME-HG-MPQ" id="E6M-xx-aJZ"/>
+                <outlet property="likeButton" destination="CZl-43-RRG" id="vzb-Oq-tah"/>
+                <outlet property="likeLabel" destination="1WS-7h-ZkZ" id="NAV-0r-oHP"/>
+                <outlet property="seeAllCommentButton" destination="KBw-XM-jOY" id="fdq-Gm-ies"/>
                 <outlet property="subTitleLabel" destination="fty-3h-jaO" id="D9O-AQ-XDq"/>
+                <outlet property="thumbnail" destination="Lfs-nn-dwQ" id="nJv-HL-w0J"/>
                 <outlet property="userImage" destination="W6r-b6-FWR" id="6Sz-r9-wTt"/>
                 <outlet property="userNameLabel" destination="2kw-Ek-fl1" id="I0c-wc-Tj3"/>
             </connections>
@@ -205,17 +193,12 @@
         <image name="ic-blackLike" width="14" height="12"/>
         <image name="ic-comment" width="50" height="50"/>
         <image name="ic-heart" width="50" height="50"/>
+        <image name="ic-heart-red" width="50" height="50"/>
         <image name="ic-paperPlan" width="50" height="50"/>
-        <image name="img-avatar" width="668" height="1002"/>
+        <image name="img-avatar" width="30" height="30"/>
         <image name="img-danang" width="640" height="930"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="appGray">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="appOrange">
-            <color red="0.9882352941176471" green="0.37647058823529411" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

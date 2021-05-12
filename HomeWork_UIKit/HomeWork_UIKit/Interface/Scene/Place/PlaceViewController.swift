@@ -98,6 +98,10 @@ class PlaceViewController: BaseViewController {
             
         }
     }
+    
+    @IBAction func back(sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: - Photos

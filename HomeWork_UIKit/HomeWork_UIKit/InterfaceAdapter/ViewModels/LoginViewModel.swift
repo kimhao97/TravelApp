@@ -18,7 +18,7 @@ class LoginViewModel: BaseViewModel, ViewModelTransformable {
         input
             .loginTrigger
             .withLatestFrom(input.loginInfor)
-            .flatMapLatest { [unowned self] (loginInfor) -> Driver<Result<User?, AppError>> in
+            .flatMapLatest { [unowned self] (loginInfor) -> Driver<Result<Profile?, AppError>> in
                 self.authenUsecase
                     .login(phone: loginInfor.phone,
                            password: loginInfor.pass)
