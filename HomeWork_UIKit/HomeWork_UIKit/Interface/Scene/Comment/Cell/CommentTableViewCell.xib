@@ -56,6 +56,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="img-avatar" width="668" height="1002"/>
+        <image name="img-avatar" width="30" height="30"/>
     </resources>
 </document>
