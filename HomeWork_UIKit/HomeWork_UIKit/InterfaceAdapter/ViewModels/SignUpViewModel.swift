@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-typealias SignUpInfor = Profile
+typealias SignUpInfor = (profile: Profile, password: String, confirmPassword: String)
 
 final class SignUpViewModel: BaseViewModel, ViewModelTransformable {
     
@@ -17,9 +17,9 @@ final class SignUpViewModel: BaseViewModel, ViewModelTransformable {
         
         input.signUpTrigger
             .withLatestFrom(input.signUpInfor)
-            .flatMap { [unowned self] infor -> Driver<Result<Profile?, AppError>> in
-                if infor.isValidPassword {
-                    return self.authenUsecase.signUp(profile: infor).asDriverOnErrorJustComplete()
+            .flatMap { [unowned self] (profile, password, confirmPassword) -> Driver<Result<Profile?, AppError>> in
+                if password == confirmPassword {
+                    return self.authenUsecase.signUp(profile: profile, password: password).asDriverOnErrorJustComplete()
                 } else {
                     return Driver.just(Result.failure(.init(data: nil, message: "Password confirmation doesn't match Password", success: false)))
                 }

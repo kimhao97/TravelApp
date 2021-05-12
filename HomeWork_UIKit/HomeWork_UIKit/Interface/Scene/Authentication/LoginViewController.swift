@@ -48,7 +48,7 @@ final class LoginViewController: BaseViewController {
     
     private func bindingData() {
         let userInput = Driver.combineLatest(userTextField.textField.value(),
-                                          passwordTextField.textField.value()) { (phone: $0, pass: $1) }
+                                          passwordTextField.textField.value()) { (email: $0, pass: $1) }
         let submit = loginButton.driver()
         let input = LoginViewModel.Input(loginInfor: userInput, loginTrigger: submit)
         let output = viewModel.transform(input: input)

@@ -2,7 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-typealias LoginInfor = (phone: String, pass: String)
+typealias LoginInfor = (email: String, pass: String)
 
 class LoginViewModel: BaseViewModel, ViewModelTransformable {
     
@@ -20,7 +20,7 @@ class LoginViewModel: BaseViewModel, ViewModelTransformable {
             .withLatestFrom(input.loginInfor)
             .flatMapLatest { [unowned self] (loginInfor) -> Driver<Result<Profile?, AppError>> in
                 self.authenUsecase
-                    .login(phone: loginInfor.phone,
+                    .login(email: loginInfor.email,
                            password: loginInfor.pass)
                     .asDriverOnErrorJustComplete()
             }

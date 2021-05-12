@@ -19,8 +19,7 @@ class CustomAuthenticaion: UIView {
     @IBOutlet private weak var showPasswordButton: UIButton!
     @IBOutlet private weak var imageView: UIImageView!
 
-    @IBInspectable
-    var isPassword: Bool {
+    @IBInspectable var isPassword: Bool {
         get {
             return showPasswordButton.isHidden
         }
