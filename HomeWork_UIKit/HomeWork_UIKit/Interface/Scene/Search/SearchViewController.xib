@@ -32,7 +32,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="15" height="20"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </imageView>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5YA-67-jlJ">
+                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5YA-67-jlJ">
                                     <rect key="frame" x="30" y="0.0" width="285" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -40,13 +40,23 @@
                             </subviews>
                             <color key="backgroundColor" name="appGray"/>
                         </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aub-vH-13p">
+                            <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
+                            <connections>
+                                <action selector="searchActionWithSender:" destination="-1" eventType="touchUpInside" id="8O2-nq-u1W"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" name="appGray"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="nPe-H1-VXh" secondAttribute="bottom" constant="10" id="B9N-0a-nYj"/>
+                        <constraint firstAttribute="trailing" secondItem="Aub-vH-13p" secondAttribute="trailing" id="Gxk-9n-LMZ"/>
+                        <constraint firstItem="Aub-vH-13p" firstAttribute="top" secondItem="KHP-MW-34Q" secondAttribute="top" id="TSn-Jz-ZKz"/>
                         <constraint firstAttribute="height" constant="40" id="XJV-bu-wOl"/>
+                        <constraint firstAttribute="bottom" secondItem="Aub-vH-13p" secondAttribute="bottom" id="a1g-2v-bjr"/>
                         <constraint firstItem="nPe-H1-VXh" firstAttribute="top" secondItem="KHP-MW-34Q" secondAttribute="top" constant="10" id="aDW-UP-zmC"/>
                         <constraint firstAttribute="trailing" secondItem="nPe-H1-VXh" secondAttribute="trailing" constant="10" id="deb-xR-vUn"/>
+                        <constraint firstItem="Aub-vH-13p" firstAttribute="leading" secondItem="KHP-MW-34Q" secondAttribute="leading" id="pPh-OA-ZCz"/>
                         <constraint firstItem="nPe-H1-VXh" firstAttribute="leading" secondItem="KHP-MW-34Q" secondAttribute="leading" constant="10" id="yOL-Cv-E6F"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>

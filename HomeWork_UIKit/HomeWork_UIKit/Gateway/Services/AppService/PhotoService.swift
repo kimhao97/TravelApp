@@ -17,7 +17,7 @@ class PhotoServiceImplement: PhotoServiceable {
         guard let apiService = networkProvider else { return }
         
         let input = PhotoInput()
-        input.pathToApi += queryType.path + query
+        input.pathToApi += queryType.path + (query.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? "" )
         let request = PhotoAPI(with: input, and: PhotoOutput())
         apiService.load(api: request, onComplete: { (request) in
             guard let output = request.getOutput() else {

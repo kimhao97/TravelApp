@@ -70,6 +70,12 @@ final class SearchViewController: BaseViewController {
             .drive(isLoadingBinder)
             .disposed(by: disposeBag)
     }
+    
+    // MARK: - Action
+    
+    @IBAction func searchAction(sender: Any) {
+        navigate(to: SearchDetailDestination())
+    }
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {

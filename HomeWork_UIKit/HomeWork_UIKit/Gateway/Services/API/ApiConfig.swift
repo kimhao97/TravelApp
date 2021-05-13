@@ -10,6 +10,7 @@ enum QueryType {
     case place
     case user
     case photo
+    case search
     case none
     
     var path: String {
@@ -22,6 +23,8 @@ enum QueryType {
             return "?userID="
         case .photo:
             return "?photoID="
+        case .search:
+            return "?search="
         case .none:
             return ""
         }
