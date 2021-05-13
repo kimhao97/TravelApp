@@ -59,7 +59,7 @@ final class SearchViewController: BaseViewController {
         hideNavigationBar(animated: false)
     }
     
-    // MARK: - Private Func
+    // MARK: - Private Function
     
     private func bindViewModel() {
         let input = SearchViewModel.Input(loadPhoto: refreshHandler.refresh.asDriverOnErrorJustComplete())
