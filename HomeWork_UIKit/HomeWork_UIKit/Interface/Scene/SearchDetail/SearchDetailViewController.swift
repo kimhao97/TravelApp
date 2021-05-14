@@ -74,6 +74,7 @@ extension SearchDetailViewController: UITableViewDelegate, UITableViewDataSource
         return tableView.dequeueReusableCell(for: indexPath, cellType: ResultTableViewCell.self)
             .then {
                 let item = viewModel.photos[indexPath.row]
+                $0.selectionStyle = .none
                 $0.binding(photo: item)
             }
     }
