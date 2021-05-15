@@ -30,10 +30,10 @@ final class ProfileViewModel: BaseViewModel, ViewModelTransformable {
                         self.photos = data
                         self.album = self.getAlbum(photo: data)
                     }
-                    publishSubject.onNext(false)
+                    publishSubject.onNext(true)
                 case .failure(let error):
                     self.apiError.onNext(error)
-                    publishSubject.onNext(true)
+                    publishSubject.onNext(false)
                 }
             })
             .disposed(by: disposeBag)
@@ -51,35 +51,15 @@ final class ProfileViewModel: BaseViewModel, ViewModelTransformable {
                 guard let self = self else { return }
                 switch result {
                 case .success(let data):
-                   
-                    publishSubject.onNext(false)
+                    self.profile = data
+                    publishSubject.onNext(true)
                 case .failure(let error):
                     self.apiError.onNext(error)
-                    publishSubject.onNext(true)
+                    publishSubject.onNext(false)
                 }
             })
             .disposed(by: disposeBag)
         return publishSubject
-        
-//        let publishSubject = PublishSubject<Bool>()
-//        input
-//            .loadProfile
-//            .flatMapLatest { [unowned self] _ -> Driver<Result<Profile?, AppError>> in
-//                self.authenUsecase.loadProfile().asDriverOnErrorJustComplete()
-//            }
-//            .drive(onNext: { [weak self] result in
-//                guard let self = self else { return }
-//                switch result {
-//                case .success(let data):
-//                    self.profile = data
-//                    publishSubject.onNext(false)
-//                case .failure(let error):
-//                    self.apiError.onNext(error)
-//                    publishSubject.onNext(true)
-//                }
-//            })
-//            .disposed(by: disposeBag)
-//        return publishSubject
     }
     
     private func getAlbum(photo: [Photo]) -> [String: [Photo]] {

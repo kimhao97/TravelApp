@@ -1,6 +1,7 @@
 import Foundation
 import NeoNetworking
 import Firebase
+import FirebaseStorage
 
 protocol ProfilesServiceable {
     func login(email: String,
@@ -9,7 +10,7 @@ protocol ProfilesServiceable {
                                             _ error: AppError?) -> Void)
     func signUp(profile: Profile, password: String, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
                                                                 _ error: AppError?) -> Void)
-    func saveProfile(profile: Profile)
+    func saveProfile(profile: Profile, completionHandler: @escaping (Bool) -> Void)
     func loadProfile(completionHandler: @escaping (Result<Profile?, AppError>) -> Void )
 }
 
@@ -21,7 +22,7 @@ class ProfilesServiceImplement: ProfilesServiceable {
     
     func login(email: String, password: String, completionHandler: @escaping (_ user: AuthenticateLoginOutput?,
                                            _ error: AppError?) -> Void) {
-       
+        guard let persistentDataService = persistentDataProvider else { return }
         let output = AuthenticateLoginOutput()
         
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { result, error in
@@ -30,6 +31,19 @@ class ProfilesServiceImplement: ProfilesServiceable {
                 completionHandler(nil, output.error)
                 return
             } else {
+                let uid = result?.user.uid
+                
+                persistentDataService.set(item: email, toKey: Notification.Name.email.rawValue)
+                persistentDataService.set(item: password, toKey: Notification.Name.password.rawValue)
+                persistentDataService.set(item: uid ?? "0", toKey: "uid")
+                Database.database().reference().child("users").child(uid!).observeSingleEvent(of: DataEventType.value, with: { snap in
+                    let data = snap.value as! [String: Any]
+                    persistentDataService.set(item: data["username"] as! String, toKey: Notification.Name.userName.rawValue)
+                    persistentDataService.set(item: data["avatar"] as! String, toKey: Notification.Name.avatarUrl.rawValue)
+                    persistentDataService.set(item: data["address"] as! String, toKey: Notification.Name.address.rawValue)
+                    persistentDataService.set(item: data["website"] as! String, toKey: Notification.Name.website.rawValue)
+                })
+                
                 output.result = .init(message: nil)
                 completionHandler(output, nil)
             }
@@ -40,37 +54,55 @@ class ProfilesServiceImplement: ProfilesServiceable {
                                                                 _ error: AppError?) -> Void) {
         let output = AuthenticateLoginOutput()
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: profile.email, password: password) { [weak self]
+        FirebaseAuth.Auth.auth().createUser(withEmail: profile.email, password: password) {
             result, error in
             if let error = error {
                 output.error = .init(data: nil, message: error.localizedDescription, success: false)
                 completionHandler(nil, output.error)
             } else {
-//                UserEndPoint.postUser.post(data: profile, createNewKey: true) { result in
-//                    switch result {
-//                    case .failure(let error):
-//                        output.error = .init(data: nil, message: error.localizedDescription, success: false)
-//                        completionHandler(nil, output.error)
-//                    case .success(_):
-//                        output.result = .init(message: nil)
-//                        completionHandler(output, nil)
-//                    }
-//                }
-                self?.saveProfile(profile: profile)
+                let fileName = UUID().uuidString
+                let imageData = profile.avatar?.jpegData(compressionQuality: 0.3)
+                let storage = Storage.storage().reference().child("profiles").child(fileName)
+                storage.putData(imageData!, metadata: nil, completion: { (_, error) in
+                    storage.downloadURL(completion: { (url, error) in
+                        let downloadURL = url?.absoluteString
+                        let values = [result?.user.uid: ["username": profile.userName, "avatar": downloadURL!, "posts": 0, "followers": 0, "following": 0, "address": profile.address, "website": profile.website]]
+                        Database.database().reference().child("users").updateChildValues(values)
+                    })
+                })
                 output.result = .init(message: nil)
                 completionHandler(output, nil)
             }
         }
     }
     
-    func saveProfile(profile: Profile) {
+    func saveProfile(profile: Profile, completionHandler: @escaping (Bool) -> Void) {
+        let fileName = UUID().uuidString
+        let imageData = profile.avatar?.jpegData(compressionQuality: 0.3)
+        let storage = Storage.storage().reference().child("profiles").child(fileName)
+        storage.putData(imageData!, metadata: nil, completion: { (_, error) in
+            storage.downloadURL(completion: { [weak self] (url, error) in
+                if let url = url {
+                    let downloadURL = url.absoluteString
+                    let values = [profile.id: ["username": profile.userName, "avatar": downloadURL, "posts": 0, "followers": 0, "following": 0, "address": profile.address, "website": profile.website]]
+                    Database.database().reference().child("users").updateChildValues(values)
+                    self?.saveUserDefault(profile: profile)
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
+            })
+        })
+    }
+    
+    private func saveUserDefault(profile: Profile) {
         guard let persistentDataService = persistentDataProvider else { return }
         persistentDataService.set(item: profile.id, toKey: Notification.Name.id.rawValue)
-        persistentDataService.set(item: profile.name, toKey: Notification.Name.name.rawValue)
         persistentDataService.set(item: profile.userName, toKey: Notification.Name.userName.rawValue)
         persistentDataService.set(item: profile.email, toKey: Notification.Name.email.rawValue)
         persistentDataService.set(item: profile.address, toKey: Notification.Name.address.rawValue)
         persistentDataService.set(item: profile.website, toKey: Notification.Name.website.rawValue)
+        persistentDataService.set(item: profile.avatarUrl, toKey: Notification.Name.avatarUrl.rawValue)
     }
     
     func loadProfile(completionHandler: @escaping (Result<Profile?, AppError>) -> Void ) {
@@ -78,14 +110,24 @@ class ProfilesServiceImplement: ProfilesServiceable {
             completionHandler(.failure(.init(data: nil, message: "Failed to load data", success: false)))
             return
         }
-        let id = persistentDataService.getItem(fromKey: Notification.Name.id.rawValue) as! String
-        let name = persistentDataService.getItem(fromKey: Notification.Name.name.rawValue) as! String
-        let userName = persistentDataService.getItem(fromKey: Notification.Name.userName.rawValue) as! String
-        let email = persistentDataService.getItem(fromKey: Notification.Name.email.rawValue) as! String
-        let website = persistentDataService.getItem(fromKey: Notification.Name.website.rawValue) as! String
-        let address = persistentDataService.getItem(fromKey: Notification.Name.address.rawValue) as! String
+        let uid = persistentDataService.getItem(fromKey: Notification.Name.id.rawValue) as! String
         
-        let profile = Profile(id: id, name: name, userName: userName, email: email, website: website, address: address)
-        completionHandler( .success(profile))
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: DataEventType.value, with: { snap in
+            let data = snap.value as! [String: Any]
+            
+            let userName = data["username"] as! String
+            let email = ""
+            let website = data["website"] as! String
+            let address = data["address"] as! String
+            let avatarUrl = data["avatar"] as! String
+            
+            persistentDataService.set(item: data["username"] as! String, toKey: Notification.Name.userName.rawValue)
+            persistentDataService.set(item: data["avatar"] as! String, toKey: Notification.Name.avatarUrl.rawValue)
+            persistentDataService.set(item: data["address"] as! String, toKey: Notification.Name.address.rawValue)
+            persistentDataService.set(item: data["website"] as! String, toKey: Notification.Name.website.rawValue)
+            
+            let profile = Profile(id: uid, userName: userName, email: email, website: website, address: address, avatarUrl: avatarUrl)
+            completionHandler( .success(profile))
+        })
     }
 }

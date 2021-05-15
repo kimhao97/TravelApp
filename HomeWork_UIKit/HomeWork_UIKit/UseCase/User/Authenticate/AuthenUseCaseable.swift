@@ -5,7 +5,7 @@ import RxSwift
 protocol AuthenUseCaseable: class {
     func login(email: String, password: String) -> Observable<Result<Profile?, AppError>>
     func signUp(profile: Profile, password: String) -> Observable<Result<Profile?, AppError>>
-    func saveProfile(profile: Profile)
+    func saveProfile(profile: Profile, completionHandler: @escaping (Bool) -> Void)
     func loadProfile() -> Observable<Result<Profile?, AppError>>
 }
 
@@ -60,7 +60,7 @@ class AuthenUsecaseImplement: AuthenUseCaseable {
         })
     }
     
-    func saveProfile(profile: Profile) {
-        profileService.saveProfile(profile: profile)
+    func saveProfile(profile: Profile, completionHandler: @escaping (Bool) -> Void) {
+        profileService.saveProfile(profile: profile, completionHandler: completionHandler)
     }
 }

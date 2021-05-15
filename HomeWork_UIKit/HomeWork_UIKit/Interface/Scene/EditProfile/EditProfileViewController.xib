@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="HomeWork_UIKit" customModuleProvider="target">
             <connections>
                 <outlet property="addressTextField" destination="thK-Wc-r6M" id="UlG-iE-aCo"/>
-                <outlet property="nameTextField" destination="dg5-fP-tfn" id="WGy-WT-ua6"/>
+                <outlet property="avatarImage" destination="vhi-LI-QaW" id="z68-FJ-w7N"/>
                 <outlet property="usernameTextField" destination="KSh-pV-X4v" id="I2E-bj-dzq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="websiteTextField" destination="x7j-oS-dFP" id="zzF-Y6-Kd6"/>
@@ -39,36 +39,15 @@
                     <rect key="frame" x="111" y="150" width="153" height="31"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                     <state key="normal" title="Change Profile Photo"/>
+                    <connections>
+                        <action selector="selectImageWithSender:" destination="-1" eventType="touchUpInside" id="P7l-dV-wNu"/>
+                    </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-Tc-8z0">
-                    <rect key="frame" x="10" y="221" width="355" height="278"/>
+                    <rect key="frame" x="10" y="221" width="355" height="203.5"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="40M-GK-Pon">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="54.5"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sL-Bk-6MK">
-                                    <rect key="frame" x="0.0" y="0.0" width="355" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <color key="textColor" name="appGrayText"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Kim Hảo" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dg5-fP-tfn">
-                                    <rect key="frame" x="0.0" y="25" width="355" height="20.5"/>
-                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q9s-AZ-LNg">
-                                    <rect key="frame" x="0.0" y="53.5" width="355" height="1"/>
-                                    <color key="backgroundColor" name="appGrayText"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="pXe-fg-Auk"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                        </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SN6-Lo-faC">
-                            <rect key="frame" x="0.0" y="74.5" width="355" height="54.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="54.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOm-OS-3w0">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="17"/>
@@ -92,7 +71,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jer-bG-KhA">
-                            <rect key="frame" x="0.0" y="149" width="355" height="54.5"/>
+                            <rect key="frame" x="0.0" y="74.5" width="355" height="54.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkO-AY-IQh">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="17"/>
@@ -116,7 +95,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UAm-dv-R2Z">
-                            <rect key="frame" x="0.0" y="223.5" width="355" height="54.5"/>
+                            <rect key="frame" x="0.0" y="149" width="355" height="54.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaT-BB-ZTG">
                                     <rect key="frame" x="0.0" y="0.0" width="355" height="17"/>

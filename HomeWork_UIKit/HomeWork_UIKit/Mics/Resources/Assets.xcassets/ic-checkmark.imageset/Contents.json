@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lukasz-szmigiel-jFCViYFYcus-unsplash.jpg",
+      "filename" : "icons8-checkmark-50.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-checkmark-100@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-checkmark-150@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
