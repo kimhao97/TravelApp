@@ -8,6 +8,9 @@ final class CommentViewModel: BaseViewModel, ViewModelTransformable {
     let photoID: String
     private var currentComment: Comment?
     private let commentUsecase: CommentUseCaseable = CommentUsecaseImplement()
+    private var persistentDataProvider: PersistentDataSaveable? {
+        return ServiceFacade.getService(PersistentDataSaveable.self)
+    }
     
     init(photoID: String, comments: [Comment]) {
         self.comments = comments
@@ -26,7 +29,7 @@ final class CommentViewModel: BaseViewModel, ViewModelTransformable {
             .withLatestFrom(input.comment)
             .filter { $0.isEmpty == false }
             .flatMap { [unowned self] comment -> Driver<Result<[Comment]?, AppError>> in
-                let userComment = Comment(id: "", photoID: photoID, content: comment, userName: "ABC", userID: "123", avatarUrl: "random")
+                let userComment = Comment(id: nil, photoID: photoID, content: comment, userName: getUsername(), userID: getUID(), avatarUrl: getAvatarUrl())
                 self.currentComment = userComment
                 return self.commentUsecase.postComment(with: userComment).asDriverOnErrorJustComplete()
             }
@@ -45,6 +48,21 @@ final class CommentViewModel: BaseViewModel, ViewModelTransformable {
                 })
                 .disposed(by: disposeBag)
         return publishSubject
+    }
+    
+    func getAvatarUrl() -> String? {
+        guard let persistentDataService = persistentDataProvider else { return nil }
+        return persistentDataService.getItem(fromKey: Notification.Name.avatarUrl.rawValue) as? String
+    }
+    
+    private func getUID() -> String? {
+        guard let persistentDataService = persistentDataProvider else { return nil }
+        return persistentDataService.getItem(fromKey: Notification.Name.id.rawValue) as? String
+    }
+    
+    private func getUsername() -> String? {
+        guard let persistentDataService = persistentDataProvider else { return nil }
+        return persistentDataService.getItem(fromKey: Notification.Name.userName.rawValue) as? String
     }
 }
 

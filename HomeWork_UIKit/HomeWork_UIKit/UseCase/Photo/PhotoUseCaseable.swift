@@ -4,7 +4,8 @@ import RxSwift
 
 protocol PhotoUseCaseable: class {
     func loadAPI(with PhotoID: String, queryType: QueryType) -> Observable<Result<[Photo]?, AppError>>
-    func postLike(with photo: Photo, completion: @escaping (Result<[Photo]?, AppError>) -> Void)
+    func postPhoto(with photo: Photo, completion: @escaping (Result<[Photo]?, AppError>) -> Void)
+    func deletePhoto(with photo: Photo, completion: @escaping (Result<[Photo]?, AppError>) -> Void)
 }
 
 class PhotoUsecaseImplement: PhotoUseCaseable {
@@ -28,8 +29,18 @@ class PhotoUsecaseImplement: PhotoUseCaseable {
         })
     }
     
-    func postLike(with photo: Photo, completion: @escaping (Result<[Photo]?, AppError>) -> Void) {
-        photoService.postLike(with: photo) { data, error in
+    func postPhoto(with photo: Photo, completion: @escaping (Result<[Photo]?, AppError>) -> Void) {
+        photoService.postPhoto(with: photo) { data, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(data?.result))
+            }
+        }
+    }
+    
+    func deletePhoto(with photo: Photo, completion: @escaping (Result<[Photo]?, AppError>) -> Void) {
+        photoService.deletePhoto(with: photo) { data, error in
             if let error = error {
                 completion(.failure(error))
             } else {

@@ -18,6 +18,7 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
     var isViewCommentPressed: (() -> Void)?
     var isShared: ((UIImage) -> Void)?
     var isLiked: ((Bool) -> Void)?
+    var isDeleted: (() -> Void)?
     private var photo: Photo?
     
     override func awakeFromNib() {
@@ -28,14 +29,20 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
         super.setSelected(selected, animated: animated)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        likeButton.isSelected = false
+        commentLabel.isHidden = true
+    }
+    
     // MARK: - Publish Func
     
-    func binding(photo: Photo, comments: [Comment]) {
+    func binding(photo: Photo, isLike: Bool, comments: [Comment], likes: [Like]) {
         self.photo = photo
         userNameLabel.text = photo.userName
-        if let like = Int(photo.like ?? "0") {
-            likeLabel.text = "\(like)" + (like == 0 ? " like" : " likes")
-        }
+        
+        likeLabel.text = "\(likes.count)" + (likes.count == 0 ? " like" : " likes")
+        likeButton.isSelected = isLike
         
         if let avatarUrl = photo.avatarUrl {
             userImage.imageFromURL(path: avatarUrl)
@@ -43,7 +50,7 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
         if let photoUrl = photo.imageUrl {
             thumbnail.imageFromURL(path: photoUrl)
         }
-        if let comment = comments.last {
+        if let comment = comments.last, comments.count != 0 {
             let boldAttribute = [
                 NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 14.0)!
             ]
@@ -57,6 +64,7 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
             newString.append(boldText)
             newString.append(regularText)
             commentLabel.attributedText = newString
+            commentLabel.isHidden = false
         }
         
         seeAllCommentButton.setTitle("See \(comments.count) comments", for: .normal)
@@ -77,6 +85,10 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
     
     @IBAction func seeCommentsAction(sender: Any) {
         isViewCommentPressed?()
+    }
+    
+    @IBAction func deleteAction(sender: Any) {
+        isDeleted?()
     }
     
     // MARK: - Private Func

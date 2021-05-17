@@ -9,6 +9,7 @@ final class CommentViewController: BaseViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var commentTextField: UITextField!
     @IBOutlet private weak var postButton: UIButton!
+    @IBOutlet private weak var avatarImage: UIImageView!
     
     private let viewModel: CommentViewModel!
     private let disposeBag = DisposeBag()
@@ -48,6 +49,10 @@ final class CommentViewController: BaseViewController {
         let backButton = UIBarButtonItem(image: UIImage(named: "ic-back"), style: .plain, target: self, action: #selector(backAction))
         
         navigationItem.leftBarButtonItem = backButton
+        
+        if let imageUrl = viewModel.getAvatarUrl() {
+            avatarImage.imageFromURL(path: imageUrl)
+        }
     }
     
     private func bindViewModel() {

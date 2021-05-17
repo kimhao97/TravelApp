@@ -4,8 +4,8 @@ import RxCocoa
 import Then
 
 private enum PhotoConstraints {
-    static let photoHeightForRowTableView: CGFloat = .init(458)
-    static let loadingHeightForRowTableView: CGFloat = .init(55)
+    static let photoHeightForRowTableView: CGFloat = 410
+    static let loadingHeightForRowTableView: CGFloat = 55
 }
 
 final class PhotoViewController: BaseViewController {
@@ -15,7 +15,7 @@ final class PhotoViewController: BaseViewController {
     private let viewModel: PhotoViewModel
     private let disposeBag = DisposeBag()
     private let refreshComment = PublishRelay<Void>()
-    
+    private let refreshLike = PublishRelay<Void>()
     // MARK: - Initialization
     
     init() {
@@ -35,6 +35,7 @@ final class PhotoViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         refreshComment.accept(())
+        refreshLike.accept(())
     }
     override func setupData() {
         super.setupData()
@@ -53,21 +54,27 @@ final class PhotoViewController: BaseViewController {
         super.setupUI()
         
         navigationItem.title = "Photos"
+        
+        let postButton = UIButton(type: .system)
+        postButton.setImage(UIImage(named: "ic-post"), for: .normal)
+        postButton.addTarget(self, action: #selector(postAction), for: .touchUpInside)
+        
+        let postBarItem = UIBarButtonItem(customView: postButton)
+        postBarItem.customView?.translatesAutoresizingMaskIntoConstraints = false
+        postBarItem.customView?.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        postBarItem.customView?.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        navigationItem.rightBarButtonItem = postBarItem
     }
     
     // MARK: - Private Func
     
     private func bindViewModel() {
-        let input = PhotoViewModel.Input(loadPhoto: Driver.just(()), loadComment: refreshComment.asDriverOnErrorJustComplete())
+        let input = PhotoViewModel.Input(loadPhoto: Driver.just(()), loadComment: refreshComment.asDriverOnErrorJustComplete(), loadLike: refreshLike.asDriverOnErrorJustComplete())
         
         let output = viewModel.transform(input: input)
         
         output.isLoading
             .drive(isLoadingBinder)
-            .disposed(by: disposeBag)
-        
-        output.isCommentLoading
-            .drive(isCommentBinder)
             .disposed(by: disposeBag)
     }
     
@@ -78,6 +85,28 @@ final class PhotoViewController: BaseViewController {
         activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
 
         self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    private func deleteActionSheet(with photo: Photo) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete post", style: .destructive) { [weak self] _ in
+            self?.viewModel.deletePhoto(with: photo) { done in
+                if done {
+                    self?.tableView.reloadData()
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(deleteAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    // MARK: - Action
+    
+    @objc func postAction() {
+        navigate(to: PostPhotoDestination())
     }
 }
 
@@ -102,11 +131,12 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
                 .then {
                     let item = viewModel.photos[indexPath.row]
                     var comments = [Comment]()
+                    var likes = [Like]()
                     if let photoID = item.id {
                         comments = viewModel.getComments(with: photoID)
+                        likes = viewModel.getLikes(with: photoID)
                         $0.isViewCommentPressed = { [weak self] in
                             self?.navigate(to: CommentDestination(photoID: photoID, comments: comments), present: false)
-                            
                         }
                         
                         $0.isShared = { [weak self] image in
@@ -114,14 +144,26 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
                         }
                         
                         $0.isLiked = { [weak self] isSelected in
-                            self?.viewModel.postLike(photoIndex: indexPath.row, isLike: isSelected) { [weak self] done in
-                                if done {
-                                    self?.tableView.reloadData()
+                            if isSelected {
+                                self?.viewModel.postLike(photoID: photoID) { [weak self] done in
+                                    if done {
+                                        self?.refreshLike.accept(())
+                                    }
+                                }
+                            } else {
+                                self?.viewModel.dislike() { [weak self] done in
+                                    if done {
+                                        self?.tableView.reloadData()
+                                    }
                                 }
                             }
                         }
+                        
+                        $0.isDeleted = { [weak self] in
+                            self?.deleteActionSheet(with: item)
+                        }
                     }
-                    $0.binding(photo: item, comments: comments)
+                    $0.binding(photo: item, isLike: viewModel.isUserLikePhoto(with: likes), comments: comments, likes: likes)
                 }
         } else {
             return tableView.dequeueReusableCell(for: indexPath, cellType: LoadingTableViewCell.self)
@@ -142,20 +184,8 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension PhotoViewController {
     private var isLoadingBinder: Binder<Bool> {
-        return Binder(self) { view, isloading in
-            if isloading {
-                
-            } else {
-                view.tableView.reloadData()
-            }
-        }
-    }
-    
-    private var isCommentBinder: Binder<Bool> {
-        return Binder(self) { view, isloading in
-            if isloading {
-                
-            } else {
+        return Binder(self) { view, done in
+            if done {
                 view.tableView.reloadData()
             }
         }
