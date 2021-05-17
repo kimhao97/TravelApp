@@ -63,13 +63,15 @@ class ProfilesServiceImplement: ProfilesServiceable {
                 let fileName = UUID().uuidString
                 let imageData = profile.avatar?.jpegData(compressionQuality: 0.3)
                 let storage = Storage.storage().reference().child("profiles").child(fileName)
-                storage.putData(imageData!, metadata: nil, completion: { (_, error) in
-                    storage.downloadURL(completion: { (url, error) in
-                        let downloadURL = url?.absoluteString
-                        let values = [result?.user.uid: ["username": profile.userName, "avatar": downloadURL!, "posts": 0, "followers": 0, "following": 0, "address": profile.address, "website": profile.website]]
-                        Database.database().reference().child("users").updateChildValues(values)
+                if let imageData = imageData {
+                    storage.putData(imageData, metadata: nil, completion: { (_, error) in
+                        storage.downloadURL(completion: { (url, error) in
+                            let downloadURL = url?.absoluteString
+                            let values = [result?.user.uid: ["username": profile.userName, "avatar": downloadURL!, "posts": 0, "followers": 0, "following": 0, "address": profile.address, "website": profile.website]]
+                            Database.database().reference().child("users").updateChildValues(values)
+                        })
                     })
-                })
+                }
                 output.result = .init(message: nil)
                 completionHandler(output, nil)
             }
@@ -80,19 +82,23 @@ class ProfilesServiceImplement: ProfilesServiceable {
         let fileName = UUID().uuidString
         let imageData = profile.avatar?.jpegData(compressionQuality: 0.3)
         let storage = Storage.storage().reference().child("profiles").child(fileName)
-        storage.putData(imageData!, metadata: nil, completion: { (_, error) in
-            storage.downloadURL(completion: { [weak self] (url, error) in
-                if let url = url {
-                    let downloadURL = url.absoluteString
-                    let values = [profile.id: ["username": profile.userName, "avatar": downloadURL, "posts": 0, "followers": 0, "following": 0, "address": profile.address, "website": profile.website]]
-                    Database.database().reference().child("users").updateChildValues(values)
-                    self?.saveUserDefault(profile: profile)
-                    completionHandler(true)
-                } else {
-                    completionHandler(false)
-                }
+        if let imageData = imageData {
+            storage.putData(imageData, metadata: nil, completion: { (_, error) in
+                storage.downloadURL(completion: { [weak self] (url, error) in
+                    if let url = url {
+                        let downloadURL = url.absoluteString
+                        let values = [profile.id: ["username": profile.userName, "avatar": downloadURL, "posts": 0, "followers": 0, "following": 0, "address": profile.address, "website": profile.website]]
+                        Database.database().reference().child("users").updateChildValues(values)
+                        self?.saveUserDefault(profile: profile)
+                        completionHandler(true)
+                    } else {
+                        completionHandler(false)
+                    }
+                })
             })
-        })
+        } else {
+            completionHandler(false)
+        }
     }
     
     private func saveUserDefault(profile: Profile) {
