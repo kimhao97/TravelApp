@@ -13,3 +13,9 @@ final class CommentDestination: Destinating {
         return CommentViewController(photoID: photoID, comments: comments)
     }
 }
+
+final class PostPhotoDestination: Destinating {
+    var view: UIViewController {
+        return PostPhotoViewController()
+    }
+}

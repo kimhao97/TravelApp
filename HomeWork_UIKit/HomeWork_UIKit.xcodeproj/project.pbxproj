@@ -65,6 +65,9 @@
 		6C58EC252647842000886F51 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58EC232647842000886F51 /* ProfileViewController.swift */; };
 		6C58EC262647842000886F51 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C58EC242647842000886F51 /* ProfileViewController.xib */; };
 		6C58EC2C26479A3C00886F51 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58EC2B26479A3C00886F51 /* CustomSegmentedControl.swift */; };
+		6C63A59F265104A9001BD957 /* PostPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63A59D265104A9001BD957 /* PostPhotoViewController.swift */; };
+		6C63A5A0265104A9001BD957 /* PostPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C63A59E265104A9001BD957 /* PostPhotoViewController.xib */; };
+		6C63A5A526510BE2001BD957 /* PostPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63A5A426510BE2001BD957 /* PostPhotoViewModel.swift */; };
 		6C650ABD262D6E5D0061A342 /* CocktailUseCaseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C650ABC262D6E5D0061A342 /* CocktailUseCaseable.swift */; };
 		6C650AC2262D6EC30061A342 /* CocktailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C650AC1262D6EC30061A342 /* CocktailService.swift */; };
 		6C67D48026244DA2006FF4A8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C67D47F26244DA2006FF4A8 /* UserService.swift */; };
@@ -210,6 +213,13 @@
 		6CD881882625824000AD6FDD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD881872625824000AD6FDD /* User.swift */; };
 		6CD8818D262582A200AD6FDD /* Error+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD8818C262582A200AD6FDD /* Error+Extension.swift */; };
 		6CE073A8264BD74700ABB391 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE073A7264BD74700ABB391 /* SearchViewModel.swift */; };
+		6CE72D60264FB6610065FAA5 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE72D5F264FB6610065FAA5 /* Post.swift */; };
+		6CEDF45126525B660024A147 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDF45026525B660024A147 /* Like.swift */; };
+		6CEDF45726525BD00024A147 /* LikeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDF45626525BD00024A147 /* LikeInput.swift */; };
+		6CEDF45C26525BDC0024A147 /* LikeOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDF45B26525BDC0024A147 /* LikeOutput.swift */; };
+		6CEDF46126525BE80024A147 /* LikeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDF46026525BE80024A147 /* LikeAPI.swift */; };
+		6CEDF46626525CB60024A147 /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDF46526525CB60024A147 /* LikeService.swift */; };
+		6CEDF46C26525E9C0024A147 /* LikeUseCaseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEDF46B26525E9C0024A147 /* LikeUseCaseable.swift */; };
 		6CF7C360264CDB39003E55EB /* RefreshHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF7C35F264CDB39003E55EB /* RefreshHandler.swift */; };
 		A6E26F1E7C74612D8D6BB2C2 /* Pods_HomeWork_UIKit_HomeWork_UIKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D24F45F9FB50F8F397632415 /* Pods_HomeWork_UIKit_HomeWork_UIKitUITests.framework */; };
 /* End PBXBuildFile section */
@@ -290,6 +300,9 @@
 		6C58EC232647842000886F51 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6C58EC242647842000886F51 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		6C58EC2B26479A3C00886F51 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		6C63A59D265104A9001BD957 /* PostPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoViewController.swift; sourceTree = "<group>"; };
+		6C63A59E265104A9001BD957 /* PostPhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostPhotoViewController.xib; sourceTree = "<group>"; };
+		6C63A5A426510BE2001BD957 /* PostPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoViewModel.swift; sourceTree = "<group>"; };
 		6C650ABC262D6E5D0061A342 /* CocktailUseCaseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailUseCaseable.swift; sourceTree = "<group>"; };
 		6C650AC1262D6EC30061A342 /* CocktailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailService.swift; sourceTree = "<group>"; };
 		6C67D47F26244DA2006FF4A8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -441,6 +454,13 @@
 		6CD881872625824000AD6FDD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6CD8818C262582A200AD6FDD /* Error+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Extension.swift"; sourceTree = "<group>"; };
 		6CE073A7264BD74700ABB391 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		6CE72D5F264FB6610065FAA5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		6CEDF45026525B660024A147 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		6CEDF45626525BD00024A147 /* LikeInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeInput.swift; sourceTree = "<group>"; };
+		6CEDF45B26525BDC0024A147 /* LikeOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeOutput.swift; sourceTree = "<group>"; };
+		6CEDF46026525BE80024A147 /* LikeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeAPI.swift; sourceTree = "<group>"; };
+		6CEDF46526525CB60024A147 /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeService.swift; sourceTree = "<group>"; };
+		6CEDF46B26525E9C0024A147 /* LikeUseCaseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeUseCaseable.swift; sourceTree = "<group>"; };
 		6CF7C35F264CDB39003E55EB /* RefreshHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshHandler.swift; sourceTree = "<group>"; };
 		6ECB83C9A9E970382DB2A83C /* Pods-HomeWork_UIKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeWork_UIKit.release.xcconfig"; path = "Target Support Files/Pods-HomeWork_UIKit/Pods-HomeWork_UIKit.release.xcconfig"; sourceTree = "<group>"; };
 		95E8D42323121D125E6976C7 /* Pods-HomeWork_UIKit-HomeWork_UIKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HomeWork_UIKit-HomeWork_UIKitUITests.release.xcconfig"; path = "Target Support Files/Pods-HomeWork_UIKit-HomeWork_UIKitUITests/Pods-HomeWork_UIKit-HomeWork_UIKitUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -552,6 +572,7 @@
 				6CD4661F2649158A0041F100 /* EditProfileViewModel.swift */,
 				6CE073A7264BD74700ABB391 /* SearchViewModel.swift */,
 				6CC77958264D1DD9007A852C /* SearchDetailViewModel.swift */,
+				6C63A5A426510BE2001BD957 /* PostPhotoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1158,6 +1179,8 @@
 				6C77066D2637CC32002FC48F /* Favorite.swift */,
 				6C77069D26380D7B002FC48F /* Photo.swift */,
 				6C8AB8EC26424A8500C77CD4 /* Comment.swift */,
+				6CE72D5F264FB6610065FAA5 /* Post.swift */,
+				6CEDF45026525B660024A147 /* Like.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1202,6 +1225,7 @@
 		6CD8812B26257BB700AD6FDD /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				6CEDF46A26525E8C0024A147 /* Like */,
 				6C8AB8F126424B9C00C77CD4 /* Comment */,
 				6C20B9DF263A9973004BC2D4 /* Favorite */,
 				6C37ACAA2639138D00851162 /* Photo */,
@@ -1216,6 +1240,7 @@
 		6CD8812C26257BE800AD6FDD /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6CE72D64264FCF760065FAA5 /* PostPhoto */,
 				6CC77945264D168D007A852C /* SearchDetail */,
 				6CF7C35E264CDB08003E55EB /* Refresh */,
 				6CAD2B45264A790C0032B38F /* Search */,
@@ -1280,6 +1305,7 @@
 				6C7706852637EBA3002FC48F /* FavoriteService.swift */,
 				6C37ACA52639131D00851162 /* PhotoService.swift */,
 				6C8AB8FA26424C1A00C77CD4 /* CommentService.swift */,
+				6CEDF46526525CB60024A147 /* LikeService.swift */,
 			);
 			path = AppService;
 			sourceTree = "<group>";
@@ -1323,6 +1349,7 @@
 		6CD8814026257E6300AD6FDD /* ApiImplementation */ = {
 			isa = PBXGroup;
 			children = (
+				6CEDF45526525BBF0024A147 /* Like */,
 				6C8AB8DC2642498400C77CD4 /* Comment */,
 				6C77068A26380C8D002FC48F /* Photo */,
 				6C7706722637EAC0002FC48F /* Favorite */,
@@ -1453,6 +1480,33 @@
 				6CD8816326257E6300AD6FDD /* DevelopmentConfig.swift */,
 			);
 			path = EnvironmentConfig;
+			sourceTree = "<group>";
+		};
+		6CE72D64264FCF760065FAA5 /* PostPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				6C63A59D265104A9001BD957 /* PostPhotoViewController.swift */,
+				6C63A59E265104A9001BD957 /* PostPhotoViewController.xib */,
+			);
+			path = PostPhoto;
+			sourceTree = "<group>";
+		};
+		6CEDF45526525BBF0024A147 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				6CEDF45626525BD00024A147 /* LikeInput.swift */,
+				6CEDF45B26525BDC0024A147 /* LikeOutput.swift */,
+				6CEDF46026525BE80024A147 /* LikeAPI.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		6CEDF46A26525E8C0024A147 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				6CEDF46B26525E9C0024A147 /* LikeUseCaseable.swift */,
+			);
+			path = Like;
 			sourceTree = "<group>";
 		};
 		6CF7C35E264CDB08003E55EB /* Refresh */ = {
@@ -1606,6 +1660,7 @@
 				6CD4661B264910BE0041F100 /* EditProfileViewController.xib in Resources */,
 				6C2EF76D26269DA800126B74 /* SignUpViewController.xib in Resources */,
 				6C29CBE12626DFE80061BED5 /* CustomAuthenticaion.xib in Resources */,
+				6C63A5A0265104A9001BD957 /* PostPhotoViewController.xib in Resources */,
 				6C6FED402647C2270065A48C /* PhotoDetailViewController.xib in Resources */,
 				6C0152C3261E9C4300A27195 /* LibraryCollectionViewCell.xib in Resources */,
 				6C238DCE263A48ED0089A74B /* PhotoViewController.xib in Resources */,
@@ -1785,6 +1840,7 @@
 				6C7706862637EBA3002FC48F /* FavoriteService.swift in Sources */,
 				6C8800E82632AF5900E27703 /* FirebaseError.swift in Sources */,
 				6C6FED3F2647C2270065A48C /* PhotoDetailViewController.swift in Sources */,
+				6CEDF46626525CB60024A147 /* LikeService.swift in Sources */,
 				6CBC9F3C2642876C00F2DCEC /* CommentViewModel.swift in Sources */,
 				6CD8817126257E6300AD6FDD /* LocalizeHolder.swift in Sources */,
 				6CD1CCBE2636C913002A324B /* PlaceAPI.swift in Sources */,
@@ -1821,6 +1877,7 @@
 				6C17BBBD26293C0300CAD5CE /* AuthenUseCaseable.swift in Sources */,
 				6C67D48D26244E08006FF4A8 /* DBManagerService.swift in Sources */,
 				6CD8817026257E6300AD6FDD /* LanguageKeeper.swift in Sources */,
+				6C63A5A526510BE2001BD957 /* PostPhotoViewModel.swift in Sources */,
 				6CC7795E264D1E9C007A852C /* SearchDestinations.swift in Sources */,
 				6C77069426380CAB002FC48F /* PhotoOutput.swift in Sources */,
 				6CD8816C26257E6300AD6FDD /* AuthenticateLoginInput.swift in Sources */,
@@ -1838,6 +1895,7 @@
 				6C78C4032648C5F000E7E509 /* AlbumCollectionViewCell.swift in Sources */,
 				6C8AB90226425AAA00C77CD4 /* CommentViewController.swift in Sources */,
 				6C77066E2637CC32002FC48F /* Favorite.swift in Sources */,
+				6CEDF45726525BD00024A147 /* LikeInput.swift in Sources */,
 				6CD1CC51263655F9002A324B /* ExploreViewController.swift in Sources */,
 				6C7706812637EB21002FC48F /* FavoriteAPI.swift in Sources */,
 				6C37ACA026390D0800851162 /* PhotoCollectionViewCell.swift in Sources */,
@@ -1847,6 +1905,7 @@
 				6C6FED522647C6300065A48C /* ProfileDestinations.swift in Sources */,
 				6C29CBDC2626DFD70061BED5 /* CustomAuthenticaion.swift in Sources */,
 				6CD4661A264910BE0041F100 /* EditProfileViewController.swift in Sources */,
+				6CEDF46126525BE80024A147 /* LikeAPI.swift in Sources */,
 				6CD1CC722636A03F002A324B /* ExploreInput.swift in Sources */,
 				6CD8817526257E6300AD6FDD /* LocalizeExtend+PlacholderTextView.swift in Sources */,
 				6CD1CCC32636C996002A324B /* PlaceService.swift in Sources */,
@@ -1904,8 +1963,10 @@
 				6C8AB8F326424BAD00C77CD4 /* CommentUseCaseable.swift in Sources */,
 				6C67D48826244DC5006FF4A8 /* APIService.swift in Sources */,
 				6C0FB0492629772300333D95 /* Profile.swift in Sources */,
+				6CEDF45C26525BDC0024A147 /* LikeOutput.swift in Sources */,
 				6CD8816826257E6300AD6FDD /* ViewKey.swift in Sources */,
 				6C8AB8ED26424A8500C77CD4 /* Comment.swift in Sources */,
+				6CEDF45126525B660024A147 /* Like.swift in Sources */,
 				6C2EF7722626C71900126B74 /* LoginDestinations.swift in Sources */,
 				6CD1CC592636581F002A324B /* ExploreCollectionViewCell.swift in Sources */,
 				6C58EC252647842000886F51 /* ProfileViewController.swift in Sources */,
@@ -1919,6 +1980,8 @@
 				6C8AB8E3264249AD00C77CD4 /* CommentOutput.swift in Sources */,
 				6CD8817C26257E6300AD6FDD /* Themeable.swift in Sources */,
 				6CD8817226257E6300AD6FDD /* LanguageKeepable.swift in Sources */,
+				6C63A59F265104A9001BD957 /* PostPhotoViewController.swift in Sources */,
+				6CEDF46C26525E9C0024A147 /* LikeUseCaseable.swift in Sources */,
 				6CD8817D26257E6300AD6FDD /* Notificationable.swift in Sources */,
 				6C8800F72632C33B00E27703 /* UserEndPoint.swift in Sources */,
 				6C2B75D8264540BC00B62911 /* LoadingTableViewCell.swift in Sources */,
@@ -1937,6 +2000,7 @@
 				6C77067C2637EB17002FC48F /* FavoriteOutput.swift in Sources */,
 				6C0FB03B26294E0100333D95 /* NSLayoutConstraint+Extension.swift in Sources */,
 				6CD8816926257E6300AD6FDD /* Destinating.swift in Sources */,
+				6CE72D60264FB6610065FAA5 /* Post.swift in Sources */,
 				6CBE1D9C264B767C00700435 /* CustomCollectionViewLayout.swift in Sources */,
 				6C943D7A261C10400052FD38 /* HomeViewController.swift in Sources */,
 			);

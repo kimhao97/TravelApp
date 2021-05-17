@@ -1,16 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-heart-50.png",
+      "filename" : "dislike2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-heart-100@2x.png",
+      "filename" : "dislike2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "dislike2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentViewController" customModule="HomeWork_UIKit" customModuleProvider="target">
             <connections>
+                <outlet property="avatarImage" destination="fTY-h0-Vwu" id="M0U-xB-O4c"/>
                 <outlet property="commentTextField" destination="dkH-S1-EPw" id="VG8-dc-BE8"/>
                 <outlet property="postButton" destination="NNp-Pi-eAX" id="0Wm-Uj-hji"/>
                 <outlet property="tableView" destination="u8f-j7-lse" id="KNp-lI-5xd"/>
@@ -86,7 +87,7 @@
         </view>
     </objects>
     <resources>
-        <image name="img-avatar" width="668" height="1002"/>
+        <image name="img-avatar" width="30" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
