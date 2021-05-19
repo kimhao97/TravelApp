@@ -65,6 +65,11 @@ class PlaceViewController: BaseViewController {
         
         hideNavigationBar(animated: false)
         
+        placeNameLabel.font = AppFont.appFont(type: .bold, fontSize: 30)
+        descriptionTextView.font = AppFont.appFont(type: .light, fontSize: 14)
+        nameLikedLabel.font = AppFont.appFont(type: .bold, fontSize: 14)
+        nameMoreLabel.font = AppFont.appFont(type: .light, fontSize: 12)
+        
         let place = viewModel.place
         placeNameLabel.text = place.name
         descriptionTextView.text = place.description
@@ -85,6 +90,47 @@ class PlaceViewController: BaseViewController {
         output.isFavoriteLoading
             .drive(isFavoriteBinder)
             .disposed(by: disposeBag)
+        
+        output.isFeaturedSpotLoading
+            .drive(onNext: { [weak self] done in
+                if done {
+                    self?.tableView.reloadData()
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func updateSocialView() {
+        let items = viewModel.favorites
+        let count = items.count
+        
+        switch count {
+        case 0:
+            break
+        case 1:
+            nameLikedLabel.text = "\(items[0].userName ?? "")"
+            if let urlString = items[0].userPhoto {
+                avatar1Image.imageFromURL(path: urlString)
+            }
+        case 2:
+            nameLikedLabel.text = "\(items[0].userName ?? ""), \(items[1].userName ?? "")"
+            if let urlString1 = items[0].userPhoto, let urlString2 = items[1].userPhoto {
+                avatar1Image.imageFromURL(path: urlString1)
+                avatar2Image.imageFromURL(path: urlString2)
+            }
+        default:
+            nameLikedLabel.text = "\(items[0].userName ?? ""), \(items[1].userName ?? ""), \(items[2].userName ?? "")"
+            if count > 3 {
+                nameMoreLabel.isHidden = false
+                nameMoreLabel.text = "and \(items.count - 3) people like this"
+            }
+            
+            if let urlString1 = items[0].userPhoto, let urlString2 = items[1].userPhoto, let urlString3 = items[2].userPhoto {
+                avatar1Image.imageFromURL(path: urlString1)
+                avatar2Image.imageFromURL(path: urlString2)
+                avatar3Image.imageFromURL(path: urlString3)
+            }
+        }
     }
     
     // MARK: - Action
@@ -93,9 +139,17 @@ class PlaceViewController: BaseViewController {
         likeButton.isSelected.toggle()
         
         if likeButton.isSelected {
-            
+            viewModel.postLike() { [weak self] done in
+                if done {
+                    self?.updateSocialView()
+                }
+            }
         } else {
-            
+            viewModel.dislike() { [weak self] done in
+                if done {
+                    self?.updateSocialView()
+                }
+            }
         }
     }
     
@@ -135,10 +189,16 @@ extension PlaceViewController: UITableViewDelegate, UITableViewDataSource {
         return tableView.dequeueReusableCell(for: indexPath, cellType: SpotTableViewCell.self)
             .then {
                 let item = viewModel.featuredSpots[indexPath.row]
-                let likes = viewModel.getNumberOfLikes(spot: item)
+                let likes = viewModel.getNumberOfLikes()
                 $0.binding(place: item, with: likes)
+                $0.selectionStyle = .none
             }
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let item = viewModel.featuredSpots[indexPath.row]
+//        navigate(to: PlaceDestination(place: item))
+//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return PlaceConstraints.heightForRowTableView
@@ -149,52 +209,18 @@ extension PlaceViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension PlaceViewController {
     private var isLoadingBinder: Binder<Bool> {
-        return Binder(self) { view, isloading in
-            if isloading {
-                
-            } else {
+        return Binder(self) { view, done in
+            if done {
                 view.collectionView.reloadData()
             }
         }
     }
     
     private var isFavoriteBinder: Binder<Bool> {
-        return Binder(self) { view, isloading in
-            if isloading {
-                
-            } else {
-                view.tableView.reloadData()
-                
-                let items = self.viewModel.favorites
-                let count = items.count
-                
-                switch count {
-                case 0:
-                    break
-                case 1:
-                    view.nameLikedLabel.text = "\(items[0].userName ?? "")"
-                    if let urlString = items[0].userPhoto {
-                        view.avatar1Image.imageFromURL(path: urlString)
-                    }
-                case 2:
-                    view.nameLikedLabel.text = "\(items[0].userName ?? ""), \(items[1].userName ?? "")"
-                    if let urlString1 = items[0].userPhoto, let urlString2 = items[1].userPhoto {
-                        view.avatar1Image.imageFromURL(path: urlString1)
-                        view.avatar2Image.imageFromURL(path: urlString2)
-                    }
-                default:
-                    self.nameLikedLabel.text = "\(items[0].userName ?? ""), \(items[1].userName ?? ""), \(items[2].userName ?? "")"
-                    if count > 3 {
-                        view.nameMoreLabel.isHidden = false
-                        view.nameMoreLabel.text = "and \(items.count - 3) people like this"
-                    }
-                    
-                    if let urlString1 = items[0].userPhoto, let urlString2 = items[1].userPhoto, let urlString3 = items[2].userPhoto {
-                        view.avatar1Image.imageFromURL(path: urlString1)
-                        view.avatar2Image.imageFromURL(path: urlString2)
-                        view.avatar3Image.imageFromURL(path: urlString3)
-                    }
-                }
+        return Binder(self) { view, done in
+            if done {
+                view.updateSocialView()
+                view.likeButton.isSelected = view.viewModel.isUserLike()
             }
         }
     }

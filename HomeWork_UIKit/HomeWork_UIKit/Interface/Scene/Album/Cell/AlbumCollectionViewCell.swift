@@ -9,6 +9,9 @@ class AlbumCollectionViewCell: UICollectionViewCell, NibReusable {
         
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        nameLabel.font = AppFont.appFont(type: .bold, fontSize: 14)
+        numberLabel.font = AppFont.appFont(type: .regular, fontSize: 12)
     }
     
     func binding(with name: String, photos: [Photo]) {

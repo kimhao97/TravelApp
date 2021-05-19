@@ -23,6 +23,11 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        userNameLabel.font = AppFont.appFont(type: .bold, fontSize: 14)
+        likeLabel.font = AppFont.appFont(type: .regular, fontSize: 14)
+        subTitleLabel.font = AppFont.appFont(type: .regular, fontSize: 14)
+        seeAllCommentButton.titleLabel?.font = AppFont.appFont(type: .regular, fontSize: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -52,10 +57,10 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
         }
         if let comment = comments.last, comments.count != 0 {
             let boldAttribute = [
-                NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 14.0)!
+                NSAttributedString.Key.font: AppFont.appFont(type: .bold, fontSize: 14)
             ]
             let regularAttribute = [
-              NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 14.0)!
+              NSAttributedString.Key.font: AppFont.appFont(type: .regular, fontSize: 14)
             ]
             
             let boldText = NSAttributedString(string: comment.userName ?? "", attributes: boldAttribute)

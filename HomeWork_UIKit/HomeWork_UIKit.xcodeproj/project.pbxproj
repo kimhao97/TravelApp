@@ -39,6 +39,10 @@
 		6C17BBAE2629316400CAD5CE /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C17BBAD2629316400CAD5CE /* BaseViewModel.swift */; };
 		6C17BBB6262931A000CAD5CE /* ViewModelTransformable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C17BBB5262931A000CAD5CE /* ViewModelTransformable.swift */; };
 		6C17BBBD26293C0300CAD5CE /* AuthenUseCaseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C17BBBC26293C0300CAD5CE /* AuthenUseCaseable.swift */; };
+		6C1CFE522653597E009B455D /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C1CFE4F2653597E009B455D /* RobotoSlab-Bold.ttf */; };
+		6C1CFE532653597E009B455D /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C1CFE502653597E009B455D /* RobotoSlab-Regular.ttf */; };
+		6C1CFE542653597E009B455D /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C1CFE512653597E009B455D /* RobotoSlab-Thin.ttf */; };
+		6C1CFE5926535C1D009B455D /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1CFE5826535C1D009B455D /* AppFont.swift */; };
 		6C20B9E1263A998A004BC2D4 /* FavoriteUseCaseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C20B9E0263A998A004BC2D4 /* FavoriteUseCaseable.swift */; };
 		6C238DCD263A48ED0089A74B /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C238DCB263A48ED0089A74B /* PhotoViewController.swift */; };
 		6C238DCE263A48ED0089A74B /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C238DCC263A48ED0089A74B /* PhotoViewController.xib */; };
@@ -62,6 +66,7 @@
 		6C37ACAC263913A100851162 /* PhotoUseCaseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37ACAB263913A100851162 /* PhotoUseCaseable.swift */; };
 		6C37ACB226391AFF00851162 /* SpotTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C37ACB026391AFF00851162 /* SpotTableViewCell.swift */; };
 		6C37ACB326391AFF00851162 /* SpotTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C37ACB126391AFF00851162 /* SpotTableViewCell.xib */; };
+		6C389285265379F400EDA73C /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C389284265379F400EDA73C /* RobotoSlab-Light.ttf */; };
 		6C58EC252647842000886F51 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58EC232647842000886F51 /* ProfileViewController.swift */; };
 		6C58EC262647842000886F51 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C58EC242647842000886F51 /* ProfileViewController.xib */; };
 		6C58EC2C26479A3C00886F51 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C58EC2B26479A3C00886F51 /* CustomSegmentedControl.swift */; };
@@ -274,6 +279,10 @@
 		6C17BBAD2629316400CAD5CE /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		6C17BBB5262931A000CAD5CE /* ViewModelTransformable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTransformable.swift; sourceTree = "<group>"; };
 		6C17BBBC26293C0300CAD5CE /* AuthenUseCaseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenUseCaseable.swift; sourceTree = "<group>"; };
+		6C1CFE4F2653597E009B455D /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
+		6C1CFE502653597E009B455D /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
+		6C1CFE512653597E009B455D /* RobotoSlab-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Thin.ttf"; sourceTree = "<group>"; };
+		6C1CFE5826535C1D009B455D /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		6C20B9E0263A998A004BC2D4 /* FavoriteUseCaseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUseCaseable.swift; sourceTree = "<group>"; };
 		6C238DCB263A48ED0089A74B /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		6C238DCC263A48ED0089A74B /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -297,6 +306,7 @@
 		6C37ACAB263913A100851162 /* PhotoUseCaseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUseCaseable.swift; sourceTree = "<group>"; };
 		6C37ACB026391AFF00851162 /* SpotTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotTableViewCell.swift; sourceTree = "<group>"; };
 		6C37ACB126391AFF00851162 /* SpotTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpotTableViewCell.xib; sourceTree = "<group>"; };
+		6C389284265379F400EDA73C /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
 		6C58EC232647842000886F51 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6C58EC242647842000886F51 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		6C58EC2B26479A3C00886F51 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
@@ -593,6 +603,18 @@
 			path = Authenticate;
 			sourceTree = "<group>";
 		};
+		6C1CFE4E26535962009B455D /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				6C1CFE4F2653597E009B455D /* RobotoSlab-Bold.ttf */,
+				6C1CFE502653597E009B455D /* RobotoSlab-Regular.ttf */,
+				6C1CFE512653597E009B455D /* RobotoSlab-Thin.ttf */,
+				6C389284265379F400EDA73C /* RobotoSlab-Light.ttf */,
+				6C1CFE5826535C1D009B455D /* AppFont.swift */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		6C20B9DF263A9973004BC2D4 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,6 +873,7 @@
 		6C943D31261C0E500052FD38 /* HomeWork_UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				6C1CFE4E26535962009B455D /* Font */,
 				6C943D6B261C0F210052FD38 /* AppDelegates */,
 				6CD8812326257B0600AD6FDD /* Entity */,
 				6CD8812626257B2A00AD6FDD /* Gateway */,
@@ -1649,6 +1672,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C1CFE532653597E009B455D /* RobotoSlab-Regular.ttf in Resources */,
 				6C58EC262647842000886F51 /* ProfileViewController.xib in Resources */,
 				6C943D3F261C0E540052FD38 /* LaunchScreen.storyboard in Resources */,
 				6C0152D9261EAA5C00A27195 /* ImageViewController.xib in Resources */,
@@ -1656,12 +1680,15 @@
 				6C943D3C261C0E540052FD38 /* Assets.xcassets in Resources */,
 				6CA829EB262D201000A5B68F /* CocktailTableViewCell.xib in Resources */,
 				6C2B75D9264540BC00B62911 /* LoadingTableViewCell.xib in Resources */,
+				6C1CFE522653597E009B455D /* RobotoSlab-Bold.ttf in Resources */,
 				6CD1CC52263655F9002A324B /* ExploreViewController.xib in Resources */,
 				6CD4661B264910BE0041F100 /* EditProfileViewController.xib in Resources */,
 				6C2EF76D26269DA800126B74 /* SignUpViewController.xib in Resources */,
 				6C29CBE12626DFE80061BED5 /* CustomAuthenticaion.xib in Resources */,
 				6C63A5A0265104A9001BD957 /* PostPhotoViewController.xib in Resources */,
+				6C1CFE542653597E009B455D /* RobotoSlab-Thin.ttf in Resources */,
 				6C6FED402647C2270065A48C /* PhotoDetailViewController.xib in Resources */,
+				6C389285265379F400EDA73C /* RobotoSlab-Light.ttf in Resources */,
 				6C0152C3261E9C4300A27195 /* LibraryCollectionViewCell.xib in Resources */,
 				6C238DCE263A48ED0089A74B /* PhotoViewController.xib in Resources */,
 				6C943DB3261C459C0052FD38 /* DetailViewController.xib in Resources */,
@@ -1988,6 +2015,7 @@
 				6C13F50E263818CA00BF51B4 /* PlaceViewModel.swift in Sources */,
 				6C084064262E8FF00029F770 /* CustomAlert.swift in Sources */,
 				6C67D49226244E2A006FF4A8 /* UserManager.swift in Sources */,
+				6C1CFE5926535C1D009B455D /* AppFont.swift in Sources */,
 				6CA82A0B262D5FAD00A5B68F /* Cocktail.swift in Sources */,
 				6CD8817626257E6300AD6FDD /* LocalizeExtend+Button.swift in Sources */,
 				6CF7C360264CDB39003E55EB /* RefreshHandler.swift in Sources */,

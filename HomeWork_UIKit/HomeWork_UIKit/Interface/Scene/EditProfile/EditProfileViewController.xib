@@ -8,11 +8,17 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="RobotoSlab-Regular.ttf">
+            <string>RobotoSlab-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="HomeWork_UIKit" customModuleProvider="target">
             <connections>
                 <outlet property="addressTextField" destination="thK-Wc-r6M" id="UlG-iE-aCo"/>
                 <outlet property="avatarImage" destination="vhi-LI-QaW" id="z68-FJ-w7N"/>
+                <outlet property="changePhotoButton" destination="RNb-zg-UtV" id="RqL-f6-zvG"/>
                 <outlet property="usernameTextField" destination="KSh-pV-X4v" id="I2E-bj-dzq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="websiteTextField" destination="x7j-oS-dFP" id="zzF-Y6-Kd6"/>
@@ -23,8 +29,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="vhi-LI-QaW">
-                    <rect key="frame" x="132.5" y="30" width="110" height="110"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vhi-LI-QaW">
+                    <rect key="frame" x="132.5" y="30.5" width="110" height="109"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="E0s-mC-AVr"/>
                         <constraint firstAttribute="height" constant="110" id="lKA-mB-TPa"/>
@@ -44,25 +50,25 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-Tc-8z0">
-                    <rect key="frame" x="10" y="221" width="355" height="203.5"/>
+                    <rect key="frame" x="10" y="221" width="355" height="202"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SN6-Lo-faC">
-                            <rect key="frame" x="0.0" y="0.0" width="355" height="54.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="355" height="54"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOm-OS-3w0">
-                                    <rect key="frame" x="0.0" y="0.0" width="355" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="16.5"/>
+                                    <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                     <color key="textColor" name="appGrayText"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="KimHao_" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KSh-pV-X4v">
-                                    <rect key="frame" x="0.0" y="25" width="355" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="24.5" width="355" height="20.5"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1V-DM-hCm">
-                                    <rect key="frame" x="0.0" y="53.5" width="355" height="1"/>
+                                    <rect key="frame" x="0.0" y="53" width="355" height="1"/>
                                     <color key="backgroundColor" name="appGrayText"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="XhB-Cl-YZp"/>
@@ -71,22 +77,22 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jer-bG-KhA">
-                            <rect key="frame" x="0.0" y="74.5" width="355" height="54.5"/>
+                            <rect key="frame" x="0.0" y="74" width="355" height="54"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkO-AY-IQh">
-                                    <rect key="frame" x="0.0" y="0.0" width="355" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="16.5"/>
+                                    <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                     <color key="textColor" name="appGrayText"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="myblog.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7j-oS-dFP">
-                                    <rect key="frame" x="0.0" y="25" width="355" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="24.5" width="355" height="20.5"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTE-RA-qhK">
-                                    <rect key="frame" x="0.0" y="53.5" width="355" height="1"/>
+                                    <rect key="frame" x="0.0" y="53" width="355" height="1"/>
                                     <color key="backgroundColor" name="appGrayText"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="dXa-Ev-ctr"/>
@@ -95,22 +101,22 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UAm-dv-R2Z">
-                            <rect key="frame" x="0.0" y="149" width="355" height="54.5"/>
+                            <rect key="frame" x="0.0" y="148" width="355" height="54"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaT-BB-ZTG">
-                                    <rect key="frame" x="0.0" y="0.0" width="355" height="17"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="16.5"/>
+                                    <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                     <color key="textColor" name="appGrayText"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="108 Tran Hung Dao Street" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="thK-Wc-r6M">
-                                    <rect key="frame" x="0.0" y="25" width="355" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="24.5" width="355" height="20.5"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGC-mT-Ydh">
-                                    <rect key="frame" x="0.0" y="53.5" width="355" height="1"/>
+                                    <rect key="frame" x="0.0" y="53" width="355" height="1"/>
                                     <color key="backgroundColor" name="appGrayText"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="FIH-wQ-3ZP"/>
@@ -136,7 +142,7 @@
         </view>
     </objects>
     <resources>
-        <image name="img-avatar" width="30" height="30"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="appGrayText">
             <color red="0.6588235294117647" green="0.71372549019607845" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

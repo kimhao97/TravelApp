@@ -50,7 +50,8 @@
                 <constraint firstItem="Emu-hL-9Jz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="hpU-Rh-OeU"/>
             </constraints>
             <connections>
-                <outlet property="photoImage" destination="Emu-hL-9Jz" id="VYQ-7Z-HGx"/>
+                <outlet property="backgroundImage" destination="Emu-hL-9Jz" id="ZGo-xV-SKm"/>
+                <outlet property="photoImage" destination="3ft-2A-FpL" id="Ycc-iq-ghw"/>
             </connections>
             <point key="canvasLocation" x="92.753623188405811" y="57.589285714285708"/>
         </collectionViewCell>

@@ -76,7 +76,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="img-paris" width="2120" height="1200"/>
+        <image name="img-paris" width="2560" height="1705"/>
         <namedColor name="appGrayText">
             <color red="0.6588235294117647" green="0.71372549019607845" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

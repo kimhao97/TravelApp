@@ -59,6 +59,12 @@ class CityDetailViewController: BaseViewController {
         
         hideNavigationBar(animated: false)
         
+        nameLabel.font = AppFont.appFont(type: .bold, fontSize: 36)
+        regionLabel.font = AppFont.appFont(type: .regular, fontSize: 16)
+        descriptionLabel.font = AppFont.appFont(type: .regular, fontSize: 14)
+        nameLikedLabel.font = AppFont.appFont(type: .bold, fontSize: 14)
+        nameMoreLabel.font = AppFont.appFont(type: .regular, fontSize: 12)
+        
         let item = viewModel.city
         nameLabel.text = item.name
         descriptionLabel.text = item.description
@@ -84,15 +90,56 @@ class CityDetailViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
+    private func updateSocialView() {
+        let items = viewModel.socialNetwork
+        let count = items.count
+        
+        switch count {
+        case 0:
+            break
+        case 1:
+            nameLikedLabel.text = "\(items[0].userName ?? "")"
+            if let urlString = items[0].userPhoto {
+                avatar1Image.imageFromURL(path: urlString)
+            }
+        case 2:
+            nameLikedLabel.text = "\(items[0].userName ?? ""), \(items[1].userName ?? "")"
+            if let urlString1 = items[0].userPhoto, let urlString2 = items[1].userPhoto {
+                avatar1Image.imageFromURL(path: urlString1)
+                avatar2Image.imageFromURL(path: urlString2)
+            }
+        default:
+            nameLikedLabel.text = "\(items[0].userName ?? ""), \(items[1].userName ?? ""), \(items[2].userName ?? "")"
+            if count > 3 {
+                nameMoreLabel.isHidden = false
+                nameMoreLabel.text = "and \(items.count - 3) people like this"
+            }
+            
+            if let urlString1 = items[0].userPhoto, let urlString2 = items[1].userPhoto, let urlString3 = items[2].userPhoto {
+                avatar1Image.imageFromURL(path: urlString1)
+                avatar2Image.imageFromURL(path: urlString2)
+                avatar3Image.imageFromURL(path: urlString3)
+            }
+        }
+    }
+    
     // MARK: - Action
     
     @IBAction func liked(sender: Any) {
         likeButton.isSelected.toggle()
         
         if likeButton.isSelected {
-            
+            viewModel.postLike() { [weak self] done in
+                if done {
+                    self?.updateSocialView()
+                }
+            }
         } else {
-            
+            viewModel.dislike() { [weak self] done in
+                if done {
+                    self?.updateSocialView()
+                }
+            }
         }
     }
     
@@ -126,50 +173,18 @@ extension CityDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension CityDetailViewController {
     private var isLoadingBinder: Binder<Bool> {
-        return Binder(self) { view, isloading in
-            if isloading {
-                
-            } else {
+        return Binder(self) { view, done in
+            if done {
                 view.collectionView.reloadData()
             }
         }
     }
     
     private var isSocialLoading: Binder<Bool> {
-        return Binder(self) { view, isloading in
-            if isloading {
-                
-            } else {
-                let items = self.viewModel.socialNetwork
-                let count = items.count
-                
-                switch count {
-                case 0:
-                    break
-                case 1:
-                    view.nameLikedLabel.text = "\(items[0].userName ?? "")"
-                    if let urlString = items[0].userPhoto {
-                        view.avatar1Image.imageFromURL(path: urlString)
-                    }
-                case 2:
-                    view.nameLikedLabel.text = "\(items[0].userName ?? ""), \(items[1].userName ?? "")"
-                    if let urlString1 = items[0].userPhoto, let urlString2 = items[1].userPhoto {
-                        view.avatar1Image.imageFromURL(path: urlString1)
-                        view.avatar2Image.imageFromURL(path: urlString2)
-                    }
-                default:
-                    self.nameLikedLabel.text = "\(items[0].userName ?? ""), \(items[1].userName ?? ""), \(items[2].userName ?? "")"
-                    if count > 3 {
-                        view.nameMoreLabel.isHidden = false
-                        view.nameMoreLabel.text = "and \(items.count - 3) people like this"
-                    }
-                    
-                    if let urlString1 = items[0].userPhoto, let urlString2 = items[1].userPhoto, let urlString3 = items[2].userPhoto {
-                        view.avatar1Image.imageFromURL(path: urlString1)
-                        view.avatar2Image.imageFromURL(path: urlString2)
-                        view.avatar3Image.imageFromURL(path: urlString3)
-                    }
-                }
+        return Binder(self) { view, done in
+            if done {
+                view.updateSocialView()
+                view.likeButton.isSelected = view.viewModel.isUserLike()
             }
         }
     }

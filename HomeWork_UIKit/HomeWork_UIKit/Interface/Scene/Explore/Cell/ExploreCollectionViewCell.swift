@@ -9,6 +9,9 @@ final class ExploreCollectionViewCell: UICollectionViewCell, NibReusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        countryLabel.font = AppFont.appFont(type: .bold, fontSize: 20)
+        placeLabel.font = AppFont.appFont(type: .light, fontSize: 16)
     }
     
     func biding(city: City) {

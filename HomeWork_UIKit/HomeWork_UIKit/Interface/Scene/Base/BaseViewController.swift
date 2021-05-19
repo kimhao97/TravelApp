@@ -21,7 +21,7 @@ class BaseViewController: UIViewController, Navigateable {
     }
     
     func setupUI() {
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: AppFont.navigationTitleFont]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         navigationController?.navigationBar.tintColor = .black
     }

@@ -15,7 +15,7 @@ struct Place: Decodable {
     enum CodingKeys: String, CodingKey {
         case id
         case name
-        case cityID = "city"
+        case cityID 
         case feature
         case photo
         case review

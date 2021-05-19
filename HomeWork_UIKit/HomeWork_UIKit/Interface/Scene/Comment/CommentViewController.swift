@@ -46,6 +46,7 @@ final class CommentViewController: BaseViewController {
         super.setupUI()
         
         navigationItem.title = "Comments"
+        postButton.titleLabel?.font = AppFont.appFont(type: .regular, fontSize: 14)
         let backButton = UIBarButtonItem(image: UIImage(named: "ic-back"), style: .plain, target: self, action: #selector(backAction))
         
         navigationItem.leftBarButtonItem = backButton

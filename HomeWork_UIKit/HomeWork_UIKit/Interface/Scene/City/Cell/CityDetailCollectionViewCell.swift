@@ -8,6 +8,8 @@ final class CityDetailCollectionViewCell: UICollectionViewCell, NibReusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        nameLabel.font = AppFont.appFont(type: .bold, fontSize: 14)
     }
     
     func binding(place: Place) {

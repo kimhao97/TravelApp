@@ -22,10 +22,10 @@ final class CommentTableViewCell: UITableViewCell, NibReusable {
         }
         
         let boldAttribute = [
-            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 14.0)!
+            NSAttributedString.Key.font: AppFont.appFont(type: .bold, fontSize: 14)
         ]
         let regularAttribute = [
-          NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Light", size: 14.0)!
+          NSAttributedString.Key.font: AppFont.appFont(type: .regular, fontSize: 14)
         ]
         let boldText = NSAttributedString(string: comment.userName ?? "", attributes: boldAttribute)
         let regularText = NSAttributedString(string: " " + (comment.content ?? ""), attributes: regularAttribute)

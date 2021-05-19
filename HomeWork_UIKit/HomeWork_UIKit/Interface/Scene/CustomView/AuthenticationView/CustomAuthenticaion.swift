@@ -79,22 +79,9 @@ class CustomAuthenticaion: UIView {
 
         showPasswordButton.setTitle("Show", for: .normal)
         showPasswordButton.setTitle("Hide", for: .selected)
+        showPasswordButton.titleLabel?.font = AppFont.appFont(type: .regular, fontSize: 14)
 
-//        textField.rx
-//            .controlEvent(.editingDidEnd)
-//            .withLatestFrom(textField.rx.text.orEmpty)
-//            .asDriver(onErrorJustReturn: "")
-//            .map { _ in true }
-//            .asDriver()
-//            .drive(showNotificationBinder)
-//            .disposed(by: disposeBag)
-//
-//        textField.rx
-//            .controlEvent(.editingChanged)
-//            .map { false }
-//            .asDriver(onErrorJustReturn: false)
-//            .drive(showNotificationBinder)
-//            .disposed(by: disposeBag)
+        textField.font = AppFont.appFont(type: .regular, fontSize: 14)
     }
 
     private func viewFromNibForClass() -> UIView {

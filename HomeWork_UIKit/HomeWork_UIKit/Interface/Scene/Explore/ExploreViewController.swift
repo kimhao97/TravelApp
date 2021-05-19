@@ -53,7 +53,6 @@ final class ExploreViewController: BaseViewController {
     
     override func setupUI() {
         super.setupUI()
-//        scrollToOffset()
     }
     
     // MARK: - Private Func
@@ -67,12 +66,6 @@ final class ExploreViewController: BaseViewController {
             .drive(isLoadingBinder)
             .disposed(by: disposeBag)
     }
-    
-//    private func scrollToOffset() {
-//        let newOffset = CGPoint(x: 0, y: (collectionView.contentInset.top +  collectionView.width/4))
-//        collectionView.setContentOffset(newOffset, animated: true)
-////        collectionView.contentInset
-//    }
 }
 
 extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -96,12 +89,6 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return ExploreConstrains.sizeForCellCollectionView
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let sideInset = ExploreConstrains.sizeForCellCollectionView.width/4
-//        return UIEdgeInsets(top: 0, left: sideInset, bottom: 0, right: sideInset)
-//    }
-    
 }
 
 extension ExploreViewController {

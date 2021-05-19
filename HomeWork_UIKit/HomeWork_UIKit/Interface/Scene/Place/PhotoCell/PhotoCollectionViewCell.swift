@@ -4,6 +4,7 @@ import Reusable
 class PhotoCollectionViewCell: UICollectionViewCell, NibReusable {
     
     @IBOutlet private weak var photoImage: UIImageView!
+    @IBOutlet private weak var backgroundImage: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -13,6 +14,7 @@ class PhotoCollectionViewCell: UICollectionViewCell, NibReusable {
     func binding(photo: Photo) {
         if let urlString = photo.imageUrl {
             photoImage.imageFromURL(path: urlString)
+            backgroundImage.imageFromURL(path: urlString)
         }
     }
 

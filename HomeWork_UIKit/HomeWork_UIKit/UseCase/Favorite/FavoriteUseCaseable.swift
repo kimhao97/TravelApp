@@ -4,6 +4,8 @@ import RxSwift
 
 protocol FavoriteUseCaseable: class {
     func loadAPI(with FavoriteID: String, queryType: QueryType) -> Observable<Result<[Favorite]?, AppError>>
+    func postLike(with favoriteObj: Favorite, completion: @escaping (Result<[Favorite]?, AppError>) -> Void)
+    func dislike(with favoriteObj: Favorite, completion: @escaping (Result<[Favorite]?, AppError>) -> Void)
 }
 
 class FavoriteUsecaseImplement: FavoriteUseCaseable {
@@ -25,5 +27,25 @@ class FavoriteUsecaseImplement: FavoriteUseCaseable {
             }
             return Disposables.create()
         })
+    }
+    
+    func postLike(with favoriteObj: Favorite, completion: @escaping (Result<[Favorite]?, AppError>) -> Void) {
+        favoriteService.postLike(with: favoriteObj) { data, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(data?.result))
+            }
+        }
+    }
+    
+    func dislike(with favoriteObj: Favorite, completion: @escaping (Result<[Favorite]?, AppError>) -> Void) {
+        favoriteService.dislike(with: favoriteObj) { data, error in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(data?.result))
+            }
+        }
     }
 }
