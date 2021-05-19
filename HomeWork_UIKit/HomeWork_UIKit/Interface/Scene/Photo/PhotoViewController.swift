@@ -14,6 +14,7 @@ final class PhotoViewController: BaseViewController {
     
     private let viewModel: PhotoViewModel
     private let disposeBag = DisposeBag()
+    private let refreshPhoto = PublishRelay<Void>()
     private let refreshComment = PublishRelay<Void>()
     private let refreshLike = PublishRelay<Void>()
     // MARK: - Initialization
@@ -34,6 +35,7 @@ final class PhotoViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        refreshPhoto.accept(())
         refreshComment.accept(())
         refreshLike.accept(())
     }
@@ -69,7 +71,7 @@ final class PhotoViewController: BaseViewController {
     // MARK: - Private Func
     
     private func bindViewModel() {
-        let input = PhotoViewModel.Input(loadPhoto: Driver.just(()), loadComment: refreshComment.asDriverOnErrorJustComplete(), loadLike: refreshLike.asDriverOnErrorJustComplete())
+        let input = PhotoViewModel.Input(loadPhoto: refreshPhoto.asDriverOnErrorJustComplete(), loadComment: refreshComment.asDriverOnErrorJustComplete(), loadLike: refreshLike.asDriverOnErrorJustComplete())
         
         let output = viewModel.transform(input: input)
         

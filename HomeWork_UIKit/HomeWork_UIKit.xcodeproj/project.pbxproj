@@ -22,6 +22,8 @@
 		6C03BD66263177A200C0750E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C03BD65263177A200C0750E /* GoogleService-Info.plist */; };
 		6C084064262E8FF00029F770 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C084063262E8FF00029F770 /* CustomAlert.swift */; };
 		6C084069262E903A0029F770 /* CustomAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C084068262E903A0029F770 /* CustomAlert.xib */; };
+		6C0C93BA2654A60C00CE4E7C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0C93B82654A60C00CE4E7C /* HistoryTableViewCell.swift */; };
+		6C0C93BB2654A60C00CE4E7C /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C0C93B92654A60C00CE4E7C /* HistoryTableViewCell.xib */; };
 		6C0FB02826293E1200333D95 /* Notification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FB02726293E1200333D95 /* Notification+Extension.swift */; };
 		6C0FB03626294E0100333D95 /* UIView+FontSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FB02C26294E0000333D95 /* UIView+FontSize.swift */; };
 		6C0FB03726294E0100333D95 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0FB02D26294E0000333D95 /* CGFloat+Extension.swift */; };
@@ -262,6 +264,8 @@
 		6C03BD65263177A200C0750E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C084063262E8FF00029F770 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		6C084068262E903A0029F770 /* CustomAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlert.xib; sourceTree = "<group>"; };
+		6C0C93B82654A60C00CE4E7C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		6C0C93B92654A60C00CE4E7C /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 		6C0FB02726293E1200333D95 /* Notification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Extension.swift"; sourceTree = "<group>"; };
 		6C0FB02C26294E0000333D95 /* UIView+FontSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FontSize.swift"; sourceTree = "<group>"; };
 		6C0FB02D26294E0000333D95 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
@@ -562,6 +566,15 @@
 				6C084068262E903A0029F770 /* CustomAlert.xib */,
 			);
 			path = AlertView;
+			sourceTree = "<group>";
+		};
+		6C0C93B72654A5E000CE4E7C /* HistoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				6C0C93B82654A60C00CE4E7C /* HistoryTableViewCell.swift */,
+				6C0C93B92654A60C00CE4E7C /* HistoryTableViewCell.xib */,
+			);
+			path = HistoryCell;
 			sourceTree = "<group>";
 		};
 		6C17BBAC2629315200CAD5CE /* ViewModels */ = {
@@ -1092,6 +1105,7 @@
 		6CC77945264D168D007A852C /* SearchDetail */ = {
 			isa = PBXGroup;
 			children = (
+				6C0C93B72654A5E000CE4E7C /* HistoryCell */,
 				6CC77950264D1994007A852C /* ResultCell */,
 				6CC77946264D16AC007A852C /* SearchDetailViewController.swift */,
 				6CC77947264D16AC007A852C /* SearchDetailViewController.xib */,
@@ -1688,6 +1702,7 @@
 				6C63A5A0265104A9001BD957 /* PostPhotoViewController.xib in Resources */,
 				6C1CFE542653597E009B455D /* RobotoSlab-Thin.ttf in Resources */,
 				6C6FED402647C2270065A48C /* PhotoDetailViewController.xib in Resources */,
+				6C0C93BB2654A60C00CE4E7C /* HistoryTableViewCell.xib in Resources */,
 				6C389285265379F400EDA73C /* RobotoSlab-Light.ttf in Resources */,
 				6C0152C3261E9C4300A27195 /* LibraryCollectionViewCell.xib in Resources */,
 				6C238DCE263A48ED0089A74B /* PhotoViewController.xib in Resources */,
@@ -1902,6 +1917,7 @@
 				6CD8816726257E6300AD6FDD /* Navigateable.swift in Sources */,
 				6C943D35261C0E500052FD38 /* SceneDelegate.swift in Sources */,
 				6C17BBBD26293C0300CAD5CE /* AuthenUseCaseable.swift in Sources */,
+				6C0C93BA2654A60C00CE4E7C /* HistoryTableViewCell.swift in Sources */,
 				6C67D48D26244E08006FF4A8 /* DBManagerService.swift in Sources */,
 				6CD8817026257E6300AD6FDD /* LanguageKeeper.swift in Sources */,
 				6C63A5A526510BE2001BD957 /* PostPhotoViewModel.swift in Sources */,

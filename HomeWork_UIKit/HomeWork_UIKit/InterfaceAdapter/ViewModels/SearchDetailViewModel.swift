@@ -5,14 +5,23 @@ import RxCocoa
 final class SearchDetailViewModel: BaseViewModel, ViewModelTransformable {
     
     var photos = [Photo]()
+    var history: [String] {
+        get {
+            UserDefaults.standard.array(forKey: Notification.Name.historySearch.rawValue) as? [String] ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: Notification.Name.historySearch.rawValue)
+        }
+    }
     
     private let photoUsecase: PhotoUseCaseable = PhotoUsecaseImplement()
     
     func transform(input: Input) -> Output {
-        return Output(isLoading: loadPhoto(input: input).asDriverOnErrorJustComplete())
+        return Output(isShowHistory: checkQuery(input: input).asDriverOnErrorJustComplete(),
+                      isLoading: loadPhoto(input: input).asDriverOnErrorJustComplete())
     }
     
-    func loadPhoto(input: Input) -> PublishSubject<Bool> {
+    private func loadPhoto(input: Input) -> PublishSubject<Bool> {
         let publishSubject = PublishSubject<Bool>()
         input
             .query
@@ -20,6 +29,7 @@ final class SearchDetailViewModel: BaseViewModel, ViewModelTransformable {
             .debounce(.milliseconds(500))
             .filter { !$0.isEmpty }
             .flatMapLatest { [unowned self] text -> Driver<Result<[Photo]?, AppError>> in
+                self.saveHistory(query: text)
                 let query = text.replacingOccurrences(of: " ", with: "+")
                 return self.photoUsecase.loadAPI(with: query.trimmingCharacters(in: .whitespaces), queryType: .search).asDriverOnErrorJustComplete()
             }
@@ -40,6 +50,34 @@ final class SearchDetailViewModel: BaseViewModel, ViewModelTransformable {
             .disposed(by: disposeBag)
         return publishSubject
     }
+    
+    private func checkQuery(input: Input) -> PublishSubject<Bool> {
+        let publishSubject = PublishSubject<Bool>()
+        input
+            .query
+            .distinctUntilChanged()
+            .debounce(.milliseconds(500))
+            .drive(onNext: { text in
+                if text.isEmpty {
+                    publishSubject.onNext(true)
+                } else {
+                    publishSubject.onNext(false)
+                }
+            })
+            .disposed(by: disposeBag)
+        return publishSubject
+    }
+    
+    func saveHistory(query: String) {
+        guard history.contains(query) else {
+            history.append(query)
+            return
+        }
+    }
+    
+    func deleteItemHistory(with item: String) {
+        history = history.filter { $0 != item}
+    }
 }
 
 extension SearchDetailViewModel {
@@ -48,6 +86,7 @@ extension SearchDetailViewModel {
     }
 
     struct Output {
+        let isShowHistory: Driver<Bool>
         let isLoading: Driver<Bool>
     }
 }

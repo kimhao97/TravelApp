@@ -11,7 +11,7 @@ class PlaceServiceImplement: PlaceServiceable {
         return ServiceFacade.getService(NeoNetworkProviable.self)
     }
     
-    func loadAPI(with query: String, queryType: QueryType, completionHandler: @escaping (_ place: PlaceOutput?, _ error: AppError?) -> Void)  {
+    func loadAPI(with query: String, queryType: QueryType, completionHandler: @escaping (_ place: PlaceOutput?, _ error: AppError?) -> Void) {
         guard let apiService = networkProvider else { return }
         
         let input = PlaceInput()

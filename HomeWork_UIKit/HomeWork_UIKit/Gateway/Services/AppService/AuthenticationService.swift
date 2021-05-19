@@ -54,8 +54,7 @@ class ProfilesServiceImplement: ProfilesServiceable {
                                                                 _ error: AppError?) -> Void) {
         let output = AuthenticateLoginOutput()
         
-        FirebaseAuth.Auth.auth().createUser(withEmail: profile.email, password: password) {
-            result, error in
+        FirebaseAuth.Auth.auth().createUser(withEmail: profile.email, password: password) { result, error in
             if let error = error {
                 output.error = .init(data: nil, message: error.localizedDescription, success: false)
                 completionHandler(nil, output.error)

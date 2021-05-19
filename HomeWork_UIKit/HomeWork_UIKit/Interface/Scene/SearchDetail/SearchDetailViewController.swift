@@ -4,6 +4,22 @@ import RxCocoa
 
 private enum SearchDetailConstraints {
     static let heightForRowResultSearchTableView: CGFloat = 170
+    static let heightForRowHistorySearchTableView: CGFloat = 44
+}
+
+private enum TypeScreen {
+    case history
+    case results
+
+    var heightForRowTableView: CGFloat {
+        switch self {
+        case .history:
+            return SearchDetailConstraints.heightForRowHistorySearchTableView
+        default:
+            return SearchDetailConstraints.heightForRowResultSearchTableView
+
+        }
+    }
 }
 
 class SearchDetailViewController: BaseViewController {
@@ -11,6 +27,7 @@ class SearchDetailViewController: BaseViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchTextField: UITextField!
 
+    private var typeScreen: TypeScreen = .history
     private let viewModel: SearchDetailViewModel
     private let disposeBag = DisposeBag()
     
@@ -36,6 +53,7 @@ class SearchDetailViewController: BaseViewController {
             $0.delegate = self
             $0.dataSource = self
             $0.register(nib: ResultTableViewCell.nib, withCellClass: ResultTableViewCell.self)
+            $0.register(nib: HistoryTableViewCell.nib, withCellClass: HistoryTableViewCell.self)
         }
         
         bindViewModel()
@@ -56,6 +74,17 @@ class SearchDetailViewController: BaseViewController {
         output.isLoading
             .drive(isLoadingBinder)
             .disposed(by: disposeBag)
+        
+        output.isShowHistory
+            .drive(onNext: { [weak self] isHistoryType in
+                if isHistoryType {
+                    self?.typeScreen = .history
+                } else {
+                    self?.typeScreen = .results
+                }
+                self?.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
     
     // MARK: - Action
@@ -67,20 +96,50 @@ class SearchDetailViewController: BaseViewController {
 
 extension SearchDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.photos.count
+        switch typeScreen {
+        case .history:
+            return viewModel.history.count
+        case .results:
+            return viewModel.photos.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(for: indexPath, cellType: ResultTableViewCell.self)
-            .then {
-                let item = viewModel.photos[indexPath.row]
-                $0.selectionStyle = .none
-                $0.binding(photo: item)
+        switch typeScreen {
+        case .history:
+            return tableView.dequeueReusableCell(for: indexPath, cellType: HistoryTableViewCell.self)
+                .then {
+                    let item = viewModel.history[indexPath.row]
+                    $0.selectionStyle = .none
+                    $0.binding(history: item)
+                    
+                    $0.isDeleteItem = { [weak self] in
+                        self?.viewModel.deleteItemHistory(with: item)
+                        self?.tableView.reloadData()
+                    }
             }
+        case .results:
+            return tableView.dequeueReusableCell(for: indexPath, cellType: ResultTableViewCell.self)
+                .then {
+                    let item = viewModel.photos[indexPath.row]
+                    $0.selectionStyle = .none
+                    $0.binding(photo: item)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch typeScreen {
+        case .history:
+            searchTextField.rx.text.onNext(viewModel.history[indexPath.row])
+            searchTextField.sendActions(for: .valueChanged)
+        case .results:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SearchDetailConstraints.heightForRowResultSearchTableView
+        return typeScreen.heightForRowTableView
     }
 }
 
