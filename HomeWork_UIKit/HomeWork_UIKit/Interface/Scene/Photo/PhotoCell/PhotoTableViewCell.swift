@@ -8,6 +8,7 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
 
     @IBOutlet private weak var userNameLabel: UILabel!
     @IBOutlet private weak var subTitleLabel: UILabel!
+    @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var userImage: UIImageView!
     @IBOutlet private weak var thumbnail: UIImageView!
     @IBOutlet private weak var likeButton: UIButton!
@@ -28,6 +29,7 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
         likeLabel.font = AppFont.appFont(type: .regular, fontSize: 14)
         subTitleLabel.font = AppFont.appFont(type: .regular, fontSize: 14)
         seeAllCommentButton.titleLabel?.font = AppFont.appFont(type: .regular, fontSize: 14)
+        contentLabel.font = AppFont.appFont(type: .regular, fontSize: 14)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,6 +47,12 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
     func binding(photo: Photo, isLike: Bool, comments: [Comment], likes: [Like]) {
         self.photo = photo
         userNameLabel.text = photo.userName
+        
+        if let timeElapsed = getTimeElapsed(with: photo) {
+            subTitleLabel.text = timeElapsed
+        }
+        
+        contentLabel.text = photo.content
         
         likeLabel.text = "\(likes.count)" + (likes.count == 0 ? " like" : " likes")
         likeButton.isSelected = isLike
@@ -98,12 +106,33 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
     
     // MARK: - Private Func
     
-    func getImageCached() -> UIImage? {
+    private func getImageCached() -> UIImage? {
         if let path = photo?.imageUrl {
             let isImageCached = ImageCache.default.imageCachedType(forKey: path)
             if isImageCached.cached, let image = ImageCache.default.retrieveImageInMemoryCache(forKey: path) {
                 return image
             }
+        }
+        return nil
+    }
+    
+    private func getTimeElapsed(with photo: Photo) -> String? {
+        if let time = Double(photo.created ?? "0") {
+            let diff = Date().timeIntervalSince1970 - time
+            if diff < 60 {
+                return String.init(format: "%.0f seconds ago", diff)
+            } else if diff < 3600 {
+                return String.init(format: "%.0f minutes ago", diff/60)
+            } else if diff < 86400 {
+                return String.init(format: "%.0f hours ago", diff/3600)
+            } else if diff < 604800 {
+                return String.init(format: "%.0f days ago", diff/86400)
+            } else if diff < 2.628e+6 {
+                return String.init(format: "%.0f weeks ago", diff/604800)
+            } else if diff < 3.154e+7 {
+                return String.init(format: "%.0f months ago", diff/2.628e+6)
+            }
+            return String.init(format: "%.0f years ago", diff/3.154e+7)
         }
         return nil
     }

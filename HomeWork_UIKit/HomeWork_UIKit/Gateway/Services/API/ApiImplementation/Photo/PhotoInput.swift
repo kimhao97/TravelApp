@@ -25,7 +25,11 @@ class PhotoInput: NeoApiInputable {
                      "userName": photo.userName ?? "",
                      "likes": photo.like ?? "",
                      "commentID": photo.commentID ?? "",
-                     "avatarUrl": photo.avatarUrl ?? ""]
+                     "avatarUrl": photo.avatarUrl ?? "",
+                     "width": photo.width ?? "",
+                     "height": photo.height ?? "",
+                     "created": photo.created ?? "",
+                     "content": photo.content ?? ""]
         } else {
             return [:]
         }

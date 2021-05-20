@@ -14,6 +14,8 @@ struct Photo: Decodable {
     let placeName: String?
     let width: String?
     let height: String?
+    let created: String?
+    let content: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -29,6 +31,8 @@ struct Photo: Decodable {
         case placeName
         case width
         case height
+        case created
+        case content
     }
     
     mutating func addLike() {

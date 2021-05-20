@@ -26,7 +26,7 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
     
     // MARK: - LoadAPI
     
-    func loadPhoto(input: Input) -> PublishSubject<Bool> {
+    private func loadPhoto(input: Input) -> PublishSubject<Bool> {
         let publishSubject = PublishSubject<Bool>()
         input
             .loadPhoto
@@ -38,6 +38,7 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
                 switch result {
                 case .success(let data):
                     self.photos = data ?? [Photo]()
+                    self.sortPhotos()
                     publishSubject.onNext(true)
                 case .failure(let error):
                     self.apiError.onNext(error)
@@ -48,7 +49,7 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
         return publishSubject
     }
     
-    func loadComment(input: Input) -> PublishSubject<Bool> {
+    private func loadComment(input: Input) -> PublishSubject<Bool> {
         let publishSubject = PublishSubject<Bool>()
         input
             .loadComment
@@ -70,7 +71,7 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
         return publishSubject
     }
     
-    func loadLike(input: Input) -> PublishSubject<Bool> {
+    private func loadLike(input: Input) -> PublishSubject<Bool> {
         let publishSubject = PublishSubject<Bool>()
         input
             .loadLike
@@ -93,40 +94,6 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
     }
     
     // MARK: - Post
-    
-    func postPhoto(image: UIImage?, postText: String, completion: @escaping (Bool) -> Void) {
-        guard let persistentDataService = persistentDataProvider else { return }
-
-        let uid = persistentDataService.getItem(fromKey: Notification.Name.id.rawValue) as! String
-        let username = persistentDataService.getItem(fromKey: Notification.Name.userName.rawValue) as! String
-        let avatarUrl = persistentDataService.getItem(fromKey: Notification.Name.avatarUrl.rawValue) as! String
-        
-        let filename = UUID().uuidString
-        let photoID = UUID().uuidString
-        if let data = image?.jpegData(compressionQuality: 0.3) {
-            let storage = Storage.storage().reference().child("posts").child(filename)
-            storage.putData(data, metadata: nil) { [unowned self] (_, error) in
-                guard error == nil else {
-                    completion(false)
-                    return
-                }
-                storage.downloadURL { [unowned self] (url, error) in
-                    if let imageUrl = url?.absoluteString {
-                        let photo = Photo(id: photoID, placeID: "111", cityID: nil, userID: uid, userName: username, avatarUrl: avatarUrl, like: "0", commentID: photoID, imageUrl: imageUrl, region: "Miền Trung", placeName: "Đà Nẵng", width: nil, height: "320")
-                        
-                        photoUsecase.postPhoto(with: photo) { result in
-                            switch result {
-                            case .failure(_):
-                                completion(false)
-                            case .success(_):
-                                completion(true)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
     
     func postLike(photoID: String, completion: @escaping (Bool) -> Void) {
         guard let persistentDataService = persistentDataProvider else { return}
@@ -198,6 +165,14 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
             return true
         }
         return false
+    }
+    
+    private func sortPhotos() {
+        photos.sort (by: { (p1, p2) -> Bool in
+            let time1 = Double(p1.created ?? "0") ?? 0
+            let time2 = Double(p2.created ?? "0") ?? 0
+            return time1 > time2
+        })
     }
 }
 

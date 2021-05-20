@@ -45,7 +45,8 @@ final class PostPhotoViewModel: BaseViewModel, ViewModelTransformable {
                             }
                             storage.downloadURL { (url, error) in
                                 if let imageUrl = url?.absoluteString {
-                                    let photo = Photo(id: photoID, placeID: "111", cityID: nil, userID: uid, userName: username, avatarUrl: avatarUrl, like: "0", commentID: photoID, imageUrl: imageUrl, region: "Miền Trung", placeName: "Đà Nẵng", width: nil, height: "320")
+                                    let created = String(Date().timeIntervalSince1970)
+                                    let photo = Photo(id: photoID, placeID: "111", cityID: nil, userID: uid, userName: username, avatarUrl: avatarUrl, like: "0", commentID: photoID, imageUrl: imageUrl, region: "Miền Trung", placeName: "Đà Nẵng", width: nil, height: "320", created: created, content: infor.postText)
                                     
                                     self.photoUsecase.postPhoto(with: photo) { result in
                                         switch result {

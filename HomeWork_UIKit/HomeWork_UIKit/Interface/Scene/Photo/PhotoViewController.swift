@@ -4,7 +4,7 @@ import RxCocoa
 import Then
 
 private enum PhotoConstraints {
-    static let photoHeightForRowTableView: CGFloat = 410
+    static let photoHeightForRowTableView: CGFloat = 450
     static let loadingHeightForRowTableView: CGFloat = 55
 }
 
@@ -14,9 +14,11 @@ final class PhotoViewController: BaseViewController {
     
     private let viewModel: PhotoViewModel
     private let disposeBag = DisposeBag()
-    private let refreshPhoto = PublishRelay<Void>()
+//    private let refreshPhoto = PublishRelay<Void>()
     private let refreshComment = PublishRelay<Void>()
     private let refreshLike = PublishRelay<Void>()
+    private var refreshHandler: RefreshHandler!
+    
     // MARK: - Initialization
     
     init() {
@@ -35,7 +37,7 @@ final class PhotoViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        refreshPhoto.accept(())
+//        refreshPhoto.accept(())
         refreshComment.accept(())
         refreshLike.accept(())
     }
@@ -48,6 +50,8 @@ final class PhotoViewController: BaseViewController {
             $0.register(nib: PhotoTableViewCell.nib, withCellClass: PhotoTableViewCell.self)
             $0.register(nib: LoadingTableViewCell.nib, withCellClass: LoadingTableViewCell.self)
         }
+        
+        refreshHandler = RefreshHandler(view: tableView)
         
         bindViewModel()
     }
@@ -71,7 +75,10 @@ final class PhotoViewController: BaseViewController {
     // MARK: - Private Func
     
     private func bindViewModel() {
-        let input = PhotoViewModel.Input(loadPhoto: refreshPhoto.asDriverOnErrorJustComplete(), loadComment: refreshComment.asDriverOnErrorJustComplete(), loadLike: refreshLike.asDriverOnErrorJustComplete())
+        let loadData = Driver.merge(refreshHandler.refresh.asDriverOnErrorJustComplete(),
+                                    refreshComment.asDriverOnErrorJustComplete(),
+                                    refreshLike.asDriverOnErrorJustComplete())
+        let input = PhotoViewModel.Input(loadPhoto: loadData, loadComment: refreshComment.asDriverOnErrorJustComplete(), loadLike: refreshLike.asDriverOnErrorJustComplete())
         
         let output = viewModel.transform(input: input)
         
@@ -189,6 +196,7 @@ extension PhotoViewController {
         return Binder(self) { view, done in
             if done {
                 view.tableView.reloadData()
+                view.refreshHandler.end()
             }
         }
     }
