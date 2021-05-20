@@ -2,9 +2,13 @@ import UIKit
 import netfox
 class ApplicationDevelopmentConfiguration: ApplicationConfigurable {
     func applicationRoute(from window: UIWindow) {
-//        let tabBarViewController = TabBarController(selectedTab: .home)
-//        setRoot(window: window, view: tabBarViewController)
-        setRoot(window: window, view: UINavigationController(rootViewController: LoginViewController()))
+        if (ServiceFacade.getService(PersistentDataSaveable.self)?
+                .getItem(fromKey: Notification.Name.isLogin.rawValue) as? Bool) != nil {
+            let tabBarViewController = TabBarController(selectedTab: .home)
+            setRoot(window: window, view: tabBarViewController)
+        } else {
+            setRoot(window: window, view: UINavigationController(rootViewController: LoginViewController()))
+        }
     }
     func setupSpecificConfig() {
         #if DEV

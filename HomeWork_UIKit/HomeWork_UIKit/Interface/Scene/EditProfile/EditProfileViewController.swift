@@ -9,6 +9,7 @@ class EditProfileViewController: BaseViewController {
     @IBOutlet private weak var addressTextField: UITextField!
     @IBOutlet private weak var websiteTextField: UITextField!
     @IBOutlet private weak var changePhotoButton: UIButton!
+    @IBOutlet private weak var logoutButton: UIButton!
     
     private let imagePickerVC = UIImagePickerController()
     private let viewModel: EditProfileViewModel
@@ -48,13 +49,10 @@ class EditProfileViewController: BaseViewController {
         usernameTextField.font = AppFont.appFont(type: .regular, fontSize: 14)
         addressTextField.font = AppFont.appFont(type: .regular, fontSize: 14)
         websiteTextField.font = AppFont.appFont(type: .regular, fontSize: 14)
+        logoutButton.titleLabel?.font = AppFont.appFont(type: .regular, fontSize: 16)
         changePhotoButton.titleLabel?.font = AppFont.appFont(type: .regular, fontSize: 18)
         
         navigationItem.title = "Edit Profile"
-//        let cancelButton = UIBarButtonItem(image: UIImage(named: "ic-cancel"), style: .plain, target: self, action: #selector(backAction))
-//        let saveButton = UIBarButtonItem(image: UIImage(named: "ic-checkmark"), style: .plain, target: self, action: #selector(saveAction))
-//        navigationItem.leftBarButtonItem = cancelButton
-//        navigationItem.rightBarButtonItem = saveButton
         
         let saveButton = UIButton(type: .system)
         saveButton.setImage(UIImage(named: "ic-checkmark"), for: .normal)
@@ -114,6 +112,21 @@ class EditProfileViewController: BaseViewController {
     @IBAction func selectImage(sender: Any) {
         imagePickerVC.sourceType = .photoLibrary
         present(imagePickerVC, animated: true)
+    }
+    
+    @IBAction func logOut(sender: Any) {
+        let alert = UIAlertController(title: "Log out of W&G?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { [weak self] _ in
+            self?.viewModel.logOut()
+            let loginVC = LoginViewController()
+            let controller = UINavigationController(rootViewController: loginVC)
+            let scene = UIApplication.shared.connectedScenes.first
+            if let sceneDelegate = (scene?.delegate as? SceneDelegate) {
+                sceneDelegate.window?.rootViewController = controller
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 

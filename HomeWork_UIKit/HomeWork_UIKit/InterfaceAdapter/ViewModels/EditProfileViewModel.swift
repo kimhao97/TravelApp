@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Firebase
 
 typealias ProfileInfor = (userName: String, website: String, address: String, avatar: UIImage?)
 
@@ -36,6 +37,16 @@ final class EditProfileViewModel: BaseViewModel, ViewModelTransformable {
             .disposed(by: disposeBag)
         
         return publishSubject
+    }
+    
+    func logOut() {
+        do {
+            try Auth.auth().signOut()
+            UserDefaults.standard.set(false, forKey: Notification.Name.isLogin.rawValue)
+            Database.database().reference().removeAllObservers()
+        } catch {
+            debugPrint("Error Occurred while logging out!")
+        }
     }
 }
 

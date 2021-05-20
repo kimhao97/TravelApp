@@ -19,6 +19,7 @@
                 <outlet property="addressTextField" destination="thK-Wc-r6M" id="UlG-iE-aCo"/>
                 <outlet property="avatarImage" destination="vhi-LI-QaW" id="z68-FJ-w7N"/>
                 <outlet property="changePhotoButton" destination="RNb-zg-UtV" id="RqL-f6-zvG"/>
+                <outlet property="logoutButton" destination="Kck-hU-pkz" id="r0k-aX-5CV"/>
                 <outlet property="usernameTextField" destination="KSh-pV-X4v" id="I2E-bj-dzq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="websiteTextField" destination="x7j-oS-dFP" id="zzF-Y6-Kd6"/>
@@ -50,7 +51,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-Tc-8z0">
-                    <rect key="frame" x="10" y="221" width="355" height="202"/>
+                    <rect key="frame" x="10" y="221" width="355" height="254"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SN6-Lo-faC">
                             <rect key="frame" x="0.0" y="0.0" width="355" height="54"/>
@@ -124,6 +125,16 @@
                                 </view>
                             </subviews>
                         </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kck-hU-pkz">
+                            <rect key="frame" x="0.0" y="222" width="355" height="32"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <state key="normal" title="Log Out">
+                                <color key="titleColor" systemColor="linkColor"/>
+                            </state>
+                            <connections>
+                                <action selector="logOutWithSender:" destination="-1" eventType="touchUpInside" id="ncW-tT-mYD"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </stackView>
             </subviews>
@@ -146,6 +157,9 @@
         <namedColor name="appGrayText">
             <color red="0.6588235294117647" green="0.71372549019607845" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

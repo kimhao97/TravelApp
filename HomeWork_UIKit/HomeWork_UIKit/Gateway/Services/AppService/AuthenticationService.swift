@@ -33,6 +33,7 @@ class ProfilesServiceImplement: ProfilesServiceable {
             } else {
                 let uid = result?.user.uid
                 
+                persistentDataService.set(item: true, toKey: Notification.Name.isLogin.rawValue)
                 persistentDataService.set(item: email, toKey: Notification.Name.email.rawValue)
                 persistentDataService.set(item: password, toKey: Notification.Name.password.rawValue)
                 persistentDataService.set(item: uid ?? "0", toKey: "uid")
