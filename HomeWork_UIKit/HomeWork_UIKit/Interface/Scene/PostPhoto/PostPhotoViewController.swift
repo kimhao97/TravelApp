@@ -1,9 +1,14 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MapKit
 
 final class PostPhotoViewController: BaseViewController {
     
+    @IBOutlet private weak var searchStackView: UIStackView!
+    @IBOutlet private weak var locationStackView: UIStackView!
+    @IBOutlet private weak var locationNameLabel: UILabel!
+    @IBOutlet private weak var locationDetailLabel: UILabel!
     @IBOutlet private weak var postTextField: UITextField!
     @IBOutlet private weak var photoImage: UIImageView!
 
@@ -32,6 +37,10 @@ final class PostPhotoViewController: BaseViewController {
         
         imagePickerVC.delegate = self
         imagePickerVC.allowsEditing = true
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(locationSelected(_:)),
+                                               name: NSNotification.Name(rawValue: NSNotification.Name.searchLocation.rawValue), object: nil)
         
         bindViewModel()
     }
@@ -82,11 +91,33 @@ final class PostPhotoViewController: BaseViewController {
         saveTrigger.onNext(())
     }
     
+    @objc func locationSelected(_ notification: Notification) {
+        let locationInfor = notification.userInfo?["locationInfor"] as? [String: Any] ?? [:]
+        if let name = locationInfor["name"] as? String, let detail = locationInfor["detail"] as? String {
+            searchStackView.isHidden = true
+            locationStackView.isHidden = false
+            
+            locationNameLabel.text = name
+            locationDetailLabel.text = detail
+            
+            viewModel.placeName = name
+        }
+    }
+    
     // MARK: - Action
     
     @IBAction func selectImage(sender: Any) {
         imagePickerVC.sourceType = .photoLibrary
         present(imagePickerVC, animated: true)
+    }
+    
+    @IBAction func searchLocation(sender: Any) {
+        navigate(to: SearchLocationDestination())
+    }
+    
+    @IBAction func cancelLocation(sender: Any) {
+        searchStackView.isHidden = false
+        locationStackView.isHidden = true
     }
 }
 

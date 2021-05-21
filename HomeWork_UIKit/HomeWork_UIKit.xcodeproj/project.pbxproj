@@ -140,6 +140,11 @@
 		6C943DBC261C477D0052FD38 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C943DBB261C477D0052FD38 /* UIViewController+Extension.swift */; };
 		6C9D3B972628404300848161 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9D3B962628404300848161 /* UIColor+Extension.swift */; };
 		6C9D3B9C262849AC00848161 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9D3B9B262849AC00848161 /* UIButton+Extension.swift */; };
+		6C9E0279265757ED005F8467 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E0277265757ED005F8467 /* SearchLocationViewController.swift */; };
+		6C9E027A265757ED005F8467 /* SearchLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E0278265757ED005F8467 /* SearchLocationViewController.xib */; };
+		6C9E0281265758CB005F8467 /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E027F265758CB005F8467 /* SearchLocationTableViewCell.swift */; };
+		6C9E0282265758CB005F8467 /* SearchLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E0280265758CB005F8467 /* SearchLocationTableViewCell.xib */; };
+		6C9E028A26575B7E005F8467 /* SearchLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9E028926575B7E005F8467 /* SearchLocationViewModel.swift */; };
 		6CA829E2262D1F0300A5B68F /* CocktailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA829E0262D1F0300A5B68F /* CocktailViewController.swift */; };
 		6CA829E3262D1F0300A5B68F /* CocktailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CA829E1262D1F0300A5B68F /* CocktailViewController.xib */; };
 		6CA829EA262D201000A5B68F /* CocktailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA829E8262D201000A5B68F /* CocktailTableViewCell.swift */; };
@@ -388,6 +393,11 @@
 		6C943DBB261C477D0052FD38 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		6C9D3B962628404300848161 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		6C9D3B9B262849AC00848161 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		6C9E0277265757ED005F8467 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
+		6C9E0278265757ED005F8467 /* SearchLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationViewController.xib; sourceTree = "<group>"; };
+		6C9E027F265758CB005F8467 /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
+		6C9E0280265758CB005F8467 /* SearchLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationTableViewCell.xib; sourceTree = "<group>"; };
+		6C9E028926575B7E005F8467 /* SearchLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewModel.swift; sourceTree = "<group>"; };
 		6CA829E0262D1F0300A5B68F /* CocktailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailViewController.swift; sourceTree = "<group>"; };
 		6CA829E1262D1F0300A5B68F /* CocktailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CocktailViewController.xib; sourceTree = "<group>"; };
 		6CA829E8262D201000A5B68F /* CocktailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailTableViewCell.swift; sourceTree = "<group>"; };
@@ -596,6 +606,7 @@
 				6CE073A7264BD74700ABB391 /* SearchViewModel.swift */,
 				6CC77958264D1DD9007A852C /* SearchDetailViewModel.swift */,
 				6C63A5A426510BE2001BD957 /* PostPhotoViewModel.swift */,
+				6C9E028926575B7E005F8467 /* SearchLocationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1029,6 +1040,25 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		6C9E0276265757C6005F8467 /* SearchLocation */ = {
+			isa = PBXGroup;
+			children = (
+				6C9E027E265758AD005F8467 /* Cell */,
+				6C9E0277265757ED005F8467 /* SearchLocationViewController.swift */,
+				6C9E0278265757ED005F8467 /* SearchLocationViewController.xib */,
+			);
+			path = SearchLocation;
+			sourceTree = "<group>";
+		};
+		6C9E027E265758AD005F8467 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6C9E027F265758CB005F8467 /* SearchLocationTableViewCell.swift */,
+				6C9E0280265758CB005F8467 /* SearchLocationTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		6C9E21092626DDAB00A8A2A1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1277,6 +1307,7 @@
 		6CD8812C26257BE800AD6FDD /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				6C9E0276265757C6005F8467 /* SearchLocation */,
 				6CE72D64264FCF760065FAA5 /* PostPhoto */,
 				6CC77945264D168D007A852C /* SearchDetail */,
 				6CF7C35E264CDB08003E55EB /* Refresh */,
@@ -1686,6 +1717,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C9E027A265757ED005F8467 /* SearchLocationViewController.xib in Resources */,
 				6C1CFE532653597E009B455D /* RobotoSlab-Regular.ttf in Resources */,
 				6C58EC262647842000886F51 /* ProfileViewController.xib in Resources */,
 				6C943D3F261C0E540052FD38 /* LaunchScreen.storyboard in Resources */,
@@ -1696,6 +1728,7 @@
 				6C2B75D9264540BC00B62911 /* LoadingTableViewCell.xib in Resources */,
 				6C1CFE522653597E009B455D /* RobotoSlab-Bold.ttf in Resources */,
 				6CD1CC52263655F9002A324B /* ExploreViewController.xib in Resources */,
+				6C9E0282265758CB005F8467 /* SearchLocationTableViewCell.xib in Resources */,
 				6CD4661B264910BE0041F100 /* EditProfileViewController.xib in Resources */,
 				6C2EF76D26269DA800126B74 /* SignUpViewController.xib in Resources */,
 				6C29CBE12626DFE80061BED5 /* CustomAuthenticaion.xib in Resources */,
@@ -1879,6 +1912,7 @@
 				6CD8818126257E6300AD6FDD /* DevelopmentConfig.swift in Sources */,
 				6CD1CC922636B367002A324B /* Place.swift in Sources */,
 				6C0FB03C26294E0100333D95 /* ScaleFactor.swift in Sources */,
+				6C9E0281265758CB005F8467 /* SearchLocationTableViewCell.swift in Sources */,
 				6C7706862637EBA3002FC48F /* FavoriteService.swift in Sources */,
 				6C8800E82632AF5900E27703 /* FirebaseError.swift in Sources */,
 				6C6FED3F2647C2270065A48C /* PhotoDetailViewController.swift in Sources */,
@@ -1987,6 +2021,7 @@
 				6CD1CC5F26369EA2002A324B /* ExploreViewModel.swift in Sources */,
 				6C8800E32632AF5900E27703 /* FirebaseDatabaseManager.swift in Sources */,
 				6C9D3B972628404300848161 /* UIColor+Extension.swift in Sources */,
+				6C9E028A26575B7E005F8467 /* SearchLocationViewModel.swift in Sources */,
 				6C17BBAE2629316400CAD5CE /* BaseViewModel.swift in Sources */,
 				6C0152C2261E9C4300A27195 /* LibraryCollectionViewCell.swift in Sources */,
 				6CC77959264D1DD9007A852C /* SearchDetailViewModel.swift in Sources */,
@@ -2044,6 +2079,7 @@
 				6C77067C2637EB17002FC48F /* FavoriteOutput.swift in Sources */,
 				6C0FB03B26294E0100333D95 /* NSLayoutConstraint+Extension.swift in Sources */,
 				6CD8816926257E6300AD6FDD /* Destinating.swift in Sources */,
+				6C9E0279265757ED005F8467 /* SearchLocationViewController.swift in Sources */,
 				6CE72D60264FB6610065FAA5 /* Post.swift in Sources */,
 				6CBE1D9C264B767C00700435 /* CustomCollectionViewLayout.swift in Sources */,
 				6C943D7A261C10400052FD38 /* HomeViewController.swift in Sources */,

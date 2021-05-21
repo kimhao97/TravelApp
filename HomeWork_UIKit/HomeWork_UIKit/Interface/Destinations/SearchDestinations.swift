@@ -6,3 +6,9 @@ class SearchDetailDestination: Destinating {
         return SearchDetailViewController()
     }
 }
+
+class SearchLocationDestination: Destinating {
+    var view: UIViewController {
+        return SearchLocationViewController()
+    }
+}

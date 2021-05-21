@@ -12,6 +12,7 @@ target 'HomeWork_UIKit' do
   pod 'SwinjectStoryboard', '2.2.0'    # Library support dependency injection
   pod 'Then'
   pod 'Reusable'
+  pod 'AnimatedCollectionViewLayout'
   
   # Library for network service
   pod 'SwifterSwift', '5.2.0'
