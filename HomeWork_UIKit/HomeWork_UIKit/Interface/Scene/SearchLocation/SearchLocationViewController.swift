@@ -3,7 +3,7 @@ import RxSwift
 import RxCocoa
 
 private enum SearchLocationConstraints {
-    static let heightForRowSearchTableView: CGFloat = 44
+    static let heightForRowSearchTableView: CGFloat = 50
 }
 
 class SearchLocationViewController: BaseViewController {
