@@ -19,7 +19,7 @@ class AuthenUsecaseImplement: AuthenUseCaseable {
     
     func login(email: String, password: String) -> Observable<Result<Profile?, AppError>> {
         return Observable.create({ (signal) -> Disposable in
-            self.profileService.login(email: email, password: password) { data, error in
+            self.profileService.login(email: email, password: password) { _, error in
                 if let error = error {
                     signal.onNext(.failure(error))
                 } else {
@@ -33,7 +33,7 @@ class AuthenUsecaseImplement: AuthenUseCaseable {
     
     func signUp(profile: Profile, password: String) -> Observable<Result<Profile?, AppError>> {
         return Observable.create({ (signal) -> Disposable in
-            self.profileService.signUp(profile: profile, password: password) { data, error in
+            self.profileService.signUp(profile: profile, password: password) { _, error in
                 if let error = error {
                     signal.onNext(.failure(error))
                 } else {

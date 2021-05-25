@@ -1,6 +1,6 @@
-//import Foundation
-//import Swinject
-//extension PlaceholderTextView: LocalizationableItem {
+// import Foundation
+// import Swinject
+// extension PlaceholderTextView: LocalizationableItem {
 //    @IBInspectable var localizeLanguageKey: String {
 //        get {
 //            guard let value = objc_getAssociatedObject(self, &AssociatedKeys.localizeKey) as? String else {
@@ -27,4 +27,4 @@
 //                                        self.placeholder = result as NSString
 //        }
 //    }
-//}
+// }

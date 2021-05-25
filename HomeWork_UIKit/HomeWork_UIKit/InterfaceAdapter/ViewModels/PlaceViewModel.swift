@@ -121,12 +121,21 @@ final class PlaceViewModel: BaseViewModel, ViewModelTransformable {
         let username = persistentDataService.getItem(fromKey: Notification.Name.userName.rawValue) as! String
         let avatarUrl = persistentDataService.getItem(fromKey: Notification.Name.avatarUrl.rawValue) as! String
         
-        let favoriteObj = Favorite(id: nil, cityID: nil, placeID: place.id, userID: uid, userName: username, userPhoto: avatarUrl, placeName: place.name, cityName: nil, region: place.region, placePhoto: place.photo)
+        let favoriteObj = Favorite(id: nil,
+                                   cityID: nil,
+                                   placeID: place.id,
+                                   userID: uid,
+                                   userName: username,
+                                   userPhoto: avatarUrl,
+                                   placeName: place.name,
+                                   cityName: nil,
+                                   region: place.region,
+                                   placePhoto: place.photo)
         favoriteUsecase.postLike(with: favoriteObj) { [unowned self] result in
             switch result {
-            case .failure(_):
+            case .failure:
                 completion(false)
-            case .success(_):
+            case .success:
                 self.favorites.append(favoriteObj)
                 completion(true)
             }
@@ -140,9 +149,9 @@ final class PlaceViewModel: BaseViewModel, ViewModelTransformable {
         for item in favorites where item.userID == uid {
             favoriteUsecase.dislike(with: item) { [unowned self] result in
                 switch result {
-                case .failure(_):
+                case .failure:
                     completion(false)
-                case .success(_):
+                case .success:
                     self.favorites = self.favorites.filter { $0.id != item.id}
                     completion(true)
                 }

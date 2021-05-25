@@ -102,9 +102,9 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
         let likeObj = Like(id: nil, userID: uid, photoID: photoID)
         likeUsecase.postLike(with: likeObj) { result in
             switch result {
-            case .failure(_):
+            case .failure:
                 completion(false)
-            case .success(_):
+            case .success:
                 completion(true)
             }
         }
@@ -115,9 +115,9 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
     func deletePhoto(with photo: Photo, completion: @escaping (Bool) -> Void) {
         photoUsecase.deletePhoto(with: photo) { [unowned self] result in
             switch result {
-            case .failure(_):
+            case .failure:
                 completion(false)
-            case .success(_):
+            case .success:
                 self.photos = self.photos.filter { $0.id != photo.id}
                 completion(true)
             }
@@ -131,9 +131,9 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
         for item in likes where item.userID == uid {
             likeUsecase.dislike(with: item) { [unowned self] result in
                 switch result {
-                case .failure(_):
+                case .failure:
                     completion(false)
-                case .success(_):
+                case .success:
                     self.likes = self.likes.filter { $0.id != item.id}
                     completion(true)
                 }
@@ -168,7 +168,7 @@ final class PhotoViewModel: BaseViewModel, ViewModelTransformable {
     }
     
     private func sortPhotos() {
-        photos.sort (by: { (p1, p2) -> Bool in
+        photos.sort(by: { (p1, p2) -> Bool in
             let time1 = Double(p1.created ?? "0") ?? 0
             let time2 = Double(p2.created ?? "0") ?? 0
             return time1 > time2

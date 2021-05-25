@@ -10,9 +10,3 @@ class AuthenticateLoginOutput {
 struct ResultLogin {
     let message: String?
 }
-
-//struct AppError: Codable, Error {
-//  var data: Data?
-//  var message: String = ""
-//  var success: Bool = false
-//}

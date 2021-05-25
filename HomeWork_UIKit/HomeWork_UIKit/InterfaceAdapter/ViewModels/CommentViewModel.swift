@@ -36,7 +36,7 @@ final class CommentViewModel: BaseViewModel, ViewModelTransformable {
             .drive(onNext: {[weak self] result in
                     guard let self = self else { return }
                     switch result {
-                    case .success(_):
+                    case .success:
                         if let comment = self.currentComment {
                             self.comments.append(comment)
                         }

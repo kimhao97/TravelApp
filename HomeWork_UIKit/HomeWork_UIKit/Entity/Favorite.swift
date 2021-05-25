@@ -27,7 +27,7 @@ struct Favorite: Decodable {
 }
 
 extension Favorite: Equatable {
-    public static func ==(lhs: Favorite, rhs: Favorite) -> Bool {
+    public static func == (lhs: Favorite, rhs: Favorite) -> Bool {
         return  lhs.cityID == rhs.cityID
             && lhs.placeID == rhs.placeID
             && lhs.placePhoto == rhs.placePhoto

@@ -16,9 +16,3 @@ struct ResultCocktail: Decodable {
         case cocktails = "drinks"
     }
 }
-
-//struct AppError: Codable, Error {
-//  var data: Data?
-//  var message: String = ""
-//  var success: Bool = false
-//}

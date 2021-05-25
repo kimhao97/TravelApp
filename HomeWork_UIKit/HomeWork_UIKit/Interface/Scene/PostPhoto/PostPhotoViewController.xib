@@ -39,11 +39,20 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jl3-Ba-XFG">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-selectPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="RdD-ex-Kxj">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-selectPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="RdD-ex-Kxj">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X9-NY-xLH">
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X9-NY-xLH">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="eQD-EO-fea"/>
+                                                <constraint firstAttribute="height" constant="80" id="l6R-PZ-eQ4"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="selectImageWithSender:" destination="-1" eventType="touchUpInside" id="hgM-Hy-EVU"/>
                                             </connections>
@@ -55,11 +64,9 @@
                                         <constraint firstAttribute="width" constant="80" id="8Lx-ui-wCU"/>
                                         <constraint firstItem="4X9-NY-xLH" firstAttribute="top" secondItem="Jl3-Ba-XFG" secondAttribute="top" id="8pt-gn-TMZ"/>
                                         <constraint firstAttribute="trailing" secondItem="RdD-ex-Kxj" secondAttribute="trailing" id="NgM-NE-5pB"/>
-                                        <constraint firstAttribute="bottom" secondItem="4X9-NY-xLH" secondAttribute="bottom" id="UQt-CA-LPV"/>
                                         <constraint firstAttribute="height" constant="80" id="UfA-A9-TCs"/>
                                         <constraint firstItem="RdD-ex-Kxj" firstAttribute="leading" secondItem="Jl3-Ba-XFG" secondAttribute="leading" id="XMl-gU-kJg"/>
                                         <constraint firstItem="RdD-ex-Kxj" firstAttribute="top" secondItem="Jl3-Ba-XFG" secondAttribute="top" id="oed-Th-IHc"/>
-                                        <constraint firstAttribute="trailing" secondItem="4X9-NY-xLH" secondAttribute="trailing" id="rpM-uY-G97"/>
                                         <constraint firstItem="4X9-NY-xLH" firstAttribute="leading" secondItem="Jl3-Ba-XFG" secondAttribute="leading" id="rzP-0Z-szu"/>
                                     </constraints>
                                 </view>

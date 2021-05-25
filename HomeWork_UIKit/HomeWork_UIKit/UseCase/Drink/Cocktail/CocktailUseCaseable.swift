@@ -15,7 +15,7 @@ class CoctailUsecaseImplement: CocktailUseCaseable {
     
     func loadAPI() -> Observable<Result<[Cocktail]?, AppError>> {
         return Observable.create({ (signal) -> Disposable in
-            self.cocktailService.loadAPI() { (data, error) in
+            self.cocktailService.loadAPI { (data, error) in
                 if let error = error {
                     signal.onNext(.failure(error))
                 } else {

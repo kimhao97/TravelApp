@@ -180,7 +180,7 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
                                     }
                                 }
                             } else {
-                                self?.viewModel.dislike() { [weak self] done in
+                                self?.viewModel.dislike { [weak self] done in
                                     if done {
                                         self?.tableView.reloadData()
                                     }

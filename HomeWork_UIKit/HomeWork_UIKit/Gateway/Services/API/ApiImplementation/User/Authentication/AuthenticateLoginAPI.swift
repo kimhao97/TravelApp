@@ -1,6 +1,6 @@
 import NeoNetworking
 
-//class AuthenticateLoginAPI: NeoRequestable {
+// class AuthenticateLoginAPI: NeoRequestable {
 //    typealias OutputType = AuthenticateLoginOutput
 //    func getOutput() -> AuthenticateLoginOutput? {
 //        return self.output
@@ -12,4 +12,4 @@ import NeoNetworking
 //        self.input = input
 //        self.output = output
 //    }
-//}
+// }

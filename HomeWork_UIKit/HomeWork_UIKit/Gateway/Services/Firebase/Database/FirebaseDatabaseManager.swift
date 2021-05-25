@@ -68,7 +68,7 @@ class FirebaseDatabaseManager {
     func remove(from endpoint: FirebaseDatabaseEndpoint,
                 completion: (() -> Void)?,
                 onError: ((Error) -> Void)?) {
-        databaseReference.child(endpoint.path).removeValue { (error, reference) in
+        databaseReference.child(endpoint.path).removeValue { (error, _) in
             if let error = error {
                 onError?(error)
                 return

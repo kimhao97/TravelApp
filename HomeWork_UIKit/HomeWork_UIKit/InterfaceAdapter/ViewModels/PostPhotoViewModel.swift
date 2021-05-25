@@ -45,16 +45,29 @@ final class PostPhotoViewModel: BaseViewModel, ViewModelTransformable {
                                 publishSubject.onNext(false)
                                 return
                             }
-                            storage.downloadURL { [weak self] (url, error) in
+                            storage.downloadURL { [weak self] (url, _) in
                                 if let imageUrl = url?.absoluteString {
                                     let created = String(Date().timeIntervalSince1970)
-                                    let photo = Photo(id: photoID, placeID: "111", cityID: nil, userID: uid, userName: username, avatarUrl: avatarUrl, like: "0", commentID: photoID, imageUrl: imageUrl, region: nil, placeName: self?.placeName, width: nil, height: "320", created: created, content: infor.postText)
+                                    let photo = Photo(id: photoID,
+                                                      placeID: "111",
+                                                      cityID: nil,
+                                                      userID: uid,
+                                                      userName: username,
+                                                      avatarUrl: avatarUrl,
+                                                      like: "0",
+                                                      commentID: photoID,
+                                                      imageUrl: imageUrl,
+                                                      region: nil,
+                                                      placeName: self?.placeName,
+                                                      width: nil, height: "320",
+                                                      created: created,
+                                                      content: infor.postText)
                                     
                                     self?.photoUsecase.postPhoto(with: photo) { result in
                                         switch result {
-                                        case .failure(_):
+                                        case .failure:
                                             publishSubject.onNext(true)
-                                        case .success(_):
+                                        case .success:
                                             publishSubject.onNext(false)
                                         }
                                     }

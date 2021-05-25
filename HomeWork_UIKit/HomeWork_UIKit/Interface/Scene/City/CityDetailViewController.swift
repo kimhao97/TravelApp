@@ -129,13 +129,13 @@ class CityDetailViewController: BaseViewController {
         likeButton.isSelected.toggle()
         
         if likeButton.isSelected {
-            viewModel.postLike() { [weak self] done in
+            viewModel.postLike { [weak self] done in
                 if done {
                     self?.updateSocialView()
                 }
             }
         } else {
-            viewModel.dislike() { [weak self] done in
+            viewModel.dislike { [weak self] done in
                 if done {
                     self?.updateSocialView()
                 }

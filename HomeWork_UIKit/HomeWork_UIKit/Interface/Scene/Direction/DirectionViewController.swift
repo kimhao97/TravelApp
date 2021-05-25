@@ -78,7 +78,7 @@ class DirectionViewController: BaseViewController {
         self.mapView.addAnnotation(destinationPin)
         
         let directions = MKDirections(request: request)
-        directions.calculate { [unowned self] response, error in
+        directions.calculate { [unowned self] response, _ in
             guard let unwrappedResponse = response else { return }
             
 //            for route in unwrappedResponse.routes {

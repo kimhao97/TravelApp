@@ -12,7 +12,7 @@ final class APIService: UserService {
     func fetchImage(with urlString: String, completion: @escaping CompletionHandler) {
         if let url = URL(string: urlString) {
             DispatchQueue.global().async {
-                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                URLSession.shared.dataTask(with: url) { (data, _, error) in
                     if error == nil {
                         if let data = data, let image = UIImage(data: data) {
                             completion(image)
