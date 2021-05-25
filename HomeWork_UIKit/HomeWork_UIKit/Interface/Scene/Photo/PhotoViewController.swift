@@ -2,6 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Then
+import SkeletonView
 
 private enum PhotoConstraints {
     static let photoHeightForRowTableView: CGFloat = 450
@@ -49,10 +50,12 @@ final class PhotoViewController: BaseViewController {
             $0.dataSource = self
             $0.register(nib: PhotoTableViewCell.nib, withCellClass: PhotoTableViewCell.self)
             $0.register(nib: LoadingTableViewCell.nib, withCellClass: LoadingTableViewCell.self)
+            
+            $0.isSkeletonable = true
         }
-        
+
+        showSkeleton()
         refreshHandler = RefreshHandler(view: tableView)
-        
         bindViewModel()
     }
     
@@ -112,6 +115,20 @@ final class PhotoViewController: BaseViewController {
         present(actionSheet, animated: true, completion: nil)
     }
     
+    private func showSkeleton() {
+        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .clouds), animation: nil, transition: .none)
+    }
+       
+    private func hideSkeleton() {
+        if tableView.isSkeletonable {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                print("Hide Skeleton")
+                self.tableView.hideSkeleton(transition: .crossDissolve(0.25))
+               
+            })
+            tableView.isSkeletonable = false
+        }
+    }
     // MARK: - Action
     
     @objc func postAction() {
@@ -119,11 +136,13 @@ final class PhotoViewController: BaseViewController {
     }
 }
 
+// MARK: TableView
+
 extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return viewModel.photos.count
@@ -138,6 +157,7 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             return tableView.dequeueReusableCell(for: indexPath, cellType: PhotoTableViewCell.self)
                 .then {
+                    $0.hideSkeleton()
                     let item = viewModel.photos[indexPath.row]
                     var comments = [Comment]()
                     var likes = [Like]()
@@ -147,11 +167,11 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
                         $0.isViewCommentPressed = { [weak self] in
                             self?.navigate(to: CommentDestination(photoID: photoID, comments: comments), present: false)
                         }
-                        
+
                         $0.isShared = { [weak self] image in
                             self?.shareSocialMedia(image: image)
                         }
-                        
+
                         $0.isLiked = { [weak self] isSelected in
                             if isSelected {
                                 self?.viewModel.postLike(photoID: photoID) { [weak self] done in
@@ -167,7 +187,7 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
                                 }
                             }
                         }
-                        
+
                         $0.isDeleted = { [weak self] in
                             self?.deleteActionSheet(with: item)
                         }
@@ -191,13 +211,32 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - Binder
+
 extension PhotoViewController {
     private var isLoadingBinder: Binder<Bool> {
         return Binder(self) { view, done in
             if done {
                 view.tableView.reloadData()
+                view.hideSkeleton()
                 view.refreshHandler.end()
             }
         }
+    }
+}
+
+// MARK: - SkeletonView
+
+extension PhotoViewController: SkeletonTableViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return PhotoTableViewCell.reuseIdentifier
+    }
+
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 2
+    }
+
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
     }
 }

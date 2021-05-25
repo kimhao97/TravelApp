@@ -13,6 +13,7 @@ target 'HomeWork_UIKit' do
   pod 'Then'
   pod 'Reusable'
   pod 'AnimatedCollectionViewLayout'
+  pod 'SkeletonView'
   
   # Library for network service
   pod 'SwifterSwift', '5.2.0'

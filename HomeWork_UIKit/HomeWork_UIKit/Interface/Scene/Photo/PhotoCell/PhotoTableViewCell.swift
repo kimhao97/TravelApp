@@ -1,6 +1,7 @@
 import UIKit
 import Reusable
 import Kingfisher
+import SkeletonView
 
 class PhotoTableViewCell: UITableViewCell, NibReusable {
     
@@ -38,6 +39,8 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        hideSkeleton()
         likeButton.isSelected = false
         commentLabel.isHidden = true
     }
@@ -54,7 +57,15 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
         
         contentLabel.text = photo.content
         
-        likeLabel.text = "\(likes.count)" + (likes.count == 0 ? " like" : " likes")
+        let numberOfLikes = likes.count
+        switch numberOfLikes {
+        case 0:
+            likeLabel.text = "0 like"
+        case 1:
+            likeLabel.text = "1 like"
+        default:
+            likeLabel.text = "\(numberOfLikes) likes"
+        }
         likeButton.isSelected = isLike
         
         if let avatarUrl = photo.avatarUrl {
@@ -81,6 +92,15 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
         }
         
         seeAllCommentButton.setTitle("See \(comments.count) comments", for: .normal)
+        let numberOfComments = comments.count
+        switch numberOfComments {
+        case 0:
+            seeAllCommentButton.setTitle("Comment", for: .normal)
+        case 1:
+            seeAllCommentButton.setTitle("See 1 comment", for: .normal)
+        default:
+            seeAllCommentButton.setTitle("See \(numberOfLikes) comments", for: .normal)
+        }
     }
     
     // MARK: - Action
