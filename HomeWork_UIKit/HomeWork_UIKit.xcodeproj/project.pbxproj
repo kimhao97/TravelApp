@@ -104,6 +104,7 @@
 		6C78C3FC2648C5CC00E7E509 /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C78C3FA2648C5CC00E7E509 /* AlbumViewController.xib */; };
 		6C78C4032648C5F000E7E509 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C78C4012648C5F000E7E509 /* AlbumCollectionViewCell.swift */; };
 		6C78C4042648C5F000E7E509 /* AlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C78C4022648C5F000E7E509 /* AlbumCollectionViewCell.xib */; };
+		6C82058F265C9D810046ADB6 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82058E265C9D810046ADB6 /* UICollectionView+Extension.swift */; };
 		6C8800CE2632AA0500E27703 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8800CA2632AA0500E27703 /* String+Extensions.swift */; };
 		6C8800CF2632AA0500E27703 /* Encodable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8800CB2632AA0500E27703 /* Encodable+Extensions.swift */; };
 		6C8800D02632AA0500E27703 /* NSDictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8800CC2632AA0500E27703 /* NSDictionary+Extensions.swift */; };
@@ -351,6 +352,7 @@
 		6C78C3FA2648C5CC00E7E509 /* AlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumViewController.xib; sourceTree = "<group>"; };
 		6C78C4012648C5F000E7E509 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		6C78C4022648C5F000E7E509 /* AlbumCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCollectionViewCell.xib; sourceTree = "<group>"; };
+		6C82058E265C9D810046ADB6 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		6C8800CA2632AA0500E27703 /* String+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6C8800CB2632AA0500E27703 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		6C8800CC2632AA0500E27703 /* NSDictionary+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDictionary+Extensions.swift"; sourceTree = "<group>"; };
@@ -1036,6 +1038,7 @@
 				6C9D3B962628404300848161 /* UIColor+Extension.swift */,
 				6C9D3B9B262849AC00848161 /* UIButton+Extension.swift */,
 				6C0FB02726293E1200333D95 /* Notification+Extension.swift */,
+				6C82058E265C9D810046ADB6 /* UICollectionView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2052,6 +2055,7 @@
 				6C0FB02826293E1200333D95 /* Notification+Extension.swift in Sources */,
 				6C7706A526381254002FC48F /* PlaceViewController.swift in Sources */,
 				6CD8817826257E6300AD6FDD /* LocalizeExtend+Label.swift in Sources */,
+				6C82058F265C9D810046ADB6 /* UICollectionView+Extension.swift in Sources */,
 				6C78C3FB2648C5CC00E7E509 /* AlbumViewController.swift in Sources */,
 				6C8AB8E8264249B900C77CD4 /* CommentAPI.swift in Sources */,
 				6C650AC2262D6EC30061A342 /* CocktailService.swift in Sources */,

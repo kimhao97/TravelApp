@@ -6,7 +6,7 @@ import RxCocoa
 import AnimatedCollectionViewLayout
 
 private enum ExploreConstrains {
-    static let sizeForCellCollectionView: CGSize = .init(width: 269, height: 390)
+    static let sizeForCellCollectionView: CGSize = .init(width: 269, height: 429)
 }
 
 final class ExploreViewController: BaseViewController {
@@ -57,7 +57,7 @@ final class ExploreViewController: BaseViewController {
     override func setupUI() {
         super.setupUI()
         
-        layout.animator = LinearCardAttributesAnimator(minAlpha: 0.1, itemSpacing: 0, scaleRate: 1)
+        layout.animator = LinearCardAttributesAnimator(minAlpha: 0.1, itemSpacing: 0, scaleRate: 0.9)
         layout.scrollDirection = .horizontal
         collectionView.collectionViewLayout = layout
     }
@@ -97,24 +97,15 @@ extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataS
         return ExploreConstrains.sizeForCellCollectionView
     }
     
-//    func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double, collectionView: UICollectionView) -> UIEdgeInsets {
-//        let totalWidth = cellWidth * numberOfItems
-//        let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
-//        let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
-//        let rightInset = leftInset
-//        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//        let totalCellWidth =  ExploreConstrains.sizeForCellCollectionView.width.int * viewModel.cities.value.count
-//        let totalSpacingWidth = 10 * (3 - 1)
-//
-//        let leftInset = (collectionView.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-//        let rightInset = leftInset
-//
-//        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-//    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        collectionView.scrollToNearestVisibleCollectionViewCell()
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            collectionView.scrollToNearestVisibleCollectionViewCell()
+        }
+    }
 }
 
 extension ExploreViewController {
