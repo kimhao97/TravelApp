@@ -6,7 +6,7 @@ import RxCocoa
 import AnimatedCollectionViewLayout
 
 private enum ExploreConstrains {
-    static let sizeForCellCollectionView: CGSize = .init(width: 269, height: 429)
+    static let sizeForCellCollectionView: CGSize = .init(width: 296, height: 429)
 }
 
 final class ExploreViewController: BaseViewController {
