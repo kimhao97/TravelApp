@@ -16,6 +16,8 @@ final class CommentDestination: Destinating {
 
 final class PostPhotoDestination: Destinating {
     var view: UIViewController {
-        return PostPhotoViewController()
+        let vc = PostPhotoViewController()
+        vc.hidesBottomBarWhenPushed = true
+        return vc
     }
 }

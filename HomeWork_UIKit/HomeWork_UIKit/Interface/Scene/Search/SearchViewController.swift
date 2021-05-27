@@ -33,11 +33,6 @@ final class SearchViewController: BaseViewController {
 
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-    
     override func setupData() {
         super.setupData()
         collectionView.do {

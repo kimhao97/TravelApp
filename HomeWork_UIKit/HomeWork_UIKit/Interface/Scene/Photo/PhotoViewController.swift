@@ -42,6 +42,7 @@ final class PhotoViewController: BaseViewController {
         refreshComment.accept(())
         refreshLike.accept(())
     }
+    
     override func setupData() {
         super.setupData()
         
@@ -132,7 +133,7 @@ final class PhotoViewController: BaseViewController {
     // MARK: - Action
     
     @objc func postAction() {
-        navigate(to: PostPhotoDestination())
+        navigate(to: PostPhotoDestination(), present: false)
     }
 }
 
@@ -165,7 +166,7 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
                         comments = viewModel.getComments(with: photoID)
                         likes = viewModel.getLikes(with: photoID)
                         $0.isViewCommentPressed = { [weak self] in
-                            self?.navigate(to: CommentDestination(photoID: photoID, comments: comments), present: false)
+                            self?.navigate(to: CommentDestination(photoID: photoID, comments: comments), present: true)
                         }
 
                         $0.isShared = { [weak self] image in

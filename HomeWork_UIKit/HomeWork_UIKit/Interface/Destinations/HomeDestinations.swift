@@ -9,7 +9,9 @@ final class CityDetailDestination: Destinating {
     }
     
     var view: UIViewController {
-        return CityDetailViewController(city: city)
+        let vc = CityDetailViewController(city: city)
+        vc.hidesBottomBarWhenPushed = true
+        return vc 
     }
 }
 

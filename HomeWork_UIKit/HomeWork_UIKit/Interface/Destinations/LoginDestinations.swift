@@ -9,9 +9,9 @@ class LoginDestination: Destinating {
 }
 
 class LoginCompleteDestination: Destinating {
-    let tabBarViewController = TabBarController(selectedTab: .home)
+//    let tabBarViewController = TabBarController(selectedTab: .home)
     var view: UIViewController {
-        return tabBarViewController
+        return SceneDelegate.shared().tabBarController
     }
 }
 

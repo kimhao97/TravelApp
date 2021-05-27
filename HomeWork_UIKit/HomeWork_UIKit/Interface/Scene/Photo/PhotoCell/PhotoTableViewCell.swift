@@ -99,7 +99,7 @@ class PhotoTableViewCell: UITableViewCell, NibReusable {
         case 1:
             seeAllCommentButton.setTitle("See 1 comment", for: .normal)
         default:
-            seeAllCommentButton.setTitle("See \(numberOfLikes) comments", for: .normal)
+            seeAllCommentButton.setTitle("See \(numberOfComments) comments", for: .normal)
         }
     }
     

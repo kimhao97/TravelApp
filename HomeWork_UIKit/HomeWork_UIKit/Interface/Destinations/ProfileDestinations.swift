@@ -22,6 +22,8 @@ final class EditProfileDestination: Destinating {
     }
     
     var view: UIViewController {
-        return EditProfileViewController(profile: profile)
+        let vc = EditProfileViewController(profile: profile)
+        vc.hidesBottomBarWhenPushed = true
+        return vc
     }
 }

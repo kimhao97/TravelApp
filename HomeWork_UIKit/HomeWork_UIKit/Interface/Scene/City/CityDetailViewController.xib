@@ -68,7 +68,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="150" id="4pI-wj-M6w"/>
                     </constraints>
-                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -143,21 +143,20 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L91-R2-CF4">
                                     <rect key="frame" x="0.0" y="0.0" width="175" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="KDS-FM-9Up"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="and 15 people like this" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GC4-0B-XAf">
-                                    <rect key="frame" x="0.0" y="0.0" width="175" height="13.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="175" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="L91-R2-CF4" firstAttribute="height" secondItem="zOt-uL-tM5" secondAttribute="height" multiplier="2:3" id="R7O-cr-Cvm"/>
-                                <constraint firstItem="GC4-0B-XAf" firstAttribute="height" secondItem="zOt-uL-tM5" secondAttribute="height" multiplier="1:3" id="Wm2-ta-zZ0"/>
-                            </constraints>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOi-Mc-bhU">
                             <rect key="frame" x="295" y="0.0" width="40" height="40"/>
@@ -216,6 +215,7 @@
                 <constraint firstItem="5AZ-Tf-y6M" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="P3F-zM-ssm"/>
                 <constraint firstItem="jcs-wo-7BH" firstAttribute="top" secondItem="x4z-tk-EaQ" secondAttribute="bottom" constant="40" id="Sj7-f6-mhL"/>
                 <constraint firstAttribute="trailing" secondItem="lqH-em-sUg" secondAttribute="trailing" id="SpX-12-nfe"/>
+                <constraint firstAttribute="bottom" secondItem="5AZ-Tf-y6M" secondAttribute="bottom" id="Xfn-MU-ZNo"/>
                 <constraint firstItem="jcs-wo-7BH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Y8T-0V-UKV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ibE-Hg-ZZq" secondAttribute="trailing" constant="20" id="ZFI-GB-OSQ"/>
                 <constraint firstItem="rr2-el-dJW" firstAttribute="leading" secondItem="oHT-ds-Ggt" secondAttribute="leading" id="cdM-If-pM4"/>
@@ -224,7 +224,6 @@
                 <constraint firstItem="lqH-em-sUg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jYU-oA-kwM"/>
                 <constraint firstItem="e85-qT-S2n" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="m5j-wm-kJ1"/>
                 <constraint firstItem="e85-qT-S2n" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="pFs-Pn-64W"/>
-                <constraint firstAttribute="bottom" secondItem="5AZ-Tf-y6M" secondAttribute="bottom" id="pjy-2w-ULY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="x4z-tk-EaQ" secondAttribute="trailing" constant="20" id="qfM-Nx-TrX"/>
                 <constraint firstItem="nD6-wI-9kn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="rIn-pg-rLh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jcs-wo-7BH" secondAttribute="trailing" constant="20" id="tBf-ag-frA"/>

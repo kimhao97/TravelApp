@@ -3,7 +3,9 @@ import UIKit
 
 class SearchDetailDestination: Destinating {
     var view: UIViewController {
-        return SearchDetailViewController()
+        let vc = SearchDetailViewController()
+        vc.hidesBottomBarWhenPushed = true
+        return vc
     }
 }
 
