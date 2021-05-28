@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditProfileViewController" customModule="HomeWork_UIKit" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicatorView" destination="AJf-OU-ifR" id="ZtN-kG-LuL"/>
                 <outlet property="addressTextField" destination="thK-Wc-r6M" id="UlG-iE-aCo"/>
                 <outlet property="avatarImage" destination="vhi-LI-QaW" id="z68-FJ-w7N"/>
                 <outlet property="changePhotoButton" destination="RNb-zg-UtV" id="RqL-f6-zvG"/>
@@ -137,15 +138,31 @@
                         </button>
                     </subviews>
                 </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AJf-OU-ifR" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                    <rect key="frame" x="157.5" y="303.5" width="60" height="60"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="BSq-OW-xaY"/>
+                        <constraint firstAttribute="height" constant="60" id="KHH-PW-LrB"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                            <color key="value" systemColor="systemRedColor"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="circleStrokeSpin"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vhi-LI-QaW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="2GF-Eq-98r"/>
+                <constraint firstItem="AJf-OU-ifR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9If-CP-gyv"/>
                 <constraint firstItem="6ml-Tc-8z0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="EwA-2C-aDC"/>
                 <constraint firstItem="6ml-Tc-8z0" firstAttribute="top" secondItem="RNb-zg-UtV" secondAttribute="bottom" constant="40" id="F7P-dl-iya"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6ml-Tc-8z0" secondAttribute="trailing" constant="10" id="Xxh-9L-LEZ"/>
                 <constraint firstItem="RNb-zg-UtV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hUU-tA-RcE"/>
+                <constraint firstItem="AJf-OU-ifR" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="tMQ-i8-blp"/>
                 <constraint firstItem="vhi-LI-QaW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yFJ-R4-19i"/>
                 <constraint firstItem="RNb-zg-UtV" firstAttribute="top" secondItem="vhi-LI-QaW" secondAttribute="bottom" constant="10" id="zOe-xn-Mjh"/>
             </constraints>
@@ -162,6 +179,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

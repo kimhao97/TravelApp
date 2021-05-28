@@ -1,6 +1,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import NVActivityIndicatorView
 
 class EditProfileViewController: BaseViewController {
     
@@ -10,6 +11,7 @@ class EditProfileViewController: BaseViewController {
     @IBOutlet private weak var websiteTextField: UITextField!
     @IBOutlet private weak var changePhotoButton: UIButton!
     @IBOutlet private weak var logoutButton: UIButton!
+    @IBOutlet private weak var activityIndicatorView: NVActivityIndicatorView!
     
     private let imagePickerVC = UIImagePickerController()
     private let viewModel: EditProfileViewModel
@@ -98,12 +100,14 @@ class EditProfileViewController: BaseViewController {
         let output = viewModel.transform(input: input)
         output.isSaved
             .drive(onNext: { [weak self] _ in
+                self?.activityIndicatorView.stopAnimating()
                 self?.navigationController?.popViewController()
             })
             .disposed(by: disposeBag)
     }
     
     @objc func saveAction() {
+        activityIndicatorView.startAnimating()
         saveTrigger.onNext(())
     }
     
@@ -120,10 +124,9 @@ class EditProfileViewController: BaseViewController {
             self?.viewModel.logOut()
             let loginVC = LoginViewController()
             let controller = UINavigationController(rootViewController: loginVC)
-            let scene = UIApplication.shared.connectedScenes.first
-            if let sceneDelegate = (scene?.delegate as? SceneDelegate) {
-                sceneDelegate.window?.rootViewController = controller
-            }
+            SceneDelegate.shared().tabBarController.selectedIndex = 0
+            self?.navigationController?.popViewController()
+            SceneDelegate.shared().window?.rootViewController = controller
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)

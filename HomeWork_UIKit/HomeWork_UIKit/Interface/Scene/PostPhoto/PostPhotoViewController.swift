@@ -2,6 +2,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MapKit
+import NVActivityIndicatorView
 
 final class PostPhotoViewController: BaseViewController {
     
@@ -11,6 +12,7 @@ final class PostPhotoViewController: BaseViewController {
     @IBOutlet private weak var locationDetailLabel: UILabel!
     @IBOutlet private weak var postTextField: UITextField!
     @IBOutlet private weak var photoImage: UIImageView!
+    @IBOutlet private weak var activityIndicatorView: NVActivityIndicatorView!
 
     private let imagePickerVC = UIImagePickerController()
     private let viewModel: PostPhotoViewModel
@@ -82,12 +84,14 @@ final class PostPhotoViewController: BaseViewController {
         let output = viewModel.transform(input: input)
         output.isCteated
             .drive(onNext: { [weak self] _ in
+                self?.activityIndicatorView.stopAnimating()
                 self?.navigationController?.popViewController()
             })
             .disposed(by: disposeBag)
     }
     
     @objc func saveAction() {
+        activityIndicatorView.startAnimating()
         saveTrigger.onNext(())
     }
     

@@ -10,6 +10,7 @@ final class CommentViewController: BaseViewController {
     @IBOutlet private weak var commentTextField: UITextField!
     @IBOutlet private weak var postButton: UIButton!
     @IBOutlet private weak var avatarImage: UIImageView!
+    @IBOutlet private var commentBottomConstraint: NSLayoutConstraint!
     
     private let viewModel: CommentViewModel!
     private let disposeBag = DisposeBag()
@@ -39,7 +40,22 @@ final class CommentViewController: BaseViewController {
             $0.register(nib: CommentTableViewCell.nib, withCellClass: CommentTableViewCell.self)
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         bindViewModel()
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            commentBottomConstraint.constant = keyboardSize.height
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        if view.frame.origin.y != 0 {
+            commentBottomConstraint.constant = 40
+        }
     }
     
     override func setupUI() {

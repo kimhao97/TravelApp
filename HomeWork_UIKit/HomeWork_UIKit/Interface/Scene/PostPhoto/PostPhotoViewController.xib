@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostPhotoViewController" customModule="HomeWork_UIKit" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicatorView" destination="yMh-CL-Lsq" id="R1O-RY-1PA"/>
                 <outlet property="locationDetailLabel" destination="egU-Oy-KnI" id="7cv-zj-brL"/>
                 <outlet property="locationNameLabel" destination="f89-Uv-Gsa" id="rxo-dP-sI9"/>
                 <outlet property="locationStackView" destination="NYF-Xv-4uX" id="Vi8-R8-aP6"/>
@@ -203,11 +204,27 @@
                                         </stackView>
                                     </subviews>
                                 </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMh-CL-Lsq" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                    <rect key="frame" x="157.5" y="303.5" width="60" height="60"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="60" id="lLx-iw-9yv"/>
+                                        <constraint firstAttribute="height" constant="60" id="rOv-li-wr9"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                            <color key="value" systemColor="systemRedColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="circleStrokeSpin"/>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="Q4x-84-3kD" firstAttribute="leading" secondItem="CYX-03-Gvy" secondAttribute="leading" constant="8" id="AVV-nM-i4X"/>
                                 <constraint firstAttribute="trailing" secondItem="Q4x-84-3kD" secondAttribute="trailing" constant="8" id="HFA-ku-q4z"/>
+                                <constraint firstItem="yMh-CL-Lsq" firstAttribute="centerX" secondItem="CYX-03-Gvy" secondAttribute="centerX" id="OG3-Z4-vkp"/>
+                                <constraint firstItem="yMh-CL-Lsq" firstAttribute="centerY" secondItem="CYX-03-Gvy" secondAttribute="centerY" id="ZkK-gt-oko"/>
                                 <constraint firstItem="Q4x-84-3kD" firstAttribute="top" secondItem="CYX-03-Gvy" secondAttribute="top" id="aOF-Ea-BJN"/>
                             </constraints>
                         </view>
@@ -246,6 +263,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

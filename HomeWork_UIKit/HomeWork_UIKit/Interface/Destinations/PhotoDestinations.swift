@@ -10,7 +10,9 @@ final class CommentDestination: Destinating {
     }
     
     var view: UIViewController {
-        return CommentViewController(photoID: photoID, comments: comments)
+        let vc = CommentViewController(photoID: photoID, comments: comments)
+        vc.hidesBottomBarWhenPushed = true
+        return vc
     }
 }
 

@@ -73,6 +73,14 @@ final class ExploreViewController: BaseViewController {
             .drive(isLoadingBinder)
             .disposed(by: disposeBag)
     }
+    
+    private func scrollToCenter() {
+        let index = Int(viewModel.cities.value.count/2)
+        if index > 0 {
+            let indexPath = IndexPath(item: index, section: 0)
+            collectionView.scrollToItem(at: indexPath, at: [.centeredVertically, .centeredHorizontally], animated: true)
+        }
+    }
 }
 
 extension ExploreViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -115,6 +123,7 @@ extension ExploreViewController {
                 
             } else {
                 view.collectionView.reloadData()
+                view.scrollToCenter()
             }
         }
     }

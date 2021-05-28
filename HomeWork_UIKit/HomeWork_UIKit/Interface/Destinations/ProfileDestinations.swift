@@ -10,7 +10,9 @@ final class PhotoDetailDestination: Destinating {
     }
     
     var view: UIViewController {
-        return PhotoDetailViewController(photos: photos, isHideNavigationbar: isHideNavigationBar)
+        let vc = PhotoDetailViewController(photos: photos, isHideNavigationbar: isHideNavigationBar)
+        vc.hidesBottomBarWhenPushed = true
+        return vc
     }
 }
 
