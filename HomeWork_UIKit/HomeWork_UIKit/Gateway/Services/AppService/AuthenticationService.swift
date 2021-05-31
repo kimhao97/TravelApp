@@ -120,7 +120,7 @@ class ProfilesServiceImplement: ProfilesServiceable {
         persistentDataService.set(item: profile.email, toKey: Notification.Name.email.rawValue)
         persistentDataService.set(item: profile.address, toKey: Notification.Name.address.rawValue)
         persistentDataService.set(item: profile.website, toKey: Notification.Name.website.rawValue)
-        persistentDataService.set(item: profile.avatarUrl, toKey: Notification.Name.avatarUrl.rawValue)
+        persistentDataService.set(item: profile.avatarUrl ?? "", toKey: Notification.Name.avatarUrl.rawValue)
     }
     
     func loadProfile(completionHandler: @escaping (Result<Profile?, AppError>) -> Void ) {
