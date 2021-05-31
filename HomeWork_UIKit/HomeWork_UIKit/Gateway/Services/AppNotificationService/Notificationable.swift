@@ -1,3 +1,3 @@
 protocol Notificationable {
-    // TODO: implement this
+    // TO DO: implement this
 }
