@@ -26,6 +26,8 @@ class DefaultNotification: Notificationable {
                 DispatchQueue.main.async {
                     completionHandler(false)
                 }
+            case .ephemeral:
+                break
             @unknown default:
                 DispatchQueue.main.async {
                     completionHandler(false)

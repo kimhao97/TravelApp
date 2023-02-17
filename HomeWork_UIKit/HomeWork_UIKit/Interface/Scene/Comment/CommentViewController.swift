@@ -11,6 +11,7 @@ final class CommentViewController: BaseViewController {
     @IBOutlet private weak var postButton: UIButton!
     @IBOutlet private weak var avatarImage: UIImageView!
     @IBOutlet private var commentBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var commentView: UIView!
     
     private let viewModel: CommentViewModel!
     private let disposeBag = DisposeBag()
@@ -48,13 +49,14 @@ final class CommentViewController: BaseViewController {
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            commentBottomConstraint.constant = keyboardSize.height
+            let safeAreaBottom = view.safeAreaInsets.bottom
+            commentBottomConstraint.constant = keyboardSize.height - safeAreaBottom
         }
     }
 
     @objc func keyboardWillHide(_ notification: NSNotification) {
         if view.frame.origin.y != 0 {
-            commentBottomConstraint.constant = 40
+            commentBottomConstraint.constant = 0
         }
     }
     
