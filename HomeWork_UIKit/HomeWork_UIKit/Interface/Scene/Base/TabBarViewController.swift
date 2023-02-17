@@ -34,6 +34,7 @@ extension TabBarController {
     private func configUI() {
         tabBar.isTranslucent = false
         tabBar.tintColor = .red
+        tabBar.backgroundColor = .white
     }
     
     private func setupData() {
