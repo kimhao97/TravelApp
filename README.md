@@ -1,29 +1,37 @@
-# README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+# Travel Application
 
-### What is this repository for? ###
+Where & Go - Example with MVVM Architecture pattern using RxSwift.
+Clean Architecture partial application.
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+## Features
+- Explore tourist attractions
+- Search for favorite places
+- Share places to the community: like, share and comment
 
-### How do I get set up? ###
+## Deployment Setup
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+Clone the repository and run following commands 
 
-### Contribution guidelines ###
+```bash
+  pod install
+```
 
-* Writing tests
-* Code review
-* Other guidelines
 
-### Who do I talk to? ###
+## Screenshots
+<img src="screenshot/login.png" height="300em" />&nbsp;<img src="screenshot/signup.png" height="300em" />
 
-* Repo owner or admin
-* Other community or team contact
+<img src="screenshot/home.png" height="300em" />&nbsp;<img src="screenshot/home_detail.png" height="300em" />&nbsp;<img src="screenshot/place_detail.png" height="300em" />
+
+<img src="screenshot/photo.png" height="300em" />&nbsp;<img src="screenshot/photo2.png" height="300em" />&nbsp;<img src="screenshot/photo3.png" height="300em" />&nbsp;<img src="screenshot/photo4.png" height="300em" />
+
+<img src="screenshot/search.png" height="300em" />&nbsp;<img src="screenshot/search2.png" height="300em" />&nbsp;<img src="screenshot/search3.png" height="300em" />
+
+<img src="screenshot/profile.png" height="300em" />&nbsp;<img src="screenshot/profile_2.png" height="300em" />&nbsp;<img src="screenshot/profile_3.png" height="300em" />&nbsp;<img src="screenshot/profile_4.png" height="300em" />
+
+## API Reference
+
+The app makes use of the following APIs:
+- Firebase: Authentication, realtime, storage
+- Mockapi.io
+
